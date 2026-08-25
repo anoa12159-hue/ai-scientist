@@ -12,6 +12,7 @@ SHRGT45 历史研究回放系统的工程仓库。本仓库受根目录 `AGENTS.
 - T006 LangGraph Replay 首次构建：`IMPLEMENTED_PENDING_CLOSEOUT`
 - T006 已实现 S01–S07、S05/S06 并行、人工中断、跨进程恢复、有限重试和离线 CLI；正式
   CompletionRecord 尚未创建，科学状态仍为 `NOT_EVALUATED` / `DEVELOPMENTAL`
+- P2-01 Qwen/OpenAI-compatible 统一适配器：`IMPLEMENTED_OFFLINE_TESTED`
 - T007 API、T008 前端、T009 端到端验收和 T010 演示包：尚未开始
 
 ## 目录布局
@@ -63,3 +64,6 @@ python -c "import sys; sys.path.insert(0, 'src'); import ai_scientist_mvp"
 工作流入口为 `ai-scientist-replay`，只接受离线 `REPLAY` 运行。首次执行在
 `FIXTURE_IMPORT_REVIEW` 等待人工 DecisionRecord，批准后才会生成绑定 S05/S06 的报告。
 运行目录位于 `runs/<run-id>/`，不会写入 Graph State 之外的大型载荷，也不会产生科学支持或发布授权。
+
+模型适配器说明见 `docs/MODEL_ADAPTER.md`。真实百炼调用默认读取 `DASHSCOPE_API_KEY`，
+但离线 Replay 和测试不会读取该变量或访问网络。

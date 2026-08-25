@@ -45,7 +45,15 @@ FROZEN_TREE_SHA256_T005_CLOSEOUT = (
     "EAA17CA34C43AC1145450ECB9605862D530BC4B996DFED47EAECC633235A7EFD"
 )
 
-_PACKAGE_SUBPACKAGES = ("domain", "application", "infrastructure", "providers", "workflow", "api")
+_PACKAGE_SUBPACKAGES = (
+    "domain",
+    "application",
+    "infrastructure",
+    "providers",
+    "workflow",
+    "api",
+    "agent",
+)
 
 _SECRET_PATTERNS: tuple[re.Pattern[str], ...] = (
     re.compile(r"-----BEGIN (RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----"),
@@ -369,6 +377,9 @@ def test_no_business_implementation_present() -> None:
         "workflow/checkpoint.py",
         "workflow/replay_graph.py",
         "workflow/replay_cli.py",
+        # P2 unified Qwen/OpenAI-compatible model boundary.
+        "agent/llm/__init__.py",
+        "agent/llm/qwen.py",
     }
     expected_py = (
         {"__init__.py"}

@@ -22,7 +22,7 @@
 
 ## P2｜Qwen 统一模型层
 
-- [ ] P2-01 实现统一 `QwenChatModel`/OpenAI-compatible Adapter。
+- [x] P2-01 实现统一 `QwenChatModel`/OpenAI-compatible Adapter。（2026-08-25；无第三方 SDK 的适配器、离线请求注入测试；专项 5 passed，全量 222 passed；Ruff/mypy 通过）
 - [ ] P2-02 将模型名、temperature、seed、超时、轮数和预算移入配置。
 - [ ] P2-03 实现结构化输出、Schema 校验和有限修复循环。
 - [ ] P2-04 实现 API 重试、退避、限流、超时和错误 Artifact。
@@ -85,3 +85,4 @@
 | 2026-08-25 | 初始化项目根 Git 并完成 P1-03 冻结项审计 | 根仓库 `main` 已初始化；Smoke/Fixture/Contract：131 passed；冻结基线、Fixture 原始字节、CompletionRecord 和治理语义未漂移 | 原始移交 Git 历史缺失；新仓库尚未创建提交 | P1-04 |
 | 2026-08-25 | 完成 P1-04 文档同步并建立 Git 基线 | README、任务队列、T006 交接附录已更新；安全项目基线提交 `010b6dc`；外部压缩包、PDF、DOCX 和只读移交源未纳入 | T006 正式 closeout/CompletionRecord 仍待后续批准 | P1-05 |
 | 2026-08-25 | 完成 P1-05：T006 中断/恢复/重试/并行/幂等验证 | `tests/unit/test_replay_graph.py tests/integration/test_replay_workflow.py -q`：25 passed（63.63s） | T006 正式 closeout/CompletionRecord 仍待后续批准 | P2-01 |
+| 2026-08-25 | 完成 P2-01：Qwen/OpenAI-compatible 统一适配器 | `tests/unit/test_qwen_adapter.py`：5 passed；全量测试：222 passed；Ruff/mypy 通过；未访问网络、未使用 API Key | P2-02 尚未完成；真实百炼调用需后续配置和密钥 | P2-02 |
