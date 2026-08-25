@@ -396,6 +396,7 @@ def test_no_business_implementation_present() -> None:
         "skills/mechanism_brief.py",
         "skills/paper_fetch.py",
         "skills/paper_search.py",
+        "skills/parameter_registry.py",
         "skills/quote_verifier.py",
         "skills/snapshot_search.py",
         # P4-01 internal DTOs projected to existing frozen public contracts.

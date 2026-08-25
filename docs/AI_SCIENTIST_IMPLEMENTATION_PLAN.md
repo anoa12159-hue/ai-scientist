@@ -193,6 +193,8 @@ Benchmark Mode 必须不读取标签、不需要人工操作、不依赖本机�
 
 产出：Hypothesis/DataPlan 内部 DTO、现有冻结 Validation/Snapshot 投影、特征计算、统计验证、反例审查和磁图 QA Provider。若未来需要新增正式公共 JSON Schema，必须单独走 Contract Change Request，不由实现任务静默扩展。
 
+当前基础：P4-01 已完成内部 DTO 与公共投影；P4-02 已建立可扩展 SHARP 参数注册表，首个且当前唯一登记项是已核实的 `SHRGT45`。`MEANSHR`、平均剪切角和 0–1 fraction 不得作为其别名或静默单位转换。
+
 验收：每个假设都能映射到指标、数据、时间窗、检验和证伪条件；统计结果可独立重算；没有数据泄漏。
 
 ### P5：Benchmark 入口
