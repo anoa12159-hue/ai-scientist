@@ -40,7 +40,7 @@
 
 ## P4｜假设、数据与反例闭环
 
-- [ ] P4-01 固化 `Hypothesis`、`DataPlan`、`ValidationReport` 和 `CounterexampleReport` 契约。
+- [x] P4-01 固化 `Hypothesis`、`DataPlan`、`ValidationReport` 和 `CounterexampleReport` 契约。（2026-08-25；完整解压材料确认流程 03 为 V2.1 内部 JSON DTO + 手写 Validator，流程 04/05 为 Markdown/表格而非正式 JSON Schema；新增严格内部 DTO、八层 DataPlan 提取、五类反例分层和现有冻结 Snapshot/ValidationReport 投影，不修改公共契约；专项 10 passed，相关回归 108 passed，全量 272 passed；Ruff/mypy/导入/基线复核通过）
 - [ ] P4-02 实现 SHARP 参数注册、公式、单位和别名校验。
 - [ ] P4-03 实现 FITS/CSV 读取、质量门、缺失值、投影和时间一致性检查。
 - [ ] P4-04 实现磁场特征计算、时间窗切分和标签构造。
@@ -97,3 +97,4 @@
 | 2026-08-25 | 完成 P3-05：固定语料快照与离线回退 | 专项 27 passed；全量测试 256 passed；Ruff/mypy 通过；四份来源逐项校验哈希和大小，回退只处理显式不可用错误 | 当时 P3-04 尚待 v13 模板；现已在后续完成 | P3-04 |
 | 2026-08-25 | 完成 P3-04：v13 V2.2 Phase 1/2 DTO 与 Markdown 映射 | 专项 21 passed；全量测试 261 passed；Ruff/mypy 通过；实际 V2.2 Fixture 可解析，V2.3 冒充、重复证据和缺字段均 Fail Closed | P2-06 凭证轮换仍未确认；P3-06 尚未串联 Replay | P3-06 |
 | 2026-08-25 | 完成 P3-06：SHRGT45 可审计离线文献 Replay | 专项 11 passed；全量测试 262 passed；Ruff/mypy 通过；15 条证据逐字校验，Artifact 血缘、审计哈希和幂等已验证 | P2-06 旧凭证处置仍未确认；P4-01 涉及冻结契约变更 | P4-01（需先核对契约） |
+| 2026-08-25 | 完成 P4-01：假设、DataPlan、验证与反例内部契约 | 完整解压材料静态核对；专项 10 passed，相关回归 108 passed，全量 272 passed；Ruff/mypy/导入/基线复核通过；未修改冻结 Schema 或解压材料 | P2-06 旧凭证处置仍未确认；正式公共 Schema 变更仍需独立 CCR | P4-02 |

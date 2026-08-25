@@ -191,7 +191,7 @@ Benchmark Mode 必须不读取标签、不需要人工操作、不依赖本机�
 
 ### P4：假设与数据验证闭环
 
-产出：Hypothesis/DataPlan Schema、特征计算、统计验证、反例审查和磁图 QA Provider。
+产出：Hypothesis/DataPlan 内部 DTO、现有冻结 Validation/Snapshot 投影、特征计算、统计验证、反例审查和磁图 QA Provider。若未来需要新增正式公共 JSON Schema，必须单独走 Contract Change Request，不由实现任务静默扩展。
 
 验收：每个假设都能映射到指标、数据、时间窗、检验和证伪条件；统计结果可独立重算；没有数据泄漏。
 

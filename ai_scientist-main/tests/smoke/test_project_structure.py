@@ -398,6 +398,8 @@ def test_no_business_implementation_present() -> None:
         "skills/paper_search.py",
         "skills/quote_verifier.py",
         "skills/snapshot_search.py",
+        # P4-01 internal DTOs projected to existing frozen public contracts.
+        "skills/research_contracts.py",
     }
     expected_py = (
         {"__init__.py"}

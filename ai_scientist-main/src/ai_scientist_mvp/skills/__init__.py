@@ -37,6 +37,18 @@ from ai_scientist_mvp.skills.quote_verifier import (
     QuoteVerificationResult,
     QuoteVerifier,
 )
+from ai_scientist_mvp.skills.research_contracts import (
+    CounterexampleReport,
+    DataPlan,
+    HypothesisContractV21,
+    ResearchContractError,
+    build_validation_report,
+    extract_data_plan,
+    parse_counterexample_report,
+    parse_hypothesis_contract,
+    project_counterexample_snapshot,
+    project_hypothesis_snapshot,
+)
 from ai_scientist_mvp.skills.snapshot_search import (
     FallbackPaperSearchProvider,
     PaperSearchUnavailableError,
@@ -76,4 +88,14 @@ __all__ = [
     "FallbackPaperSearchProvider",
     "PaperSearchUnavailableError",
     "SnapshotPaperSearchProvider",
+    "CounterexampleReport",
+    "DataPlan",
+    "HypothesisContractV21",
+    "ResearchContractError",
+    "build_validation_report",
+    "extract_data_plan",
+    "parse_counterexample_report",
+    "parse_hypothesis_contract",
+    "project_counterexample_snapshot",
+    "project_hypothesis_snapshot",
 ]
