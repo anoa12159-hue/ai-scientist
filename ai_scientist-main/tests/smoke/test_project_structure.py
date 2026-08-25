@@ -53,6 +53,7 @@ _PACKAGE_SUBPACKAGES = (
     "workflow",
     "api",
     "agent",
+    "skills",
 )
 
 _SECRET_PATTERNS: tuple[re.Pattern[str], ...] = (
@@ -385,6 +386,8 @@ def test_no_business_implementation_present() -> None:
         "agent/llm/resilient.py",
         "agent/llm/structured.py",
         "agent/llm/telemetry.py",
+        # P3 paper-search Skill (offline provider boundary only).
+        "skills/paper_search.py",
     }
     expected_py = (
         {"__init__.py"}

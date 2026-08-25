@@ -24,6 +24,7 @@ src/ai_scientist_mvp/    Python 包（src 布局）
   infrastructure/          存储 / 台账基础设施（T004+）
   providers/               回放与未来在线 Provider（T005+）
   workflow/                工作流编排（T006，首次构建完成）
+  skills/                  确定性研究 Skills（P3，当前为离线 paper_search）
   api/                     后端 API（T007+）
 web/                        薄前端（T008+）
 contracts/                  JSON Schema 等机器契约（T002+）
@@ -65,5 +66,5 @@ python -c "import sys; sys.path.insert(0, 'src'); import ai_scientist_mvp"
 `FIXTURE_IMPORT_REVIEW` 等待人工 DecisionRecord，批准后才会生成绑定 S05/S06 的报告。
 运行目录位于 `runs/<run-id>/`，不会写入 Graph State 之外的大型载荷，也不会产生科学支持或发布授权。
 
-模型适配器说明见 `docs/MODEL_ADAPTER.md`。真实百炼调用默认读取 `DASHSCOPE_API_KEY`，
+模型适配器说明见 `docs/MODEL_ADAPTER.md`；文献检索边界见 `docs/PAPER_SEARCH.md`。真实百炼调用默认读取 `DASHSCOPE_API_KEY`，
 但离线 Replay 和测试不会读取该变量或访问网络。

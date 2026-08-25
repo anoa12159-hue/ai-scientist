@@ -31,7 +31,7 @@
 
 ## P3｜文献与证据 Skills
 
-- [ ] P3-01 将 `deep_research_agent_v13` 的搜索能力拆为 `paper_search` Skill。
+- [x] P3-01 将文献检索能力拆为安全的 `paper_search` Skill。（2026-08-25；新增注入式 Provider、离线内存索引、查询规范化、年份/领域过滤、稳定排序、去重和多角度合并；专项 22 passed；全量测试 241 passed；Ruff/mypy 通过；未读取历史压缩包、未访问网络或凭证）
 - [ ] P3-02 接入论文全文获取、缓存版本和引用链扩展。
 - [ ] P3-03 实现逐字引用、数字和位置校验。
 - [ ] P3-04 将 Phase 1/Phase 2 输出映射到 `EvidenceTable`/`MechanismBrief` 契约。
@@ -90,3 +90,4 @@
 | 2026-08-25 | 完成 P2-03：结构化输出与有限 Schema 修复 | `tests/unit/test_structured_output.py`：3 passed；全量测试：228 passed；Ruff/mypy 通过；无网络调用 | P2-04 API 重试/退避/限流/超时和错误 Artifact 尚未实现 | P2-04 |
 | 2026-08-25 | 完成 P2-04：模型请求重试、退避、限流和错误 Artifact | `tests/unit/test_resilient_model.py tests/unit/test_llm_config.py -q`：8 passed；全量测试：233 passed；Ruff/mypy 通过；错误路径无网络凭证泄露 | P2-05 脱敏日志、模型版本和 token 统计尚未实现 | P2-05 |
 | 2026-08-25 | 完成 P2-05：脱敏模型调用遥测 | `tests/unit/test_telemetry.py tests/unit/test_resilient_model.py -q`：6 passed；全量测试：235 passed；Ruff/mypy 通过；Smoke 白名单已同步；提示词、响应正文和凭证不进入记录 | P2-06 历史压缩包含真实 `S2_API_KEY`，需密钥所有者轮换后才能处理 | P2-06 |
+| 2026-08-25 | 完成 P3-01：离线 `paper_search` Skill | 专项 22 passed；全量测试 241 passed；Ruff/mypy 通过；新增 `docs/PAPER_SEARCH.md`；Provider 不访问网络和凭证 | P2-06 仍阻塞；全文获取/缓存/引用链属于 P3-02 | P3-02 |
