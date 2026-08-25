@@ -20,6 +20,12 @@ from ai_scientist_mvp.skills.paper_search import (
     PaperSearchSkill,
     PaperSearchValidationError,
 )
+from ai_scientist_mvp.skills.quote_verifier import (
+    QuoteVerificationError,
+    QuoteVerificationRequest,
+    QuoteVerificationResult,
+    QuoteVerifier,
+)
 
 __all__ = [
     "InMemoryPaperSearchProvider",
@@ -38,4 +44,8 @@ __all__ = [
     "PaperFetchResult",
     "PaperFetchSkill",
     "PaperFetchValidationError",
+    "QuoteVerificationError",
+    "QuoteVerificationRequest",
+    "QuoteVerificationResult",
+    "QuoteVerifier",
 ]

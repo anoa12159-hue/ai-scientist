@@ -389,6 +389,7 @@ def test_no_business_implementation_present() -> None:
         # P3 paper-search Skill (offline provider boundary only).
         "skills/paper_fetch.py",
         "skills/paper_search.py",
+        "skills/quote_verifier.py",
     }
     expected_py = (
         {"__init__.py"}

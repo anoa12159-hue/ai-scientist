@@ -33,7 +33,7 @@
 
 - [x] P3-01 将文献检索能力拆为安全的 `paper_search` Skill。（2026-08-25；新增注入式 Provider、离线内存索引、查询规范化、年份/领域过滤、稳定排序、去重和多角度合并；专项 22 passed；全量测试 241 passed；Ruff/mypy 通过；未读取历史压缩包、未访问网络或凭证）
 - [x] P3-02 接入论文全文获取、缓存版本和引用链扩展。（2026-08-25；新增 `PaperFetchSkill`、显式 Fetcher/Cache/Citation Provider 边界、SHA-256/字节上限校验、版本化缓存键和有界确定性 BFS；专项 27 passed；全量测试 246 passed；Ruff/mypy 通过；未访问网络或凭证）
-- [ ] P3-03 实现逐字引用、数字和位置校验。
+- [x] P3-03 实现逐字引用、数字和位置校验。（2026-08-25；新增 `QuoteVerifier`，支持精确位置、唯一匹配、数字 token（小数/科学计数法/百分号）校验和 Fail Closed 的 `NOT_FOUND`；专项 32 passed；全量测试 251 passed；Ruff/mypy 通过；原文不进入结果）
 - [ ] P3-04 将 Phase 1/Phase 2 输出映射到 `EvidenceTable`/`MechanismBrief` 契约。
 - [ ] P3-05 提供固定语料快照和离线检索回退方案。
 - [ ] P3-06 用 SHRGT45 Fixture 完成一条可审计的文献研究 Replay。
@@ -92,3 +92,4 @@
 | 2026-08-25 | 完成 P2-05：脱敏模型调用遥测 | `tests/unit/test_telemetry.py tests/unit/test_resilient_model.py -q`：6 passed；全量测试：235 passed；Ruff/mypy 通过；Smoke 白名单已同步；提示词、响应正文和凭证不进入记录 | P2-06 历史压缩包含真实 `S2_API_KEY`，需密钥所有者轮换后才能处理 | P2-06 |
 | 2026-08-25 | 完成 P3-01：离线 `paper_search` Skill | 专项 22 passed；全量测试 241 passed；Ruff/mypy 通过；新增 `docs/PAPER_SEARCH.md`；Provider 不访问网络和凭证 | P2-06 仍阻塞；全文获取/缓存/引用链属于 P3-02 | P3-02 |
 | 2026-08-25 | 完成 P3-02：全文缓存与引用链扩展边界 | 专项 27 passed；全量测试 246 passed；Ruff/mypy 通过；缓存身份、哈希、大小和 BFS 上限均有测试 | P2-06 仍阻塞；在线 Provider、版权授权和逐字引用校验需后续明确 | P3-03 |
+| 2026-08-25 | 完成 P3-03：逐字引用与数字位置校验 | 专项 32 passed；全量测试 251 passed；Ruff/mypy 通过；结果仅保存引用哈希、位置和原因 | P2-06 仍阻塞；EvidenceTable/MechanismBrief 契约映射属于 P3-04 | P3-04 |

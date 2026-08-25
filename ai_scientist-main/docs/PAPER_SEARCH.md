@@ -34,3 +34,10 @@ Graph State。
 `expand_citations()` 对注入的 `CitationProvider` 做有界 BFS，按 ID 稳定排序、去重并输出边，
 通过 `max_depth` 和 `max_nodes` 防止无限扩展。网络全文 Provider、版权授权、持久化缓存和逐字
 引用校验仍需后续任务明确数据来源与授权后接入；当前实现不会访问网络或凭证。
+
+## 逐字引用校验
+
+`QuoteVerifier` 接收论文 ID、原文快照、逐字引用和可选的字符位置/预期数字。只有原文中恰好
+一个位置与引用完全相同、位置绑定有效且数字 token（支持小数、科学计数法和百分号）一致时，
+结果才是 `VERIFIED`；缺失、重复、位置错误或数字不一致统一返回 `NOT_FOUND`，并只保留引用
+SHA-256、位置和失败原因。返回对象不包含原文，便于把结果安全投影到 `EvidenceTable`。
