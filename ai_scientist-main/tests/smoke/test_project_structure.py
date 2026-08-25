@@ -392,6 +392,7 @@ def test_no_business_implementation_present() -> None:
         "agent/llm/structured.py",
         "agent/llm/telemetry.py",
         # P3 paper-search Skill (offline provider boundary only).
+        "skills/mechanism_brief.py",
         "skills/paper_fetch.py",
         "skills/paper_search.py",
         "skills/quote_verifier.py",

@@ -1,5 +1,16 @@
 """Deterministic, provider-injected research Skills."""
 
+from ai_scientist_mvp.skills.mechanism_brief import (
+    EvidenceRow,
+    EvidenceTable,
+    MechanismBriefV22,
+    MechanismBriefValidationError,
+    Phase1EvidencePlan,
+    Phase1PaperCandidate,
+    parse_mechanism_brief,
+    parse_phase1_output,
+    project_mechanism_snapshot,
+)
 from ai_scientist_mvp.skills.paper_fetch import (
     CitationExpansion,
     CitationProvider,
@@ -49,6 +60,15 @@ __all__ = [
     "PaperFetchResult",
     "PaperFetchSkill",
     "PaperFetchValidationError",
+    "EvidenceRow",
+    "EvidenceTable",
+    "MechanismBriefV22",
+    "MechanismBriefValidationError",
+    "Phase1EvidencePlan",
+    "Phase1PaperCandidate",
+    "parse_mechanism_brief",
+    "parse_phase1_output",
+    "project_mechanism_snapshot",
     "QuoteVerificationError",
     "QuoteVerificationRequest",
     "QuoteVerificationResult",

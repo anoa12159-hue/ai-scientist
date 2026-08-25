@@ -52,3 +52,14 @@ SHA-256、位置和失败原因。返回对象不包含原文，便于把结果�
 `FallbackPaperSearchProvider` 仅在主 Provider 明确抛出 `PaperSearchUnavailableError` 时使用
 固定快照。程序错误、无效结果或其他异常不会被静默吞掉，从而区分“网络不可用降级”和实现
 缺陷。离线 Replay 可直接绑定快照 Provider，不读取 `.env` 或任何 API Key。
+
+## V13 Phase 1/Phase 2 映射
+
+`parse_phase1_output()` 将 v13 Phase 1 Markdown 映射为 `Phase1EvidencePlan`：参数、论文候选、
+DOI/arXiv 元数据和 P1–P5 覆盖状态。`parse_mechanism_brief()` 按 v13 `template.py` 与
+`phase2_system.py` 的 V2.2 定义校验六个章节、全部必填字段、五张八列证据表、唯一证据编号、
+候选假设和引用文献，生成 `MechanismBriefV22`/`EvidenceTable` DTO。
+
+内部 DTO 不是新的 JSON Schema。持久化时由 `project_mechanism_snapshot()` 抽取参数、科学声称
+上限、禁止表述和来源引用，生成现有冻结 `MechanismSnapshot`。V2.3 输入不会静默冒充 V2.2；
+V2.3 仍作为独立版本化来源处理。
