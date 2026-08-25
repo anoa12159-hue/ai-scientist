@@ -46,3 +46,10 @@ print(response.message.content)
 异常才允许有限重试；认证、配置和无效响应直接 Fail Closed。退避带可注入抖动，调用间隔
 由 `RateLimiter` 控制。耗尽后抛出携带 `ModelErrorArtifact` 的 `ModelRequestError`，其中
 只保存分类、状态码、尝试次数、模型和截断后的安全错误摘要，不保存 Authorization 头或密钥。
+
+## 脱敏遥测
+
+可选的 `LoggingModelCallObserver` 记录每次模型调用的 provider、配置模型、供应商返回的
+模型版本、响应 ID、尝试次数、耗时、结果、错误码和 token 用量。`ResilientChatModel` 在
+成功和最终失败时通知 observer；提示词、完整响应、请求头、API Key 和其他未列入白名单的
+字段不会进入记录。需要自定义落盘或指标系统时，实现 `ModelCallObserver` 协议即可。

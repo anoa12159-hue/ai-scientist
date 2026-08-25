@@ -384,6 +384,7 @@ def test_no_business_implementation_present() -> None:
         "agent/llm/qwen.py",
         "agent/llm/resilient.py",
         "agent/llm/structured.py",
+        "agent/llm/telemetry.py",
     }
     expected_py = (
         {"__init__.py"}

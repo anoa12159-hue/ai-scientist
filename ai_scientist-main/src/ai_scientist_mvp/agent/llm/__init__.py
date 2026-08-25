@@ -29,6 +29,11 @@ from ai_scientist_mvp.agent.llm.structured import (
     StructuredOutputError,
     StructuredQwenChatModel,
 )
+from ai_scientist_mvp.agent.llm.telemetry import (
+    LoggingModelCallObserver,
+    ModelCallRecord,
+    redact_mapping,
+)
 
 __all__ = [
     "ChatMessage",
@@ -38,6 +43,7 @@ __all__ = [
     "ModelConfigError",
     "ModelErrorArtifact",
     "ModelRequestError",
+    "ModelCallRecord",
     "ModelError",
     "ModelResponseError",
     "ModelTransportError",
@@ -48,6 +54,8 @@ __all__ = [
     "RateLimiter",
     "RetryPolicy",
     "ResilientChatModel",
+    "LoggingModelCallObserver",
+    "redact_mapping",
     "StructuredOutput",
     "StructuredOutputError",
     "StructuredQwenChatModel",

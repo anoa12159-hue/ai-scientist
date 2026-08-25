@@ -16,6 +16,12 @@ from ai_scientist_mvp.agent.llm.qwen import (
     ModelError,
     ModelResponseError,
     ModelTransportError,
+    TokenUsage,
+)
+from ai_scientist_mvp.agent.llm.telemetry import (
+    ModelCallObserver,
+    ModelCallRecord,
+    provider_and_model,
 )
 
 
@@ -92,6 +98,8 @@ class ResilientChatModel:
         sleeper: Callable[[float], None] = time.sleep,
         random_value: Callable[[], float] = random.random,
         limiter: RateLimiter | None = None,
+        observer: ModelCallObserver | None = None,
+        clock: Callable[[], float] = time.monotonic,
     ) -> None:
         if not hasattr(model, "invoke"):
             raise TypeError("model must provide invoke(messages, response_format=...)")
@@ -100,6 +108,8 @@ class ResilientChatModel:
         self._sleeper = sleeper
         self._random_value = random_value
         self._limiter = limiter or RateLimiter(policy.min_interval_seconds, sleeper=sleeper)
+        self._observer = observer
+        self._clock = clock
 
     def invoke(
         self,
@@ -108,27 +118,61 @@ class ResilientChatModel:
         response_format: Mapping[str, Any] | None = None,
     ) -> ChatResponse:
         attempts = 0
+        started_at = self._clock()
+        provider, configured_model = provider_and_model(self.model)
         while attempts < self.policy.max_attempts:
             attempts += 1
             self._limiter.wait()
             try:
-                return self.model.invoke(messages, response_format=response_format)
+                response = self.model.invoke(messages, response_format=response_format)
+                self._notify(
+                    ModelCallRecord(
+                        provider=provider,
+                        configured_model=configured_model,
+                        response_model=response.model,
+                        response_id=response.response_id,
+                        attempts=attempts,
+                        elapsed_ms=_elapsed_ms(started_at, self._clock()),
+                        outcome="SUCCEEDED",
+                        error_code=None,
+                        usage=response.usage,
+                    )
+                )
+                return response
             except ModelError as error:
                 retryable, status_code, category, code = _failure_details(error)
                 if not retryable or attempts >= self.policy.max_attempts:
-                    raise ModelRequestError(
-                        _error_artifact(
-                            self.model,
+                    artifact = _error_artifact(
+                        self.model,
+                        attempts=attempts,
+                        retryable=retryable,
+                        status_code=status_code,
+                        category=category,
+                        code=code,
+                        message=str(error),
+                    )
+                    self._notify(
+                        ModelCallRecord(
+                            provider=provider,
+                            configured_model=configured_model,
+                            response_model=None,
+                            response_id=None,
                             attempts=attempts,
-                            retryable=retryable,
-                            status_code=status_code,
-                            category=category,
-                            code=code,
-                            message=str(error),
+                            elapsed_ms=_elapsed_ms(started_at, self._clock()),
+                            outcome="FAILED",
+                            error_code=artifact.code,
+                            usage=_empty_usage(),
                         )
+                    )
+                    raise ModelRequestError(
+                        artifact
                     ) from error
                 self._sleeper(self._backoff_seconds(attempts))
         raise AssertionError("retry loop exited without a result or failure")
+
+    def _notify(self, record: ModelCallRecord) -> None:
+        if self._observer is not None:
+            self._observer(record)
 
     def _backoff_seconds(self, attempt: int) -> float:
         base = float(min(
@@ -155,6 +199,14 @@ def _failure_details(error: ModelError) -> tuple[bool, int | None, str, str]:
     if isinstance(error, ModelResponseError):
         return False, None, "PROVIDER_RESPONSE", "INVALID_MODEL_RESPONSE"
     return False, None, "MODEL", "MODEL_ERROR"
+
+
+def _elapsed_ms(started_at: float, finished_at: float) -> int:
+    return max(0, round((finished_at - started_at) * 1000))
+
+
+def _empty_usage() -> TokenUsage:
+    return TokenUsage()
 
 
 def _error_artifact(
