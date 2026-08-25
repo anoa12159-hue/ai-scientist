@@ -12,8 +12,8 @@
 - Seed：`42`
 - 单请求超时：`180` 秒
 
-这些默认值来自 `docs/MODEL_COMPLIANCE.md`。配置对象是不可变的；后续配置版本应在
-P2-02 中统一加载和记录。
+这些默认值来自 `docs/MODEL_COMPLIANCE.md`。运行参数和预算现在由仓库根目录的
+`config.example.toml` 统一描述，并通过不可变的 `QwenRuntimeConfig`/`ModelBudget` 加载校验。
 
 ## 调用边界
 

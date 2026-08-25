@@ -344,6 +344,7 @@ def test_root_contains_only_expected_files() -> None:
         ".env.example",
         ".gitattributes",
         ".gitignore",
+        "config.example.toml",
         "AGENTS.md",
         "README.md",
         "pyproject.toml",
@@ -379,6 +380,7 @@ def test_no_business_implementation_present() -> None:
         "workflow/replay_cli.py",
         # P2 unified Qwen/OpenAI-compatible model boundary.
         "agent/llm/__init__.py",
+        "agent/llm/config.py",
         "agent/llm/qwen.py",
     }
     expected_py = (

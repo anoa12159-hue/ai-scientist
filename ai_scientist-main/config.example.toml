@@ -1,0 +1,16 @@
+[llm]
+provider = "dashscope"
+api_base = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+model = "qwen-plus"
+api_key_env = "DASHSCOPE_API_KEY"
+temperature = 0.0
+seed = 42
+timeout_seconds = 180.0
+max_iterations = 8
+max_repair_rounds = 2
+
+[llm.budget]
+max_requests = 30
+max_input_tokens = 200000
+max_output_tokens = 40000
+max_cost_cny = 10.0
