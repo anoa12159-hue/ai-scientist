@@ -1,5 +1,17 @@
 """Deterministic, provider-injected research Skills."""
 
+from ai_scientist_mvp.skills.paper_fetch import (
+    CitationExpansion,
+    CitationProvider,
+    InMemoryPaperDocumentCache,
+    PaperContentFetcher,
+    PaperDocument,
+    PaperDocumentCache,
+    PaperFetchRequest,
+    PaperFetchResult,
+    PaperFetchSkill,
+    PaperFetchValidationError,
+)
 from ai_scientist_mvp.skills.paper_search import (
     InMemoryPaperSearchProvider,
     PaperSearchHit,
@@ -16,4 +28,14 @@ __all__ = [
     "PaperSearchResult",
     "PaperSearchSkill",
     "PaperSearchValidationError",
+    "CitationExpansion",
+    "CitationProvider",
+    "InMemoryPaperDocumentCache",
+    "PaperContentFetcher",
+    "PaperDocument",
+    "PaperDocumentCache",
+    "PaperFetchRequest",
+    "PaperFetchResult",
+    "PaperFetchSkill",
+    "PaperFetchValidationError",
 ]
