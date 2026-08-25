@@ -27,14 +27,14 @@
 - [x] P2-03 实现结构化输出、Schema 校验和有限修复循环。（2026-08-25；`StructuredQwenChatModel` 使用 Draft 2020-12 校验、最多配置轮数修复并聚合 token 用量；专项 3 passed，全量 228 passed；Ruff/mypy 通过）
 - [x] P2-04 实现 API 重试、退避、限流、超时和错误 Artifact。（2026-08-25；`ResilientChatModel` 支持 429/5xx/网络错误分类、指数退避抖动、最小间隔限流和 `ModelErrorArtifact`；专项 8 passed，全量 233 passed；Ruff/mypy 通过）
 - [x] P2-05 增加脱敏调用日志、模型版本记录和 token 统计。（2026-08-25；`LoggingModelCallObserver` 与 `ModelCallRecord` 仅记录 provider、配置/响应模型、响应 ID、尝试次数、耗时、结果、错误码和 token 用量；遥测/重试专项 6 passed；全量测试 235 passed；Ruff/mypy 通过）
-- [!] P2-06 `deep_research_agent_v13.zip` 内含非占位 `S2_API_KEY`；已禁止交付并记录于 `SECURITY_NOTICE.md`，需密钥所有者吊销/轮换；主仓库补齐后再清除 DeepSeek 专用依赖。（2026-08-25）
+- [!] P2-06 `deep_research_agent_v13.zip` 内含非占位 `S2_API_KEY`，且该值已在沟通渠道直接披露；按 v13 上下文它是 Semantic Scholar（S2）检索/引用服务凭证，不是 Qwen/DashScope 密钥。需密钥所有者吊销/轮换并确认旧密钥失效；主仓库补齐后再清除 DeepSeek 专用依赖。（2026-08-25）
 
 ## P3｜文献与证据 Skills
 
 - [x] P3-01 将文献检索能力拆为安全的 `paper_search` Skill。（2026-08-25；新增注入式 Provider、离线内存索引、查询规范化、年份/领域过滤、稳定排序、去重和多角度合并；专项 22 passed；全量测试 241 passed；Ruff/mypy 通过；未读取历史压缩包、未访问网络或凭证）
 - [x] P3-02 接入论文全文获取、缓存版本和引用链扩展。（2026-08-25；新增 `PaperFetchSkill`、显式 Fetcher/Cache/Citation Provider 边界、SHA-256/字节上限校验、版本化缓存键和有界确定性 BFS；专项 27 passed；全量测试 246 passed；Ruff/mypy 通过；未访问网络或凭证）
 - [x] P3-03 实现逐字引用、数字和位置校验。（2026-08-25；新增 `QuoteVerifier`，支持精确位置、唯一匹配、数字 token（小数/科学计数法/百分号）校验和 Fail Closed 的 `NOT_FOUND`；专项 32 passed；全量测试 251 passed；Ruff/mypy 通过；原文不进入结果）
-- [!] P3-04 将 Phase 1/Phase 2 输出映射到 `EvidenceTable`/`MechanismBrief` 契约：当前冻结 `contracts/` 没有这两个 Schema，且章程要求保留 MechanismBrief 原始版本化来源、首版不统一其全文语义；需要项目所有者先批准独立 Contract Change Request 后才能实现。（2026-08-25）
+- [!] P3-04 将 Phase 1/Phase 2 输出映射到 `EvidenceTable`/`MechanismBrief`：已确认正式定义是 v13 V2.2 的内部 DTO+Markdown，而非 JSON Schema；Python DTO 位于 `template.py` 第 33/65/130 行附近，Markdown 模板位于 `phase2_system.py` 第 85–157 行，并有两处验收样例。无需为内部 DTO 先创建 Contract Change Request；但受安全规则限制，不能从含真实凭证的 ZIP 提取代码，需提供上述文件与样例的脱敏副本后实现，并将持久化输出投影到现有 `MechanismSnapshot`/来源引用边界。（2026-08-25）
 - [ ] P3-05 提供固定语料快照和离线检索回退方案。
 - [ ] P3-06 用 SHRGT45 Fixture 完成一条可审计的文献研究 Replay。
 
@@ -93,4 +93,4 @@
 | 2026-08-25 | 完成 P3-01：离线 `paper_search` Skill | 专项 22 passed；全量测试 241 passed；Ruff/mypy 通过；新增 `docs/PAPER_SEARCH.md`；Provider 不访问网络和凭证 | P2-06 仍阻塞；全文获取/缓存/引用链属于 P3-02 | P3-02 |
 | 2026-08-25 | 完成 P3-02：全文缓存与引用链扩展边界 | 专项 27 passed；全量测试 246 passed；Ruff/mypy 通过；缓存身份、哈希、大小和 BFS 上限均有测试 | P2-06 仍阻塞；在线 Provider、版权授权和逐字引用校验需后续明确 | P3-03 |
 | 2026-08-25 | 完成 P3-03：逐字引用与数字位置校验 | 专项 32 passed；全量测试 251 passed；Ruff/mypy 通过；结果仅保存引用哈希、位置和原因 | P2-06 仍阻塞；EvidenceTable/MechanismBrief 契约映射属于 P3-04 | P3-04 |
-| 2026-08-25 | P3-04 阻塞登记 | 冻结契约没有 `EvidenceTable`/`MechanismBrief` Schema；`docs/contracts/CONTRACTS.md` 要求原始 MechanismBrief 保持版本化来源，不能在实现任务中自行统一语义 | 需要项目所有者批准独立 Contract Change Request；P2-06 密钥轮换阻塞仍在 | P3-04（等待批准） |
+| 2026-08-25 | 修正 P3-04 类型边界 | 已由材料知情人确认：V2.2 定义是 `template.py` 的 Python DTO 与 `phase2_system.py` 的 Markdown 模板，不是 JSON Schema；持久层继续使用现有 `MechanismSnapshot` 和来源引用 | 等待脱敏的两个源文件及两处验收样例；`S2_API_KEY` 必须吊销/轮换 | P3-04（等待脱敏材料） |
