@@ -393,6 +393,7 @@ def test_no_business_implementation_present() -> None:
         "agent/llm/structured.py",
         "agent/llm/telemetry.py",
         # P3 paper-search Skill (offline provider boundary only).
+        "skills/data_loader.py",
         "skills/mechanism_brief.py",
         "skills/paper_fetch.py",
         "skills/paper_search.py",
@@ -505,7 +506,7 @@ def test_pyproject_has_no_business_dependencies() -> None:
     project = data["project"]
     assert project["requires-python"] == ">=3.11"
     runtime_deps = [re.split(r"[^A-Za-z0-9_-]", dep)[0] for dep in project["dependencies"]]
-    assert runtime_deps == ["jcs", "jsonschema", "langgraph"], (
+    assert runtime_deps == ["astropy", "jcs", "jsonschema", "langgraph", "numpy"], (
         f"unexpected runtime dependency: {runtime_deps}"
     )
     for dep in project["optional-dependencies"]["dev"]:

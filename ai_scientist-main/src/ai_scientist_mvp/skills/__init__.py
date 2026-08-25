@@ -1,5 +1,20 @@
 """Deterministic, provider-injected research Skills."""
 
+from ai_scientist_mvp.skills.data_loader import (
+    CsvTable,
+    CsvValidationError,
+    DataLoaderError,
+    DataQualityPolicy,
+    FitsComponentAudit,
+    FitsImage,
+    FitsValidationError,
+    HistoryWindowAudit,
+    QualityCheck,
+    audit_fits_components,
+    audit_history_window,
+    load_csv_table,
+    load_fits_image,
+)
 from ai_scientist_mvp.skills.mechanism_brief import (
     EvidenceRow,
     EvidenceTable,
@@ -69,6 +84,19 @@ from ai_scientist_mvp.skills.snapshot_search import (
 )
 
 __all__ = [
+    "CsvTable",
+    "CsvValidationError",
+    "DataLoaderError",
+    "DataQualityPolicy",
+    "FitsComponentAudit",
+    "FitsImage",
+    "FitsValidationError",
+    "HistoryWindowAudit",
+    "QualityCheck",
+    "audit_fits_components",
+    "audit_history_window",
+    "load_csv_table",
+    "load_fits_image",
     "InMemoryPaperSearchProvider",
     "PaperSearchHit",
     "PaperSearchQuery",
