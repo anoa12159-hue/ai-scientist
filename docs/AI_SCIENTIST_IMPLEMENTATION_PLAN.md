@@ -193,7 +193,7 @@ Benchmark Mode 必须不读取标签、不需要人工操作、不依赖本机�
 
 产出：Hypothesis/DataPlan 内部 DTO、现有冻结 Validation/Snapshot 投影、特征计算、统计验证、反例审查和磁图 QA Provider。若未来需要新增正式公共 JSON Schema，必须单独走 Contract Change Request，不由实现任务静默扩展。
 
-当前基础：P4-01 已完成内部 DTO 与公共投影；P4-02 已建立可扩展 SHARP 参数注册表，首个且当前唯一登记项是已核实的 `SHRGT45`；P4-03 已建立系统无关的严格 CSV/FITS 读取、Br/Bp/Bt 一致性和历史窗质量审计。`MEANSHR`、平均剪切角和 0–1 fraction 不得作为 `SHRGT45` 的别名或静默单位转换，数据质量通过也不得提升科学结论或执行授权。
+当前基础：P4-01 已完成内部 DTO 与公共投影；P4-02 已建立可扩展 SHARP 参数注册表，首个且当前唯一登记项是已核实的 `SHRGT45`；P4-03 已建立系统无关的严格 CSV/FITS 读取、Br/Bp/Bt 一致性和历史窗质量审计；P4-04 已实现同 HARP 三小时闭区间切片、真实 T_REC OLS 特征及同单位非重叠 3–6h M1.0+ onset 标签。`MEANSHR`、平均剪切角和 0–1 fraction 不得作为 `SHRGT45` 的别名或静默单位转换，Theil–Sen 未冻结提案不得替换当前 OLS，数据或标签结构通过也不得提升科学结论或执行授权。
 
 验收：每个假设都能映射到指标、数据、时间窗、检验和证伪条件；统计结果可独立重算；没有数据泄漏。
 

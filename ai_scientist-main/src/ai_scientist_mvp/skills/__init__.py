@@ -15,6 +15,16 @@ from ai_scientist_mvp.skills.data_loader import (
     load_csv_table,
     load_fits_image,
 )
+from ai_scientist_mvp.skills.feature_engineering import (
+    EventCatalog,
+    FeatureEngineeringError,
+    FlareEvent,
+    ResearchTargetLabel,
+    Shrgt45WindowFeatures,
+    compute_shrgt45_window_features,
+    construct_research_target_label,
+    slice_history_window,
+)
 from ai_scientist_mvp.skills.mechanism_brief import (
     EvidenceRow,
     EvidenceTable,
@@ -97,6 +107,14 @@ __all__ = [
     "audit_history_window",
     "load_csv_table",
     "load_fits_image",
+    "EventCatalog",
+    "FeatureEngineeringError",
+    "FlareEvent",
+    "ResearchTargetLabel",
+    "Shrgt45WindowFeatures",
+    "compute_shrgt45_window_features",
+    "construct_research_target_label",
+    "slice_history_window",
     "InMemoryPaperSearchProvider",
     "PaperSearchHit",
     "PaperSearchQuery",

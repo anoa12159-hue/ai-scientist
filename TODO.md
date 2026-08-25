@@ -43,7 +43,7 @@
 - [x] P4-01 固化 `Hypothesis`、`DataPlan`、`ValidationReport` 和 `CounterexampleReport` 契约。（2026-08-25；完整解压材料确认流程 03 为 V2.1 内部 JSON DTO + 手写 Validator，流程 04/05 为 Markdown/表格而非正式 JSON Schema；新增严格内部 DTO、八层 DataPlan 提取、五类反例分层和现有冻结 Snapshot/ValidationReport 投影，不修改公共契约；专项 10 passed，相关回归 108 passed，全量 272 passed；Ruff/mypy/导入/基线复核通过）
 - [x] P4-02 实现 SHARP 参数注册、公式、单位和别名校验。（2026-08-25；新增系统无关 `SharpParameterRegistry`，先登记已由 Bobra 2014 Table 3 与冻结 Fixture 核实的 SHRGT45：有效像素剪切角 >45° 面积百分比、percent/0–100、HARP patch、12 分钟 cadence、CMASK/像素选择口径和定义哈希；安全别名可解析，MEANSHR/平均剪切角、fraction、错误公式、NaN/Inf/布尔/越界值 Fail Closed；专项 29 passed，相关回归 138 passed，全量 301 passed；Ruff/mypy/导入/基线复核通过）
 - [x] P4-03 实现 FITS/CSV 读取、质量门、缺失值、投影和时间一致性检查。（2026-08-25；严格 UTF-8 CSV 与 Astropy FITS 边界、Br/Bp/Bt 同记录/shape/WCS/CEA 审计、NaN/Inf/QUALITY 与 14/16 cadence 门；专项 21 passed，相关回归 165 passed，全量 322 passed；Ruff/mypy/导入/冻结基线复核通过）
-- [ ] P4-04 实现磁场特征计算、时间窗切分和标签构造。
+- [x] P4-04 实现磁场特征计算、时间窗切分和标签构造。（2026-08-25；同 HARP `[T0-3h,T0]` 切片、真实 T_REC OLS/首末差、TAI→UTC 与同单位 `[T0+3h,T0+6h)` M1.0+ onset 标签；拒绝未冻结 Theil–Sen、隐式 HARP/NOAA 映射和不完整目录负标签；专项 16 passed，相关回归 66 passed，全量 338 passed；Ruff/mypy/导入/冻结基线复核通过）
 - [ ] P4-05 实现统计检验、TSS/HSS、置信区间和数据泄漏检查。
 - [ ] P4-06 实现假阳性/假阴性挖掘、反例解释和下一步计划生成。
 - [ ] P4-07 实现磁图 QA 和代表性视觉证据 Artifact。
@@ -100,3 +100,4 @@
 | 2026-08-25 | 完成 P4-01：假设、DataPlan、验证与反例内部契约 | 完整解压材料静态核对；专项 10 passed，相关回归 108 passed，全量 272 passed；Ruff/mypy/导入/基线复核通过；未修改冻结 Schema 或解压材料 | P2-06 旧凭证处置仍未确认；正式公共 Schema 变更仍需独立 CCR | P4-02 |
 | 2026-08-25 | 完成 P4-02：SHARP 参数注册与校验 | SHRGT45 权威定义、公式 ID、percent/0–100、别名歧义和确定性定义哈希已固化；专项 29 passed，相关回归 138 passed，全量 301 passed；Ruff/mypy/导入/基线复核通过 | 当前只登记已核实的 SHRGT45；其他 SHARP 参数不得猜测补录 | P4-03 |
 | 2026-08-25 | 完成 P4-03：系统无关 FITS/CSV 读取与质量审计 | 专项 21 passed，相关回归 165 passed，全量 322 passed；Ruff/mypy/导入/冻结基线复核通过；真实冻结 CSV 通过 16 帧窗口审计，FITS 用 Astropy 生成最小离线样例 | 移交材料没有实际 FITS 文件，Live 数据获取与正式科学执行仍未授权 | P4-04 |
+| 2026-08-25 | 完成 P4-04：SHRGT45 特征、时间窗与标签构造 | 专项 16 passed，相关回归 66 passed，全量 338 passed；真实 Fixture OLS/首末差与 0814 一致；`+3h`/`+6h`、早发事件、M1.0 阈值和目录完整性均有边界测试 | 当前事件 seed provenance 仍待核实；模块只接受调用方提供的已核实同单位完整事件目录 | P4-05 |
