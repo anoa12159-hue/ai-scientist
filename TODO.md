@@ -18,7 +18,7 @@
 - [x] P1-02 完成 T006 主审修正的完整回归测试并清理临时产物。（2026-08-25；专项 25 passed，全量 217 passed；Ruff/mypy/import 检查通过；已清理 `.pytest_cache`）
 - [x] P1-03 检查并保护冻结契约、Fixture 原始字节、CompletionRecord 和治理语义。（2026-08-25；Smoke/Fixture/Contract 审计 131 passed；冻结基线、哈希、Fixture 字节和治理记录未漂移）
 - [x] P1-04 更新 README、任务状态和移交说明，形成 T006 独立提交。（2026-08-25；README、`docs/TASK_BACKLOG.md` 和版本化 T006 交接附录已同步；基线提交 `010b6dc`，T006 独立提交已创建）
-- [ ] P1-05 验证中断、恢复、重试、并行分支和幂等写入。
+- [x] P1-05 验证中断、恢复、重试、并行分支和幂等写入。（2026-08-25；T006 专项回归 25 passed，覆盖真实 interrupt、跨进程恢复、有限重试、S05/S06 并行 Join、分支失败 Fail Closed 和重复运行幂等）
 
 ## P2｜Qwen 统一模型层
 
@@ -84,3 +84,4 @@
 | 2026-08-25 | 完成 P1-02：T006 回归与临时产物清理 | `tests/unit/test_replay_graph.py tests/integration/test_replay_workflow.py -q`：25 passed；全量 `tests/unit tests/integration tests/smoke tests/fixtures tests/contract -q`：217 passed；`ruff check .`、`mypy src`、导入检查通过；项目目标为系统无关运行，Windows 残留 `verify_project.ps1` 不作为 Linux 验收项 | T006 未发现范围内失败；仓库仍无可用 Git 元数据，无法形成提交 | P1-03 |
 | 2026-08-25 | 初始化项目根 Git 并完成 P1-03 冻结项审计 | 根仓库 `main` 已初始化；Smoke/Fixture/Contract：131 passed；冻结基线、Fixture 原始字节、CompletionRecord 和治理语义未漂移 | 原始移交 Git 历史缺失；新仓库尚未创建提交 | P1-04 |
 | 2026-08-25 | 完成 P1-04 文档同步并建立 Git 基线 | README、任务队列、T006 交接附录已更新；安全项目基线提交 `010b6dc`；外部压缩包、PDF、DOCX 和只读移交源未纳入 | T006 正式 closeout/CompletionRecord 仍待后续批准 | P1-05 |
+| 2026-08-25 | 完成 P1-05：T006 中断/恢复/重试/并行/幂等验证 | `tests/unit/test_replay_graph.py tests/integration/test_replay_workflow.py -q`：25 passed（63.63s） | T006 正式 closeout/CompletionRecord 仍待后续批准 | P2-01 |
