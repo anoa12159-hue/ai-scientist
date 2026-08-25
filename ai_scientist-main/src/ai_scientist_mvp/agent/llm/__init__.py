@@ -1,6 +1,11 @@
 """Unified chat model interfaces and Qwen-compatible adapters."""
 
-from ai_scientist_mvp.agent.llm.config import ModelBudget, ModelConfigError, QwenRuntimeConfig
+from ai_scientist_mvp.agent.llm.config import (
+    ModelBudget,
+    ModelConfigError,
+    QwenRuntimeConfig,
+    RetryPolicy,
+)
 from ai_scientist_mvp.agent.llm.qwen import (
     ChatMessage,
     ChatResponse,
@@ -12,6 +17,12 @@ from ai_scientist_mvp.agent.llm.qwen import (
     QwenChatModel,
     QwenModelConfig,
     TokenUsage,
+)
+from ai_scientist_mvp.agent.llm.resilient import (
+    ModelErrorArtifact,
+    ModelRequestError,
+    RateLimiter,
+    ResilientChatModel,
 )
 from ai_scientist_mvp.agent.llm.structured import (
     StructuredOutput,
@@ -25,6 +36,8 @@ __all__ = [
     "ModelConfigurationError",
     "ModelBudget",
     "ModelConfigError",
+    "ModelErrorArtifact",
+    "ModelRequestError",
     "ModelError",
     "ModelResponseError",
     "ModelTransportError",
@@ -32,6 +45,9 @@ __all__ = [
     "QwenChatModel",
     "QwenModelConfig",
     "QwenRuntimeConfig",
+    "RateLimiter",
+    "RetryPolicy",
+    "ResilientChatModel",
     "StructuredOutput",
     "StructuredOutputError",
     "StructuredQwenChatModel",

@@ -9,6 +9,13 @@ timeout_seconds = 180.0
 max_iterations = 8
 max_repair_rounds = 2
 
+[llm.retry]
+max_attempts = 3
+initial_backoff_seconds = 0.5
+max_backoff_seconds = 8.0
+jitter_ratio = 0.1
+min_interval_seconds = 0.0
+
 [llm.budget]
 max_requests = 30
 max_input_tokens = 200000

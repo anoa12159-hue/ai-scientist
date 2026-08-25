@@ -15,6 +15,27 @@ class ModelConfigError(ValueError):
 
 
 @dataclass(frozen=True)
+class RetryPolicy:
+    max_attempts: int = 3
+    initial_backoff_seconds: float = 0.5
+    max_backoff_seconds: float = 8.0
+    jitter_ratio: float = 0.1
+    min_interval_seconds: float = 0.0
+
+    def __post_init__(self) -> None:
+        if self.max_attempts <= 0:
+            raise ModelConfigError("retry.max_attempts must be positive")
+        if self.initial_backoff_seconds < 0 or self.max_backoff_seconds < 0:
+            raise ModelConfigError("retry backoff values must not be negative")
+        if self.max_backoff_seconds < self.initial_backoff_seconds:
+            raise ModelConfigError("retry.max_backoff_seconds must cover initial backoff")
+        if not 0 <= self.jitter_ratio <= 1:
+            raise ModelConfigError("retry.jitter_ratio must be between 0 and 1")
+        if self.min_interval_seconds < 0:
+            raise ModelConfigError("retry.min_interval_seconds must not be negative")
+
+
+@dataclass(frozen=True)
 class ModelBudget:
     max_requests: int = 30
     max_input_tokens: int = 200_000
@@ -36,6 +57,7 @@ class QwenRuntimeConfig:
     max_iterations: int = 8
     max_repair_rounds: int = 2
     budget: ModelBudget = ModelBudget()
+    retry: RetryPolicy = RetryPolicy()
 
     def __post_init__(self) -> None:
         if self.max_iterations <= 0:
@@ -62,6 +84,9 @@ class QwenRuntimeConfig:
         raw_budget = raw_llm.get("budget", {})
         if not isinstance(raw_budget, Mapping):
             raise ModelConfigError("llm.budget must be a table")
+        raw_retry = raw_llm.get("retry", {})
+        if not isinstance(raw_retry, Mapping):
+            raise ModelConfigError("llm.retry must be a table")
 
         model = QwenModelConfig(
             api_base=_string(raw_llm, "api_base", QwenModelConfig.api_base),
@@ -83,6 +108,19 @@ class QwenRuntimeConfig:
             ),
             max_cost_cny=_positive_number(raw_budget, "max_cost_cny", ModelBudget.max_cost_cny),
         )
+        retry = RetryPolicy(
+            max_attempts=_positive_int(raw_retry, "max_attempts", RetryPolicy.max_attempts),
+            initial_backoff_seconds=_nonnegative_number(
+                raw_retry, "initial_backoff_seconds", RetryPolicy.initial_backoff_seconds
+            ),
+            max_backoff_seconds=_nonnegative_number(
+                raw_retry, "max_backoff_seconds", RetryPolicy.max_backoff_seconds
+            ),
+            jitter_ratio=_number(raw_retry, "jitter_ratio", RetryPolicy.jitter_ratio),
+            min_interval_seconds=_nonnegative_number(
+                raw_retry, "min_interval_seconds", RetryPolicy.min_interval_seconds
+            ),
+        )
         return cls(
             model=model,
             max_iterations=_positive_int(raw_llm, "max_iterations", cls.max_iterations),
@@ -90,6 +128,7 @@ class QwenRuntimeConfig:
                 raw_llm, "max_repair_rounds", cls.max_repair_rounds
             ),
             budget=budget,
+            retry=retry,
         )
 
 
@@ -111,6 +150,13 @@ def _positive_number(document: Mapping[str, Any], key: str, default: float) -> f
     value = _number(document, key, default)
     if value <= 0:
         raise ModelConfigError(f"llm.budget.{key} must be positive")
+    return value
+
+
+def _nonnegative_number(document: Mapping[str, Any], key: str, default: float) -> float:
+    value = _number(document, key, default)
+    if value < 0:
+        raise ModelConfigError(f"llm.retry.{key} must not be negative")
     return value
 
 

@@ -30,6 +30,17 @@ class ModelConfigurationError(ModelError):
 class ModelTransportError(ModelError):
     """The endpoint could not be reached or returned an HTTP failure."""
 
+    def __init__(
+        self,
+        message: str,
+        *,
+        status_code: int | None = None,
+        retryable: bool = True,
+    ) -> None:
+        super().__init__(message)
+        self.status_code = status_code
+        self.retryable = retryable
+
 
 class ModelResponseError(ModelError):
     """The endpoint response is not a valid chat completion."""
@@ -161,9 +172,13 @@ class OpenAICompatibleChatModel:
         try:
             body = self._requester(request, self.config.timeout_seconds)
         except HTTPError as error:
-            raise ModelTransportError(f"model endpoint returned HTTP {error.code}") from error
+            raise ModelTransportError(
+                f"model endpoint returned HTTP {error.code}",
+                status_code=error.code,
+                retryable=error.code == 429 or error.code >= 500,
+            ) from error
         except (URLError, TimeoutError, OSError) as error:
-            raise ModelTransportError("model endpoint request failed") from error
+            raise ModelTransportError("model endpoint request failed", retryable=True) from error
 
         return self._parse_response(body)
 

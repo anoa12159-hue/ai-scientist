@@ -21,6 +21,10 @@ def test_example_config_matches_frozen_defaults() -> None:
     assert config.budget.max_input_tokens == 200_000
     assert config.budget.max_output_tokens == 40_000
     assert config.budget.max_cost_cny == 10
+    assert config.retry.max_attempts == 3
+    assert config.retry.initial_backoff_seconds == 0.5
+    assert config.retry.max_backoff_seconds == 8
+    assert config.retry.jitter_ratio == 0.1
 
 
 def test_config_rejects_invalid_budget() -> None:
@@ -31,3 +35,8 @@ def test_config_rejects_invalid_budget() -> None:
 def test_config_rejects_missing_llm_table() -> None:
     with pytest.raises(ModelConfigError, match=r"\[llm\]"):
         QwenRuntimeConfig.from_mapping({})
+
+
+def test_config_rejects_invalid_retry_policy() -> None:
+    with pytest.raises(ModelConfigError, match="jitter_ratio"):
+        QwenRuntimeConfig.from_mapping({"llm": {"retry": {"jitter_ratio": 2}}})
