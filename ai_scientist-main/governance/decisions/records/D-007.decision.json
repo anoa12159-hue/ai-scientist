@@ -1,0 +1,30 @@
+{
+  "decision_id": "D-007-A-20260819",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "56879B92CAB4AD2529A924AE47B9939470C188668ACD97698159DCA643A6F7A0",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/D-007.request.md",
+    "document_sha256": "6943EE081ECE93A789EC2BF96CD3C98BA91C284E3DC3B96346935FB62B9E6645"
+  },
+  "decision_request_ref": {
+    "request_id": "D-007",
+    "content_hash": "4F85DCF2618626181D881D3B04CB8BEBC4D8DB530BB3BD0E4643770E08A98748"
+  },
+  "response_context_ref": {
+    "document": "decisions/source/D-007.response-addendum.md",
+    "document_sha256": "2485F5261B4446C6887B0BC3AD6FEBBE30A34EAA9EFDE24881C1891B337D9ABE"
+  },
+  "gate_id": "GOV_REPLAY_GATE_PLACEMENT",
+  "action": "APPROVE",
+  "decision_mode": "HUMAN_SELECTED",
+  "selected_option_id": "A",
+  "actor_id": "project_owner_01",
+  "actor_role": "project_owner",
+  "reason": "项目所有者接受方案 A 的闸门位置，并限定第一闸门在 S01-S06 实际 Artifact/Finding 生成后、S07 前阻塞回放；第二闸门在不可变报告生成后执行非阻塞的项目报告查看/确认，不代表科学批准或发布授权。",
+  "scope": "MVP_BASELINE/D-007",
+  "bound_artifact_refs": [],
+  "bound_finding_refs": [],
+  "bound_stage_attempt_keys": [],
+  "created_at": "2026-08-19T23:30:00+08:00"
+}

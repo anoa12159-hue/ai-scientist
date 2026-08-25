@@ -1,0 +1,11 @@
+﻿queue,scope,n,n_AR,x,y,pearson_r,note
+FINAL_ANALYSIS,pooled_rows,55,4,SHRGT45,USFLUX,-0.424273,USFLUX 仅作背景关系；记录按 AR 聚集且时间窗存在重叠。
+FINAL_ANALYSIS,within_AR_11158,27,1,SHRGT45,USFLUX,0.943390,AR 内上下文关系；样本少或方差不足时不计算相关。
+FINAL_ANALYSIS,within_AR_11429,17,1,SHRGT45,USFLUX,0.142080,AR 内上下文关系；样本少或方差不足时不计算相关。
+FINAL_ANALYSIS,within_AR_12297,7,1,SHRGT45,USFLUX,-0.998870,AR 内上下文关系；样本少或方差不足时不计算相关。
+FINAL_ANALYSIS,within_AR_12673,4,1,SHRGT45,USFLUX,-0.989704,AR 内上下文关系；样本少或方差不足时不计算相关。
+FINAL_CONTROL_ONLY,pooled_rows,18,4,SHRGT45,USFLUX,-0.439577,USFLUX 仅作背景关系；记录按 AR 聚集且时间窗存在重叠。
+FINAL_CONTROL_ONLY,within_AR_11158,12,1,SHRGT45,USFLUX,0.958473,AR 内上下文关系；样本少或方差不足时不计算相关。
+FINAL_CONTROL_ONLY,within_AR_11429,2,1,SHRGT45,USFLUX,,AR 内上下文关系；样本少或方差不足时不计算相关。
+FINAL_CONTROL_ONLY,within_AR_12297,1,1,SHRGT45,USFLUX,,AR 内上下文关系；样本少或方差不足时不计算相关。
+FINAL_CONTROL_ONLY,within_AR_12673,3,1,SHRGT45,USFLUX,-0.999997,AR 内上下文关系；样本少或方差不足时不计算相关。

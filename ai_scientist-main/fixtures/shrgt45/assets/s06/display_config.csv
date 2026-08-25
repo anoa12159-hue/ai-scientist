@@ -1,0 +1,15 @@
+﻿item,value
+signed_limit_Br_gauss,1800.0
+signed_limit_Bp_gauss,1100.0
+signed_limit_Bt_gauss,1000.0
+cocomag_limit_Bx_from_Bp_gauss,322.336613
+cocomag_limit_By_from_minus_Bt_gauss,285.961251
+cocomag_limit_Bz_from_Br_gauss,477.161807
+orientation,origin=lower; no flip
+crop,none; full SHARP patch
+reprojection,none
+signed_colormap,RdBu_r centered at zero
+cocomag_mapping,"R=abs(Bp), G=abs(Br), B=abs(-Bt)"
+cocomag_scaling,"per-component 2 sigma, fixed across all available selected frames"
+selection_rule,upstream fixed T0 exactly; no neighboring-frame substitution
+portrait_layout,curve overview plus one Br/Bp/Bt/COCOMAG row per fixed sample

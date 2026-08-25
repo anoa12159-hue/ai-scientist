@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/domain-query/verification-snapshot.schema.json",
+  "title": "VerificationSnapshot",
+  "description": "Historical import result summary. It is NOT a new formal execution and must never masquerade as a formal VerificationResult. Frozen semantics: CONTRACTS.md 4.2 / 4.3.",
+  "type": "object",
+  "properties": {
+    "snapshot_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "import_summary": { "type": "string" },
+    "is_formal_execution": { "const": false },
+    "source_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "finding_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    }
+  },
+  "required": ["snapshot_id", "schema_version", "content_hash", "import_summary", "is_formal_execution"],
+  "additionalProperties": false
+}

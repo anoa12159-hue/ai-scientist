@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-envelope.schema.json",
+  "title": "ArtifactEnvelope",
+  "description": "Common envelope for all domain artifacts. Immutable once created; lifecycle and validation are derived from appended events, never written back. Frozen semantics: CONTRACTS.md 4.1.",
+  "type": "object",
+  "properties": {
+    "artifact_id": { "type": "string" },
+    "logical_artifact_id": { "type": "string" },
+    "artifact_type": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "artifact_revision": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/positive_integer" },
+    "task_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "run_mode": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/run_mode" },
+    "origin_mode": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/origin_mode" },
+    "authority_mode": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/authority_mode" },
+    "derivation_kind": { "type": "string" },
+    "derived_from_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+      "minItems": 1
+    },
+    "payload": { "type": "object" },
+    "content_ref": { "type": "string" },
+    "content_sha256": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/sha256" },
+    "parent_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" }
+    },
+    "source_asset_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "producer": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "version": { "type": "string" }
+      },
+      "required": ["id", "version"],
+      "additionalProperties": false
+    },
+    "source_authored_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "ingested_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "domain_status": { "type": "object" },
+    "supersedes_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" }
+  },
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "origin_mode": { "const": "IMPORTED" },
+            "authority_mode": { "const": "SOURCE_BYTES" },
+            "artifact_type": { "const": "SourceDocument" }
+          },
+          "required": ["origin_mode", "authority_mode", "artifact_type", "content_ref"],
+          "not": { "required": ["payload"] }
+        },
+        {
+          "properties": {
+            "origin_mode": { "const": "DERIVED" },
+            "authority_mode": { "const": "CANONICAL_JSON" },
+            "derivation_kind": { "const": "EXTRACTED_FROM_IMPORTED" }
+          },
+          "required": [
+            "origin_mode", "authority_mode", "derivation_kind",
+            "derived_from_refs", "payload"
+          ],
+          "not": { "required": ["content_ref"] }
+        },
+        {
+          "properties": {
+            "origin_mode": { "const": "NATIVE" },
+            "authority_mode": { "const": "CANONICAL_JSON" }
+          },
+          "required": ["origin_mode", "authority_mode", "payload"],
+          "not": { "required": ["content_ref"] }
+        }
+      ]
+    }
+  ],
+  "required": [
+    "artifact_id", "logical_artifact_id", "artifact_type", "schema_version",
+    "artifact_revision", "task_id", "run_id", "run_mode", "origin_mode",
+    "authority_mode", "content_sha256", "producer", "created_at"
+  ],
+  "additionalProperties": false
+}

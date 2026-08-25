@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/run-record.schema.json",
+  "title": "RunRecord",
+  "description": "Persistable run fact. SUCCEEDED means import/validation/summary completed per contract, not that a scientific hypothesis is supported. Frozen semantics: CONTRACTS.md 2.5.",
+  "type": "object",
+  "properties": {
+    "run_id": { "type": "string" },
+    "task_id": { "type": "string" },
+    "question_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "case_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "workflow_version": { "type": "string" },
+    "run_mode": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/run_mode" },
+    "run_purpose": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/run_purpose" },
+    "configuration_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "execution_status": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/execution_status" },
+    "active_stage_ids": { "type": "array", "items": { "type": "string" } },
+    "stage_runs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "started_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "completed_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "checkpoint_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+  },
+  "required": [
+    "run_id", "task_id", "question_ref", "case_ref", "workflow_version",
+    "run_mode", "run_purpose", "configuration_ref", "execution_status",
+    "stage_runs", "created_at"
+  ],
+  "additionalProperties": false
+}

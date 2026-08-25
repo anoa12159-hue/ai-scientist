@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-lifecycle-event.schema.json",
+  "title": "ArtifactLifecycleEvent",
+  "description": "Appended lifecycle transition event. Legal sequences: DRAFT->REVIEW_REQUIRED->FROZEN, DRAFT|REVIEW_REQUIRED->REJECTED, FROZEN->SUPERSEDED. Frozen semantics: CONTRACTS.md 4.4.",
+  "type": "object",
+  "properties": {
+    "event_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "artifact_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "from_lifecycle": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/artifact_lifecycle" },
+    "to_lifecycle": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/artifact_lifecycle" },
+    "decision_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "reason": { "type": "string" },
+    "actor_id": { "type": "string" },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "oneOf": [
+    { "properties": { "from_lifecycle": { "const": "DRAFT" }, "to_lifecycle": { "const": "REVIEW_REQUIRED" } }, "required": ["from_lifecycle", "to_lifecycle"] },
+    { "properties": { "from_lifecycle": { "const": "DRAFT" }, "to_lifecycle": { "const": "REJECTED" } }, "required": ["from_lifecycle", "to_lifecycle"] },
+    { "properties": { "from_lifecycle": { "const": "REVIEW_REQUIRED" }, "to_lifecycle": { "const": "FROZEN" } }, "required": ["from_lifecycle", "to_lifecycle"] },
+    { "properties": { "from_lifecycle": { "const": "REVIEW_REQUIRED" }, "to_lifecycle": { "const": "REJECTED" } }, "required": ["from_lifecycle", "to_lifecycle"] },
+    { "properties": { "from_lifecycle": { "const": "FROZEN" }, "to_lifecycle": { "const": "SUPERSEDED" } }, "required": ["from_lifecycle", "to_lifecycle"] }
+  ],
+  "required": [
+    "event_id", "schema_version", "content_hash", "artifact_ref",
+    "from_lifecycle", "to_lifecycle", "reason", "actor_id", "created_at"
+  ],
+  "additionalProperties": false
+}

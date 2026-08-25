@@ -1,0 +1,61 @@
+{
+  "request_id": "D-005",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "72AB99E18E50548867280EBC2A8D8ABDAC5B3A80CD26CD8A717E30ECDE43AD46",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/D-005.request.md",
+    "document_sha256": "DD07738D9D42419ACA4A6E335C3FA1ABC560B5648E11BA6228B254CECF91FDE1"
+  },
+  "gate_id": "GOV_FIXTURE_WHITELIST",
+  "prompt": "首个离线 SHRGT45 Replay 应采用哪一份精确 Fixture 白名单？",
+  "context_artifact_refs": [
+    {
+      "ref": "decisions/records/D-003.decision.json",
+      "content_hash": "D68F591098F2F1242BE8ECE4D10BC68A0DA809B430A9CD0284EC8160BF469439"
+    },
+    {
+      "ref": "decisions/source/D-005.fixture-whitelist.draft.md",
+      "sha256": "CB647122F84BB4C03F653BE4E739B8B86A73492C670FB331D1FC87E9399C7EED"
+    }
+  ],
+  "context_finding_refs": [
+    "CANDIDATE_PRESELECTED_EXPERT_SEED_NOT_SYSTEM_RANKED",
+    "MECHANISM_V23_VS_HYPOTHESIS_V22_DEPENDENCY",
+    "COUNTEREXAMPLE_INPUT_PACKAGE_IDENTITY_UNVERIFIED",
+    "THEIL_SEN_VS_OLS_IMPLEMENTATION",
+    "LEAD_WINDOW_BOUNDARY_IMPLEMENTATION_MISMATCH",
+    "CONTROL_WINDOW_POLICY_MISMATCH",
+    "CONTROL_CATALOG_SPATIAL_ATTRIBUTION_UNFILTERED",
+    "HARP_NOAA_MAPPING_PARTIAL_OR_AMBIGUOUS",
+    "LEGACY_HYPOTHESIS_PACKAGE_NOT_MACHINE_VALIDATABLE",
+    "EVENT_SEED_OFFICIAL_PROVENANCE_UNVERIFIED",
+    "HISTORICAL_ROWS_NOT_INDEPENDENT_SAMPLES"
+  ],
+  "context_stage_attempt_keys": [],
+  "options": [
+    {
+      "option_id": "A",
+      "label": "批准精选只读 Fixture 白名单",
+      "description": "按 D-005.fixture-whitelist.draft.md 的 INCLUDE_COPY、EXTERNAL_REFERENCE 和 EXCLUDE 分类冻结 01–07 的离线 Replay 输入；S04 0814 目录按 manifest 原子导入。",
+      "consequences": "Replay 可断网、可换机器且按字节复现；历史版本冲突、数据接缝和来源缺口继续作为 Finding 展示，不能被改写为科学结论。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "B",
+      "label": "退回并修改白名单",
+      "description": "暂不复制或冻结任何 Fixture；项目所有者指出需要增删或改为外部引用的逻辑资产后重新提交。",
+      "consequences": "T003 和后续 Replay 被阻塞，但不会把 D 盘原路径偷偷变成运行时依赖。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    }
+  ],
+  "recommended_option_id": "A",
+  "recommendation_reason": "精选快照和 SHA256 是 D-003 已选策略的可执行化；S04 manifest 原子组、S05 输入身份缺口和 S06 代表性可视资产均能在同一 Case Manifest 中追溯。",
+  "risk_summary": "批准白名单不等于批准历史科学结论，也不自动批准所有 Finding 的 ACCEPTED_FOR_REPLAY；哈希、来源身份、Schema 或授权错误仍须 Fail Closed。",
+  "impact_summary": "决定 fixtures/shrgt45 的成员边界、Case Manifest 版本、导入审计、断网演示能力及 T003 的验收输入。",
+  "allowed_scope": "MVP_BASELINE/D-005",
+  "allowed_actor_roles": [
+    "project_owner"
+  ],
+  "requested_at": "2026-08-19T22:05:19+08:00"
+}

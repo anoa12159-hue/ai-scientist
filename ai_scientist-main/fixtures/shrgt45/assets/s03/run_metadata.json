@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-08-01T23:11:37+08:00",
+  "base_seed": 20260730,
+  "n_replicates_per_random_scenario": 10000,
+  "python_version": "3.12.13",
+  "python_executable": "C:\\Users\\zzh13\\AppData\\Local\\Temp\\hrmk-calibration-venv-20260801\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy_version": "1.26.4",
+  "scipy_version": "1.13.1",
+  "pymannkendall_version": "1.4.3",
+  "scenario_count": 195,
+  "random_summary_scenario_count": 184,
+  "elapsed_seconds": 68.39584922790527,
+  "crosscheck": {
+    "n_checked": 297,
+    "mismatch_count": 0,
+    "pass": true,
+    "max_abs_difference": {
+      "S": 0.0,
+      "Tau": 0.0,
+      "Var_HR_S": 2.2737367544323206e-13,
+      "Z_HR": 1.0658141036401503e-14,
+      "p_two_sided": 2.220446049250313e-16
+    }
+  },
+  "files": {
+    "calibration_replicate_results.csv.gz": 82613268,
+    "calibration_summary.csv": 46461,
+    "Hamed-Rao合成数据校准报告.md": 11950,
+    "irregular_missing_summary.csv": 250,
+    "paired_missing_results.csv.gz": 885666,
+    "paired_missing_summary.csv": 4201,
+    "run_metadata.json": 1230,
+    "special_cases.csv": 1821,
+    "synthetic_data_sample.csv": 604760,
+    "synthetic_scenario_manifest.csv": 19495
+  }
+}

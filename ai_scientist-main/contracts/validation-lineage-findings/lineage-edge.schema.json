@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/validation-lineage-findings/lineage-edge.schema.json",
+  "title": "LineageEdge",
+  "description": "Immutable, verifiable lineage edge. Re-verification creates a new edge_id/revision and supersedes_ref; verification_status is never mutated in place. Frozen semantics: CONTRACTS.md 5.1.",
+  "type": "object",
+  "properties": {
+    "edge_id": { "type": "string" },
+    "logical_edge_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "revision": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/positive_integer" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "upstream_artifact_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "downstream_artifact_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "relation_type": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/relation_type" },
+    "required": { "type": "boolean" },
+    "verification_status": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/verification_status" },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "finding_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "supersedes_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "required": [
+    "edge_id", "logical_edge_id", "schema_version", "revision", "content_hash",
+    "upstream_artifact_ref", "downstream_artifact_ref", "relation_type",
+    "required", "verification_status", "created_at"
+  ],
+  "additionalProperties": false
+}

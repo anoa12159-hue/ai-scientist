@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/foundation/run-configuration-snapshot.schema.json",
+  "title": "RunConfigurationSnapshot",
+  "description": "Immutable per-Run configuration snapshot. A Replay configuration never contains API keys and never enables network or online models. Frozen semantics: CONTRACTS.md 2.6.",
+  "type": "object",
+  "properties": {
+    "configuration_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "provider_bindings": { "type": "object" },
+    "provider_versions": { "type": "object" },
+    "prompt_versions": { "type": "object" },
+    "calculator_registry_version": { "type": "string" },
+    "retry_policy": { "type": "object" },
+    "timeout_policy": { "type": "object" },
+    "feature_flags": { "type": "object" },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "required": [
+    "configuration_id", "schema_version", "content_hash", "provider_bindings",
+    "provider_versions", "prompt_versions", "calculator_registry_version",
+    "retry_policy", "timeout_policy", "feature_flags", "created_at"
+  ],
+  "additionalProperties": false
+}

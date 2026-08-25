@@ -1,0 +1,34 @@
+{
+  "decision_id": "D-005-A-20260819",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "2B9849C3D92CD45DB7A060BA9361C4C42301092220BBB5489E50BB5418604553",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/D-005.request.md",
+    "document_sha256": "DD07738D9D42419ACA4A6E335C3FA1ABC560B5648E11BA6228B254CECF91FDE1"
+  },
+  "decision_request_ref": {
+    "request_id": "D-005",
+    "content_hash": "72AB99E18E50548867280EBC2A8D8ABDAC5B3A80CD26CD8A717E30ECDE43AD46"
+  },
+  "response_context_ref": {
+    "document": "decisions/source/D-005.response-addendum.md",
+    "document_sha256": "A95271D13E2BC21A16E6E427673C1DA3BB895B7291B2D2916C83B680D3FB9EE5"
+  },
+  "approved_whitelist_ref": {
+    "document": "decisions/source/D-005.fixture-whitelist.accepted.md",
+    "document_sha256": "7AF9B45A4D88D9B2DF601D3EE07B81105E8B5EC5B5804C54CB74BA8349D0E58E"
+  },
+  "gate_id": "GOV_FIXTURE_WHITELIST",
+  "action": "APPROVE",
+  "decision_mode": "HUMAN_SELECTED",
+  "selected_option_id": "A",
+  "actor_id": "project_owner_01",
+  "actor_role": "project_owner",
+  "reason": "项目所有者明确选择方案 A，并限定 S04 的 0808 为完整权威来源包、0814 为由 0808 派生的 43 成员 Demo 运行投影；两者保留独立包身份和显式血缘，Replay 默认只读取 0814。",
+  "scope": "MVP_BASELINE/D-005",
+  "bound_artifact_refs": [],
+  "bound_finding_refs": [],
+  "bound_stage_attempt_keys": [],
+  "created_at": "2026-08-19T22:31:00+08:00"
+}

@@ -1,0 +1,35 @@
+# Python bytecode and build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments (create your own; never reuse a source project's venv)
+.venv/
+venv/
+env/
+
+# Environment files: only .env.example is committed
+.env
+.env.*
+!.env.example
+
+# Test / tool caches and coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Run outputs, session work areas and shared output directories are never committed
+runs/
+outputs/
+work/
+
+# IDE and OS noise
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+.DS_Store

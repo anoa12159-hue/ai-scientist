@@ -1,0 +1,18 @@
+{
+  "research_question_id": "RQ-SHRGT45-001",
+  "schema_version": "0.1.0",
+  "content_hash": "E73DB0BF9155A9C4A0F1A369D97DE318BD58D37EDC9002ABBE9354F6377FD88E",
+  "statement": "在同一空间分析单位内，过去3小时的SHRGT45演化，能否为未来[t+3h,t+6h)内发生的M1.0+太阳耀斑提供可检验的信息？",
+  "parameter": "SHRGT45",
+  "history_window": "PAST_3_HOURS",
+  "target_window": "[t+3h,t+6h)",
+  "target_threshold": "M1.0+",
+  "event_time_field": "ONSET_TIME",
+  "class_field": "PEAK_FLUX",
+  "analysis_unit_policy": "D-004-A_REPLAY_DUAL_LAYER_UNIT_CONTRACT",
+  "scientific_claim_ceiling": "DEVELOPMENTAL_ASSOCIATION_ONLY",
+  "decision_refs": [
+    "governance/decisions/records/D-001.decision.json",
+    "governance/decisions/records/D-004.decision.json"
+  ]
+}

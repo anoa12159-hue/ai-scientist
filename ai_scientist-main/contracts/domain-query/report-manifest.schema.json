@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/domain-query/report-manifest.schema.json",
+  "title": "ReportManifest",
+  "description": "Immutable final report manifest produced only after both S05 and S06 branches succeeded. Either branch missing must reject generation. Frozen semantics: CONTRACTS.md 8.",
+  "type": "object",
+  "properties": {
+    "report_manifest_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "research_summary_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "s05_branch_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "s06_branch_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "included_artifact_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" }
+    },
+    "finding_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "join_status": { "const": "REQUIRE_S05_AND_S06_FOR_FINAL_REPLAY_REPORT" },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "required": [
+    "report_manifest_id", "schema_version", "content_hash",
+    "research_summary_ref", "s05_branch_ref", "s06_branch_ref", "join_status", "created_at"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,7 @@
+﻿flare_event_id,flare_NOAA_AR,HARPNUM,flare_class,goes_onset_utc,onset_source,peak_flux_source,note
+NOAA11158_X2.2_20110215,11158,377,X2.2,2011-02-15T01:44:00Z,GOES SXR onset from project seed / prior AR11158 technical exercise,GOES peak class from project seed / prior AR11158 technical exercise,Startup technical-exercise event retained as one member of the full-information baseline multi-event run.
+NOAA11429_X5.4_20120307,11429,1449,X5.4,2012-03-07T00:02:00Z,GOES SXR onset from project seed list,GOES peak class from project seed list,"HARP 1449 maps to NOAA 11429,11430; returned NOAA_AR is checked row-by-row."
+NOAA11520_X1.4_20120712,11520,1834,X1.4,2012-07-12T15:37:00Z,GOES SXR onset from project seed list,GOES peak class from project seed list,"HARP 1834 maps to NOAA 11519,11520,11521; returned NOAA_AR is checked row-by-row."
+NOAA12192_X1.1_20141019,12192,4698,X1.1,2014-10-19T04:17:00Z,GOES SXR onset from project seed list,GOES peak class from project seed list,Large active region included to test disk/quality gates.
+NOAA12297_X2.1_20150311,12297,5298,X2.1,2015-03-11T16:11:00Z,GOES SXR onset from project seed list,GOES peak class from project seed list,Independent active region for the full-information baseline multi-event run.
+NOAA12673_X9.3_20170906,12673,7115,X9.3,2017-09-06T11:53:00Z,GOES SXR onset from project seed list,GOES peak class from project seed list,Very strong event included to test whether rules over-exclude major regions.

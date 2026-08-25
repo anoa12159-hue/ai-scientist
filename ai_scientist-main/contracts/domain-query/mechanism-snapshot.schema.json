@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/domain-query/mechanism-snapshot.schema.json",
+  "title": "MechanismSnapshot",
+  "description": "Mechanism evidence minimal summary: parameter, source version, allowed interpretation, forbidden claims, key source refs, extraction completeness. Frozen semantics: CONTRACTS.md 4.3.",
+  "type": "object",
+  "properties": {
+    "snapshot_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "parameter": { "type": "string" },
+    "source_version": { "type": "string" },
+    "allowed_interpretation": { "type": "string" },
+    "forbidden_claims": { "type": "array", "items": { "type": "string" } },
+    "source_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "extraction_completeness": { "type": "string" }
+  },
+  "required": [
+    "snapshot_id", "schema_version", "content_hash", "parameter",
+    "source_version", "allowed_interpretation", "forbidden_claims", "extraction_completeness"
+  ],
+  "additionalProperties": false
+}

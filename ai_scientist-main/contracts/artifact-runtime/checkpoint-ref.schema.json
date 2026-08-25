@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/checkpoint-ref.schema.json",
+  "title": "CheckpointRef",
+  "description": "Recovery point and the artifacts it references. A checkpoint references artifacts; it never copies large payloads. Frozen semantics: CONTRACTS.md 4 / ADR-001 section 4.",
+  "type": "object",
+  "properties": {
+    "checkpoint_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "run_id": { "type": "string" },
+    "stage_ids": { "type": "array", "items": { "type": "string" } },
+    "artifact_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" }
+    },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "required": ["checkpoint_id", "schema_version", "content_hash", "run_id", "artifact_refs", "created_at"],
+  "additionalProperties": false
+}

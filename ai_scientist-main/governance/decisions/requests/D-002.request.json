@@ -1,0 +1,40 @@
+{
+  "request_id": "D-002",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "06BC92F797E24911E7E957D3D852DA08D87BA502017C17B75A75E4EB3C61FF46",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/MVP_CONTRACT_DECISIONS.request.md",
+    "document_sha256": "C226AB3B85063AA19EC0000B261342D5907B528C985FDD941C8E8BBAEBA25FBD"
+  },
+  "gate_id": "GOV_MVP_REPLAY_GATE_PROFILE",
+  "prompt": "首个 Replay MVP 启用哪些人工闸门？",
+  "context_artifact_refs": [],
+  "context_finding_refs": [],
+  "context_stage_attempt_keys": [],
+  "options": [
+    {
+      "option_id": "A",
+      "label": "单用户、两个 Replay 闸门",
+      "description": "实现 FIXTURE_IMPORT_REVIEW 和 FINAL_REPLAY_REVIEW，仅批准导入回放和内部开发性演示。",
+      "consequences": "不会补造历史审批；公开、答辩或比赛发布仍需 expert_reviewer 对精确报告哈希另行授权。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "B",
+      "label": "完整四类 Live 闸门",
+      "description": "在 Replay 首版实现机制冻结、假设冻结、执行授权和最终发布的全部交互。",
+      "consequences": "明显增大状态机和前端范围，并可能让用户误以为历史材料经过了新闸门。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    }
+  ],
+  "recommended_option_id": "A",
+  "recommendation_reason": "两个 Replay 闸门足以审计首版导入与内部演示，又不会虚构历史审批。",
+  "risk_summary": "内部 Replay 审核不得被解释为正式数据执行授权或公开发布授权。",
+  "impact_summary": "决定 MVP 的人工介入范围、角色能力和发布状态上限。",
+  "allowed_scope": "MVP_BASELINE/D-002",
+  "allowed_actor_roles": [
+    "project_owner"
+  ],
+  "requested_at": "2026-08-19T19:54:16+08:00"
+}

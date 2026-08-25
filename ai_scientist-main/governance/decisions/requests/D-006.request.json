@@ -1,0 +1,54 @@
+{
+  "request_id": "D-006",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "991357BCA2D1DBECF660D6917CDE196732CB5E9AED78524674EC71BF2C8A6081",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/D-006.request.md",
+    "document_sha256": "5EAA268ED5850A0AC484C82F396FDDE73328140E826229185D0682A8044C07F3"
+  },
+  "context_artifact_refs": [
+    {
+      "ref": "decisions/records/D-005.decision.json",
+      "content_hash": "2B9849C3D92CD45DB7A060BA9361C4C42301092220BBB5489E50BB5418604553"
+    },
+    {
+      "ref": "CONTRACTS_DRAFT.md",
+      "sha256": "24539EC407EEC0B51C51D58CB3422AF5A3600D2A4C06E3D9E213ABEB192F842A"
+    }
+  ],
+  "prompt": "首个 MVP 的 API 与前端应采用哪一种最小 Read Model 组织方式？",
+  "options": [
+    {
+      "option_id": "A",
+      "label": "聚合运行读模型",
+      "description": "提供稳定的 RunReadModel 聚合查询，包含运行、阶段、领域摘要、Artifact、Finding、闸门、血缘和报告摘要；全文与原始载荷使用引用式详情端点。",
+      "consequences": "前端不复制工作流和科学状态逻辑，便于增加阶段与 Provider；需要实现投影器和字段白名单。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "B",
+      "label": "阶段独立读模型",
+      "description": "每个阶段单独提供 Read Model，由前端自行拼装运行状态、并行分支和报告 Join。",
+      "consequences": "后端初期较简单，但工作流语义和状态传播会复制到前端，扩展阶段时前端容易漂移。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "C",
+      "label": "原始载荷直出",
+      "description": "主要暴露 Markdown、CSV、图片路径和 LangGraph State，由前端按历史文件内容展示。",
+      "consequences": "演示最快，但绕过公共契约、泄露路径并混淆 0808/0814 边界，不具备可扩展的审计语义。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    }
+  ],
+  "recommended_option_id": "A",
+  "recommendation_reason": "聚合读模型把运行状态、阶段并行关系、Finding/闸门和报告 Join 保留在后端公共契约中，同时以引用隔离全文和原始载荷，是当前 LangGraph 主图与未来 Live Provider 的稳定扩展边界。",
+  "risk_summary": "Read Model 是派生查询视图，不得成为新的科学事实源；任何字段白名单变化必须生成新的 Schema/Read Model 版本。",
+  "impact_summary": "决定 T007 API、T008 前端、S07 ReportRenderer 的查询边界和首屏验收字段，不改变底层 Artifact 或科学语义。",
+  "gate_id": "GOV_FRONTEND_READ_MODEL",
+  "allowed_scope": "MVP_BASELINE/D-006",
+  "allowed_actor_roles": [
+    "project_owner"
+  ],
+  "requested_at": "2026-08-19T22:45:00+08:00"
+}

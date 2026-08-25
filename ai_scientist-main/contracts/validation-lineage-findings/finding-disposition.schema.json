@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/validation-lineage-findings/finding-disposition.schema.json",
+  "title": "FindingDisposition",
+  "description": "Immutable disposition event on a Finding. ACCEPTED_FOR_REPLAY applies only to historical Replay after exact-hash binding; it never applies to Live Run. Frozen semantics: CONTRACTS.md 5.3.",
+  "type": "object",
+  "properties": {
+    "disposition_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "finding_ref": {
+      "type": "object",
+      "properties": {
+        "finding_id": { "type": "string" },
+        "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+        "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" }
+      },
+      "required": ["finding_id", "content_hash", "schema_version"],
+      "additionalProperties": false
+    },
+    "action": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/finding_disposition_action" },
+    "decision_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "resolution_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "action": { "const": "ACCEPT_FOR_REPLAY" } } },
+      "then": { "required": ["decision_ref"] }
+    },
+    {
+      "if": { "properties": { "action": { "const": "RESOLVE" } } },
+      "then": {
+        "required": ["resolution_refs"],
+        "properties": { "resolution_refs": { "minItems": 1 } }
+      }
+    }
+  ],
+  "required": ["disposition_id", "schema_version", "content_hash", "finding_ref", "action", "created_at"],
+  "additionalProperties": false
+}

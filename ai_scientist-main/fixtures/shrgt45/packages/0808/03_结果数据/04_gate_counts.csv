@@ -1,0 +1,41 @@
+﻿gate,count,note
+event_seed_count,6,Seeded M+ events for the current full-information Demo.
+official_event_provenance_pass,0,Events with complete official-snapshot fields.
+official_event_provenance_blocked,6,Event source status is NEEDS_CLARIFICATION; the audit fields remain with each seed.
+queried_event_count,6,Events with cached/fetched JSOC keyword JSON status 0.
+query_expected_records,360,12h@12m expected rows; 6 events x 60 = 360.
+query_returned_records,333,Rows returned by JSOC keyword query.
+query_missing_records,27,Expected T_REC values absent from the returned keyword rows.
+raw_records,333,All JSOC keyword rows across queried events.
+field_complete,333,SHRGT45/MEANALP/USFLUX/QUALITY/LON_FWT/LAT_FWT present.
+event_ar_mapping_pass_rows,273,Returned NOAA_AR matches or includes seeded event NOAA AR.
+event_ar_mapping_blocked_rows,60,Rows blocked because event-NOAA AR-HARPNUM ownership requires review.
+quality_zero_rows_after_mapping,257,Strict baseline current rows with QUALITY=0.
+quality_nonzero_retained_provisional_rows,16,"Nonzero, nonfatal QUALITY retained with its original bit mask."
+quality_fatal_excluded_rows,0,Rows with fatal QUALITY bits 0x80000000 or 0x40000000.
+history_3h_pass_provisional,178,"History window valid frames >=14/16, span >=160 min, max gap <=24 min, fatal QUALITY excluded."
+history_3h_complete_quality_zero_strict,116,"Strict sensitivity baseline: 16 records over [t-3h,t], all field-complete, AR-matched and QUALITY=0."
+disk_abs_lon_lat_lt_50,132,"Rows passing the 3h history rule and abs(LON_FWT), abs(LAT_FWT) < 50 degrees."
+buffer_or_cluster_excluded_rows,84,Seed-based 0-3h/post-onset rows recorded as buffer or boundary status.
+all_sample_positive_rows_after_provisional_gates,37,最终分析中的正候选记录。
+all_sample_provisional_control_rows_after_gates,18,通过完整 M+ 未来六小时区间筛查并完成同 AR 替换后的最终 control 记录。
+all_sample_positive_events_after_provisional_gates,4,最终分析正候选覆盖的事件数。
+all_sample_positive_AR_after_provisional_gates,4,最终分析正候选覆盖的 AR 数。
+all_sample_control_events_after_provisional_gates,4,最终 control 覆盖的事件数。
+all_sample_control_AR_after_provisional_gates,4,最终 control 覆盖的 AR 数。
+strict_positive_rows_after_gates,8,最终分析样本中的 strict QUALITY=0 正候选。
+strict_control_rows_after_gates,7,最终分析样本中的 strict QUALITY=0 control。
+provisional_queue_positive_anchor_count,37,主结果不再使用旧的固定锚点队列作为最终样本。
+provisional_queue_control_anchor_count,18,最终 control 记录数。
+provisional_queue_unique_events,4,最终分析样本覆盖的事件数。
+provisional_queue_unique_noaa_ar,4,最终分析样本覆盖的 AR 数。
+provisional_queue_unique_harpnum,4,最终分析样本覆盖的 HARP 数。
+strict_baseline_queue_positive_anchor_count,2,Strict QUALITY=0 baseline positive anchors for sensitivity comparison.
+strict_baseline_queue_control_anchor_count,3,Strict QUALITY=0 baseline temporary-control anchors for sensitivity comparison.
+control_rows_excluded_future6h_mplus,36,原临时 control 中与未来六小时完整 M+ 区间相交的记录；仅作审计证据，不进入最终分析。
+control_rows_retained_after_full_mplus_screen,15,原 control 中通过完整 M+ 区间筛查并保留的同 AR 记录。
+control_rows_replaced_by_same_ar_candidates,3,从严格前推审计中加入的同 AR、16/16、QUALITY=0 替换候选。
+final_control_rows_after_mplus_screen,18,最终用于下游结果的 control 数量。
+final_analysis_rows,55,最终下游斜率、相关和图表使用的记录数。
+final_control_AR_count,4,最终 control 覆盖的 AR 数；同 AR 时间记录仍非独立 AR 样本。
+formal_independent_control_rows,0,本轮没有形成完全独立安静活动区 control。

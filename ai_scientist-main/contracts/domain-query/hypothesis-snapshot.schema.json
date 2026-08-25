@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/domain-query/hypothesis-snapshot.schema.json",
+  "title": "HypothesisSnapshot",
+  "description": "Historical hypothesis summary: upstream mechanism ref, predictor, outcome, window, flow-3 domain status, machine verifiability. Frozen semantics: CONTRACTS.md 4.3.",
+  "type": "object",
+  "properties": {
+    "snapshot_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "upstream_mechanism_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "predictor": { "type": "string" },
+    "outcome": { "type": "string" },
+    "window": { "type": "string" },
+    "flow3_domain_status": { "type": "string", "description": "Namespaced domain status only; never reused as artifact lifecycle." },
+    "machine_verifiable": { "type": "boolean" }
+  },
+  "required": [
+    "snapshot_id", "schema_version", "content_hash", "predictor",
+    "outcome", "window", "flow3_domain_status", "machine_verifiable"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-state-view.schema.json",
+  "title": "ArtifactStateView",
+  "description": "Query projection of an artifact's current lifecycle plus related validation report refs. Not a scientific artifact and not an approval binding target. Frozen semantics: CONTRACTS.md 4.4.",
+  "type": "object",
+  "properties": {
+    "artifact_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "artifact_lifecycle": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/artifact_lifecycle" },
+    "validation_report_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    }
+  },
+  "required": ["artifact_ref", "artifact_lifecycle"],
+  "additionalProperties": false
+}

@@ -1,0 +1,30 @@
+{
+  "decision_id": "D-006-A-20260819",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "1695AD389B7BCD7776A4F5BF6176A52ABC86BD885A5E2EC1E8E4AFCB277D42C5",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/D-006.request.md",
+    "document_sha256": "5EAA268ED5850A0AC484C82F396FDDE73328140E826229185D0682A8044C07F3"
+  },
+  "decision_request_ref": {
+    "request_id": "D-006",
+    "content_hash": "991357BCA2D1DBECF660D6917CDE196732CB5E9AED78524674EC71BF2C8A6081"
+  },
+  "response_context_ref": {
+    "document": "decisions/source/D-006.response-addendum.md",
+    "document_sha256": "BA6B8587559E57DBC5B8B143D098E3C4180EC77AF97F046880EFD3329D3DD90B"
+  },
+  "gate_id": "GOV_FRONTEND_READ_MODEL",
+  "action": "APPROVE",
+  "decision_mode": "HUMAN_SELECTED",
+  "selected_option_id": "A",
+  "actor_id": "project_owner_01",
+  "actor_role": "project_owner",
+  "reason": "项目所有者明确选择方案 A：以聚合 RunReadModel 统一提供运行、阶段、领域摘要、Artifact、Finding、闸门、血缘和报告摘要；全文与原始载荷仅通过引用式详情访问。",
+  "scope": "MVP_BASELINE/D-006",
+  "bound_artifact_refs": [],
+  "bound_finding_refs": [],
+  "bound_stage_attempt_keys": [],
+  "created_at": "2026-08-19T23:00:00+08:00"
+}

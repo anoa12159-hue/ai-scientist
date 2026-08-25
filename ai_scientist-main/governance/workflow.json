@@ -1,0 +1,44 @@
+{
+  "workflow_id": "WF-SHRGT45-REPLAY-001",
+  "schema_version": "0.1.0",
+  "workflow_version": "0.1.0",
+  "content_hash": "5561765903A73B652D0BD4A58CBA2C1DFEE7AF28253603B8AFE289D5EB9E2A25",
+  "run_mode": "REPLAY",
+  "run_purpose": "HISTORICAL_REPLAY",
+  "stages": [
+    "S01_CANDIDATE",
+    "S02_MECHANISM",
+    "S03_HYPOTHESIS",
+    "S04_DATA_AND_VERIFICATION",
+    "S05_COUNTEREXAMPLE",
+    "S06_MAGNETOGRAM_QA",
+    "S07_REPORT"
+  ],
+  "edges": [
+    ["S01_CANDIDATE", "S02_MECHANISM"],
+    ["S02_MECHANISM", "S03_HYPOTHESIS"],
+    ["S03_HYPOTHESIS", "S04_DATA_AND_VERIFICATION"],
+    ["S04_DATA_AND_VERIFICATION", "S05_COUNTEREXAMPLE"],
+    ["S04_DATA_AND_VERIFICATION", "S06_MAGNETOGRAM_QA"],
+    ["S05_COUNTEREXAMPLE", "FIXTURE_IMPORT_REVIEW"],
+    ["S06_MAGNETOGRAM_QA", "FIXTURE_IMPORT_REVIEW"],
+    ["FIXTURE_IMPORT_REVIEW", "S07_REPORT"]
+  ],
+  "join_policy": "REQUIRE_S05_AND_S06_FOR_FINAL_REPLAY_REPORT",
+  "fixture_import_review": {
+    "blocking": true,
+    "position": "AFTER_S01_TO_S06_BEFORE_S07",
+    "requires_exact_runtime_refs": true
+  },
+  "final_replay_review": {
+    "blocking": false,
+    "position": "AFTER_IMMUTABLE_REPORT_MANIFEST",
+    "allowed_status": "ACKNOWLEDGED_FOR_PROJECT_REVIEW",
+    "creates_release_disposition": false
+  },
+  "decision_refs": [
+    "governance/decisions/records/D-002.decision.json",
+    "governance/decisions/records/D-007.decision.json",
+    "governance/decisions/records/D-008.decision.json"
+  ]
+}

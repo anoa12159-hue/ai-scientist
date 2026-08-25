@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/governance-release/decision-record.schema.json",
+  "title": "DecisionRecord",
+  "description": "Immutable, content-addressed human/system decision. TERMINATE closes a ResearchTask and can only be issued by a human. Frozen semantics: CONTRACTS.md 6.2.",
+  "type": "object",
+  "properties": {
+    "decision_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "decision_context": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/decision_context" },
+    "governance_context_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "decision_request_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "gate_id": { "type": "string" },
+    "action": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/decision_action" },
+    "decision_mode": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/decision_mode" },
+    "selected_option_id": { "type": "string" },
+    "actor_id": { "type": "string" },
+    "actor_role": { "type": "string" },
+    "reason": { "type": "string" },
+    "scope": { "type": "string" },
+    "bound_artifact_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" }
+    },
+    "bound_finding_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "bound_stage_attempt_keys": { "type": "array", "items": { "type": "object" } },
+    "delegated_scope": { "type": "string" },
+    "workflow_version": { "type": "string" },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "supersedes_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "action": { "const": "TERMINATE" } } },
+      "then": { "properties": { "decision_mode": { "const": "HUMAN_SELECTED" } } }
+    },
+    {
+      "if": { "properties": { "decision_mode": { "const": "SYSTEM_DELEGATED" } } },
+      "then": { "required": ["delegated_scope"] }
+    },
+    {
+      "if": { "properties": { "decision_context": { "const": "RUN_GATE" } } },
+      "then": { "required": ["decision_request_ref", "gate_id", "workflow_version"] }
+    }
+  ],
+  "required": [
+    "decision_id", "schema_version", "content_hash", "decision_context",
+    "action", "decision_mode", "selected_option_id", "actor_id", "actor_role",
+    "reason", "scope", "created_at"
+  ],
+  "additionalProperties": false
+}

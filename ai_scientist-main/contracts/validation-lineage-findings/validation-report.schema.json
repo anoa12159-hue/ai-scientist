@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/validation-lineage-findings/validation-report.schema.json",
+  "title": "ValidationReport",
+  "description": "Deterministic validation result. PASS means only that the defined checks passed, not that a mechanism is correct or a hypothesis true. Frozen semantics: CONTRACTS.md 5.2.",
+  "type": "object",
+  "properties": {
+    "report_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "target_artifact_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "validator_id": { "type": "string" },
+    "validator_version": { "type": "string" },
+    "validation_status": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/validation_status" },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "severity": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/finding_severity" },
+          "message": { "type": "string" },
+          "path": { "type": "string" }
+        },
+        "required": ["code", "severity", "message"],
+        "additionalProperties": false
+      }
+    },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "required": [
+    "report_id", "schema_version", "content_hash", "target_artifact_ref",
+    "validator_id", "validator_version", "validation_status", "checks", "created_at"
+  ],
+  "additionalProperties": false
+}

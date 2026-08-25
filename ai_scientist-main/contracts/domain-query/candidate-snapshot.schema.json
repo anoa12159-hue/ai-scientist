@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/domain-query/candidate-snapshot.schema.json",
+  "title": "CandidateSnapshot",
+  "description": "S01 expert-preselected seed, never presented as a system ranking result. Frozen semantics: CONTRACTS.md 4.3.",
+  "type": "object",
+  "properties": {
+    "snapshot_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "parameter": { "type": "string" },
+    "selection_method": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/candidate_selection_method" },
+    "ranking_status": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/candidate_ranking_status" },
+    "source_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "limitation_note": { "type": "string" }
+  },
+  "required": [
+    "snapshot_id", "schema_version", "content_hash", "parameter",
+    "selection_method", "ranking_status", "limitation_note"
+  ],
+  "additionalProperties": false
+}

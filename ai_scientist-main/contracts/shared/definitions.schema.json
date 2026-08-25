@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json",
+  "title": "AI Scientist MVP — shared definitions",
+  "description": "Shared enumerations, primitives and versioned-identity pieces. Semantics are frozen by docs/contracts/CONTRACTS.md version 0.1.0. Every concrete schema MUST reference these via $ref; duplicating an enum literal inline is a contract drift defect.",
+  "$defs": {
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[0-9A-Fa-f]{64}$",
+      "description": "SHA-256 hex digest of an object's RFC 8785 canonical UTF-8 form (excluding the object's own content_hash field)."
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9A-Fa-f]{64}$",
+      "description": "Raw-byte SHA-256 hex digest (source files and payloads)."
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$",
+      "description": "SemVer version string."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp. Source time, import time and run time are always recorded separately."
+    },
+    "non_negative_integer": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "positive_integer": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "run_mode": {
+      "type": "string",
+      "enum": ["REPLAY", "LIVE"]
+    },
+    "run_purpose": {
+      "type": "string",
+      "enum": ["HISTORICAL_REPLAY", "ACTIVE_RESEARCH"]
+    },
+    "execution_status": {
+      "type": "string",
+      "enum": ["PENDING", "RUNNING", "WAITING_HUMAN", "SUCCEEDED", "FAILED", "CANCELLED", "SKIPPED"]
+    },
+    "validation_status": {
+      "type": "string",
+      "enum": ["NOT_RUN", "PASS", "PASS_WITH_WARNINGS", "FAIL"]
+    },
+    "origin_mode": {
+      "type": "string",
+      "enum": ["IMPORTED", "DERIVED", "NATIVE"]
+    },
+    "authority_mode": {
+      "type": "string",
+      "enum": ["SOURCE_BYTES", "CANONICAL_JSON"]
+    },
+    "artifact_lifecycle": {
+      "type": "string",
+      "enum": ["DRAFT", "REVIEW_REQUIRED", "FROZEN", "SUPERSEDED", "REJECTED"]
+    },
+    "authorization_status": {
+      "type": "string",
+      "enum": ["NOT_AUTHORIZED", "AUTHORIZED", "REVOKED", "EXPIRED"]
+    },
+    "authorization_capability": {
+      "type": "string",
+      "enum": ["FORMAL_DATA_EXECUTION", "PUBLIC_OR_COMPETITION_RELEASE"]
+    },
+    "scientific_verdict": {
+      "type": "string",
+      "enum": ["NOT_EVALUATED", "SUPPORTED", "CONDITIONALLY_SUPPORTED", "NOT_SUPPORTED", "INSUFFICIENT_EVIDENCE"]
+    },
+    "lineage_status": {
+      "type": "string",
+      "enum": ["NOT_CHECKED", "VERIFIED", "PARTIAL", "CONFLICT"]
+    },
+    "result_maturity": {
+      "type": "string",
+      "enum": ["DEVELOPMENTAL", "CONFIRMATORY"]
+    },
+    "release_scope": {
+      "type": "string",
+      "enum": ["NOT_READY", "READY_FOR_INTERNAL_DEMO", "PUBLIC_OR_COMPETITION"]
+    },
+    "relation_type": {
+      "type": "string",
+      "enum": ["SOURCE_OF", "DERIVED_FROM", "TRANSFORMED_FROM", "SUMMARIZES", "VALIDATES"]
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": ["NOT_CHECKED", "VERIFIED", "PARTIAL", "CONFLICT"]
+    },
+    "finding_severity": {
+      "type": "string",
+      "enum": ["INFO", "WARNING", "ERROR"]
+    },
+    "finding_kind": {
+      "type": "string",
+      "enum": ["COMPATIBILITY", "GAP"]
+    },
+    "replay_policy": {
+      "type": "string",
+      "enum": ["MAY_ACCEPT_WITH_EXACT_HASH_REVIEW", "FAIL_CLOSED"]
+    },
+    "decision_context": {
+      "type": "string",
+      "enum": ["PROJECT_GOVERNANCE", "RUN_GATE"]
+    },
+    "decision_action": {
+      "type": "string",
+      "enum": ["APPROVE", "REVISE", "REJECT", "TERMINATE"]
+    },
+    "decision_mode": {
+      "type": "string",
+      "enum": ["HUMAN_SELECTED", "SYSTEM_DELEGATED"]
+    },
+    "requested_action": {
+      "type": "string",
+      "enum": ["START", "RESUME", "CANCEL"]
+    },
+    "failure_category": {
+      "type": "string",
+      "enum": ["DATA", "NETWORK", "VALIDATION", "PROGRAM", "QUALITY", "LINEAGE", "AUTHORIZATION"]
+    },
+    "finding_disposition_action": {
+      "type": "string",
+      "enum": ["ACCEPT_FOR_REPLAY", "RESOLVE", "REOPEN"]
+    },
+    "join_policy": {
+      "type": "string",
+      "enum": ["REQUIRE_S05_AND_S06_FOR_FINAL_REPLAY_REPORT"]
+    },
+    "candidate_selection_method": {
+      "type": "string",
+      "enum": ["EXPERT_SEED"]
+    },
+    "candidate_ranking_status": {
+      "type": "string",
+      "enum": ["NOT_IMPLEMENTED"]
+    },
+    "event_anchor": {
+      "type": "string",
+      "enum": ["ONSET_TIME"]
+    },
+    "grading_variable": {
+      "type": "string",
+      "enum": ["PEAK_FLUX"]
+    },
+    "acceptable_replay_finding_code": {
+      "type": "string",
+      "enum": [
+        "MECHANISM_V23_VS_HYPOTHESIS_V22_DEPENDENCY",
+        "THEIL_SEN_VS_OLS_IMPLEMENTATION",
+        "LEAD_WINDOW_BOUNDARY_IMPLEMENTATION_MISMATCH",
+        "CONTROL_WINDOW_POLICY_MISMATCH",
+        "CONTROL_CATALOG_SPATIAL_ATTRIBUTION_UNFILTERED",
+        "HARP_NOAA_MAPPING_PARTIAL_OR_AMBIGUOUS",
+        "COUNTEREXAMPLE_INPUT_PACKAGE_IDENTITY_UNVERIFIED",
+        "EVENT_SEED_OFFICIAL_PROVENANCE_UNVERIFIED",
+        "HISTORICAL_ROWS_NOT_INDEPENDENT_SAMPLES",
+        "S04_0808_PACKAGE_INTEGRITY_REFERENCES_MISSING_FROM_TRANSFER"
+      ],
+      "description": "D-008 registered historical compatibility/provenance limits that MAY be ACCEPTED_FOR_REPLAY after exact-hash FIXTURE_IMPORT_REVIEW binding. Frozen; extending requires a Contract Change Request."
+    },
+    "fail_closed_finding_code": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN_FIXTURE_PATH",
+        "MISSING_REQUIRED_MEMBER",
+        "SHA256_MISMATCH",
+        "MANIFEST_MISMATCH",
+        "UNKNOWN_SCHEMA_OR_VERSION",
+        "UNKNOWN_SOURCE_OR_PROVENANCE_IDENTITY",
+        "CONFIGURATION_HASH_MISMATCH",
+        "UNAUTHORIZED_FORMAL_EXECUTION",
+        "SECRET_OR_CREDENTIAL_ACCESS",
+        "FORBIDDEN_HISTORICAL_SCRIPT_EXECUTION",
+        "FORBIDDEN_NESTED_ZIP_EXTRACTION",
+        "REQUIRED_S05_OR_S06_BRANCH_FAILURE",
+        "REPORT_JOIN_FAILURE",
+        "UNBOUND_FINDING_OR_ARTIFACT"
+      ],
+      "description": "D-008 error categories that MUST fail closed; never convertible to ACCEPTED_FOR_REPLAY. Frozen; extending requires a Contract Change Request."
+    },
+    "compatibility_finding_code": {
+      "type": "string",
+      "enum": [
+        "MECHANISM_V23_VS_HYPOTHESIS_V22_DEPENDENCY",
+        "THEIL_SEN_VS_OLS_IMPLEMENTATION",
+        "COUNTEREXAMPLE_INPUT_PACKAGE_IDENTITY_UNVERIFIED",
+        "LEAD_WINDOW_BOUNDARY_IMPLEMENTATION_MISMATCH",
+        "CONTROL_WINDOW_POLICY_MISMATCH",
+        "CONTROL_CATALOG_SPATIAL_ATTRIBUTION_UNFILTERED",
+        "HARP_NOAA_MAPPING_PARTIAL_OR_AMBIGUOUS"
+      ],
+      "description": "Preset CompatibilityFinding codes required by the first Case (CONTRACTS.md 5.4)."
+    },
+    "gap_finding_code": {
+      "type": "string",
+      "enum": [
+        "CANDIDATE_PRESELECTED_EXPERT_SEED_NOT_SYSTEM_RANKED",
+        "LEGACY_HYPOTHESIS_PACKAGE_NOT_MACHINE_VALIDATABLE",
+        "EVENT_SEED_OFFICIAL_PROVENANCE_UNVERIFIED",
+        "HISTORICAL_ROWS_NOT_INDEPENDENT_SAMPLES"
+      ],
+      "description": "Preset GapFinding codes required by the first Case (CONTRACTS.md 5.5)."
+    },
+    "versioned_identity": {
+      "type": "object",
+      "properties": {
+        "schema_version": { "$ref": "#/$defs/schema_version" },
+        "content_hash": { "$ref": "#/$defs/content_hash" }
+      },
+      "required": ["schema_version", "content_hash"],
+      "additionalProperties": false
+    }
+  }
+}

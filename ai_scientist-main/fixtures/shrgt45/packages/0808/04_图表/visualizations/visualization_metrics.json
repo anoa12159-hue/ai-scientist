@@ -1,0 +1,105 @@
+{
+  "run_id": "SHRGT45_全信息基准版_20260808",
+  "source_rows": 333,
+  "main_gate_rows": 55,
+  "sample_state_counts": {
+    "POSITIVE_CANDIDATE": 78,
+    "NEGATIVE_CANDIDATE": 135,
+    "BUFFER_OR_EXCLUDE": 120
+  },
+  "gate_counts_used": {
+    "event_seed_count": 6,
+    "official_event_provenance_pass": 0,
+    "official_event_provenance_blocked": 6,
+    "queried_event_count": 6,
+    "query_expected_records": 360,
+    "query_returned_records": 333,
+    "query_missing_records": 27,
+    "raw_records": 333,
+    "field_complete": 333,
+    "event_ar_mapping_pass_rows": 273,
+    "event_ar_mapping_blocked_rows": 60,
+    "quality_zero_rows_after_mapping": 257,
+    "quality_nonzero_retained_provisional_rows": 16,
+    "quality_fatal_excluded_rows": 0,
+    "history_3h_pass_provisional": 178,
+    "history_3h_complete_quality_zero_strict": 116,
+    "disk_abs_lon_lat_lt_50": 132,
+    "buffer_or_cluster_excluded_rows": 84,
+    "all_sample_positive_rows_after_provisional_gates": 37,
+    "all_sample_provisional_control_rows_after_gates": 18,
+    "all_sample_positive_events_after_provisional_gates": 4,
+    "all_sample_positive_AR_after_provisional_gates": 4,
+    "all_sample_control_events_after_provisional_gates": 4,
+    "all_sample_control_AR_after_provisional_gates": 4,
+    "strict_positive_rows_after_gates": 8,
+    "strict_control_rows_after_gates": 7,
+    "provisional_queue_positive_anchor_count": 37,
+    "provisional_queue_control_anchor_count": 18,
+    "provisional_queue_unique_events": 4,
+    "provisional_queue_unique_noaa_ar": 4,
+    "provisional_queue_unique_harpnum": 4,
+    "strict_baseline_queue_positive_anchor_count": 2,
+    "strict_baseline_queue_control_anchor_count": 3,
+    "control_rows_excluded_future6h_mplus": 36,
+    "control_rows_retained_after_full_mplus_screen": 15,
+    "control_rows_replaced_by_same_ar_candidates": 3,
+    "final_control_rows_after_mplus_screen": 18,
+    "final_analysis_rows": 55,
+    "final_control_AR_count": 4,
+    "formal_independent_control_rows": 0
+  },
+  "cadence_expected_total": 360,
+  "cadence_returned_total": 333,
+  "cadence_missing_total": 27,
+  "main_gate_state_counts": {
+    "POSITIVE_CANDIDATE": 37,
+    "NEGATIVE_CANDIDATE": 18
+  },
+  "pooled_usflux_shrgt45_pearson_r": -0.424273,
+  "log10_usflux_shrgt45_pearson_r_on_plotted_axis": -0.3968450805390146,
+  "usflux_correlation_scale_note": "Audit r uses raw USFLUX; chart x-axis is log10(USFLUX).",
+  "artifacts": {
+    "chart_stems": [
+      "01_gate_funnel_bar",
+      "02_sample_state_donut",
+      "03_event_returned_vs_expected_bar",
+      "04_shrgt45_timeline_by_event",
+      "05_ols_slope_distribution",
+      "06_usflux_vs_shrgt45_scatter"
+    ],
+    "png_dimensions_px": {
+      "01_gate_funnel_bar.png": [
+        1991,
+        1252
+      ],
+      "02_sample_state_donut.png": [
+        1108,
+        1233
+      ],
+      "03_event_returned_vs_expected_bar.png": [
+        2083,
+        1222
+      ],
+      "04_shrgt45_timeline_by_event.png": [
+        3811,
+        2085
+      ],
+      "05_ols_slope_distribution.png": [
+        1651,
+        1222
+      ],
+      "06_usflux_vs_shrgt45_scatter.png": [
+        1843,
+        1222
+      ]
+    },
+    "svg_files_present": true,
+    "dashboard_present": true
+  },
+  "checks": {
+    "sample_state_sum_equals_source_rows": true,
+    "main_gate_sum_equals_positive_plus_control": true,
+    "cadence_sum_matches_gate_counts": true
+  }
+}

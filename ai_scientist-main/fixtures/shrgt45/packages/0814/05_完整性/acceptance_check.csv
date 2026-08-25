@@ -1,0 +1,8 @@
+﻿check,status,detail
+source_version,PASS,All copied data originate from SHRGT45_全信息基准版_20260808.
+core_counts,PASS,6 seeds; 360 expected; 333 returned; final 55=37+18; 4 events/AR.
+control_audit,PASS,51 temporary controls = 36 excluded + 15 retained; 3 same-AR replacements; no formal independent control.
+input_snapshots,PASS,6 main-run JSON snapshots and 6 replacement-audit JSON snapshots are present.
+scope,PASS,"No 0806-or-earlier result files, FITS, scripts, visualizations, or archived ZIP files are copied."
+control_boundary,PASS,Replacement-audit data are labeled as support for three same-AR temporal replacements only.
+inventory,PASS,"Data usage inventory contains 37 copied source files with roles, scope, row counts, and source hashes."

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/failure-record.schema.json",
+  "title": "FailureRecord",
+  "description": "Structured failure fact. A failure never changes scientific_verdict, and system/data/network/schema/authorization failure is never evidence against a hypothesis. Frozen semantics: CONTRACTS.md 5.6.",
+  "type": "object",
+  "properties": {
+    "failure_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "run_id": { "type": "string" },
+    "stage_id": { "type": "string" },
+    "category": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/failure_category" },
+    "code": { "type": "string" },
+    "message": { "type": "string" },
+    "retryable": { "type": "boolean" },
+    "attempt": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/positive_integer" },
+    "input_artifact_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" }
+    },
+    "occurred_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "required": [
+    "failure_id", "schema_version", "content_hash", "run_id", "stage_id",
+    "category", "code", "message", "retryable", "attempt", "occurred_at"
+  ],
+  "additionalProperties": false
+}

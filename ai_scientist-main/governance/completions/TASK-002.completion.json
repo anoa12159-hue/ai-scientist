@@ -1,0 +1,84 @@
+{
+  "record_id": "TASK-002-COMPLETION-20260820",
+  "record_type": "TASK_COMPLETION",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "5952CB87CB92965C563456264746328B7AEB28B88AB928D9F1537FD06DDDC13A",
+  "status": "ACCEPTED",
+  "task_ref": "tasks/TASK-002.md",
+  "task_sha256": "E4E1D99F6FCFB062178643E09C421E2C86DF8085667EA28054AED26A81863149",
+  "closeout_card_ref": "tasks/TASK-002-CLOSEOUT.md",
+  "closeout_card_sha256": "31B85C41D573BDB34D526FA3AF90A2D76FF17314241F5E0387A22D962030DD10",
+  "accepted_at": "2026-08-20T12:24:23+08:00",
+  "accepted_by": {
+    "actor_id": "project_owner_01",
+    "actor_role": "project_owner"
+  },
+  "verdict": {
+    "implementation": "ACCEPTED",
+    "independent_review": "APPROVED",
+    "formal_closeout": "COMPLETED",
+    "next_task": "tasks/TASK-003.md",
+    "next_task_sha256": "C5175B84B347697B55AF21A44F8952D0D510AFE75B115301C6471040501BFBDC",
+    "next_task_status": "READY_NOT_STARTED"
+  },
+  "implementation_chain": [
+    {
+      "commit_id": "6d9aa2834b84b5deb2d91595d96832e814141d0e",
+      "subject": "T002: mechanize schema and state contracts",
+      "role": "初始 T002 Schema 实现"
+    },
+    {
+      "commit_id": "2b180956463b68c5f14bdbc2325884850906544b",
+      "subject": "T002: enforce frozen contract invariants",
+      "role": "第一轮契约不变量修正"
+    },
+    {
+      "commit_id": "167725a231a7db88f421d44a06bcad8351b198db",
+      "subject": "T002: close identity and invariant gaps",
+      "role": "最终身份及约束缺口修正"
+    }
+  ],
+  "verification": {
+    "pytest": "96 passed (smoke 12 + contract 84)",
+    "ruff": "All checks passed",
+    "mypy": "Success: no issues found in 9 source files",
+    "import_check": "import OK 0.1.0 b'0.5'",
+    "verify_script": "ALL CHECKS PASSED (本机未携带 ExecutionPolicy 旗标执行；ci.yml 保留任务卡原始命令)",
+    "baseline_hash_recheck": "0 failures",
+    "git_diff_check": "clean",
+    "worktree": "clean",
+    "remote": "0",
+    "independent_counterexamples": "五类独立反例全部通过（RFC8785/D-008/ArtifactEnvelope/类型一致性/Decision-Release）"
+  },
+  "environment": {
+    "python": "3.12.4",
+    "pytest": "9.1.1",
+    "ruff": "0.16.3",
+    "mypy": "2.3.1",
+    "jsonschema": "4.26.0",
+    "jcs": "0.2.1"
+  },
+  "baseline": {
+    "baseline_lock_content_hash": "55F7F20CC02BBBF8A59823166CD16A256394048E28F5F7D7A24651D1C9E91047",
+    "contracts_version": "0.1.0",
+    "workflow_version": "0.1.0"
+  },
+  "observations": [
+    {
+      "observation_id": "T002-OBS-01",
+      "category": "DESIGN_NARROWING",
+      "statement": "DERIVED/NATIVE 分支 payload-only（禁止 content_ref）是本轮验收规约第 3 节明确要求的有意收窄，非缺陷。",
+      "disposition": "CONFIRMED_AS_INTENTIONAL",
+      "accepted_by": "project_owner_01"
+    },
+    {
+      "observation_id": "T002-DEV-01",
+      "category": "ENVIRONMENT",
+      "statement": "jcs==0.2.1 为编译轮子，离线新环境安装需 wheelhouse 或首次联网；与 T001-DEV-01 同源。",
+      "disposition": "RECORDED_NO_ACTION",
+      "accepted_by": "project_owner_01"
+    }
+  ],
+  "review_note": "独立复核报告来自项目所有者提供的外部验收结果（T002_INDEPENDENT_REVIEW = APPROVED）；仓库内无单独的 review artifact。",
+  "scope_note": "本记录为治理收尾，不修改 T002 实现；T003 任务卡已生成但未开始。"
+}

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850" role="img" aria-labelledby="title desc">
+  <title id="title">SHRGT45 全信息基准版 0808 Demo 使用数据关系图</title>
+  <desc id="desc">展示核心输入、333 条主运行记录、control 审计、55 条最终样本和下游结果之间的关系。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="warnArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B45309"/></marker>
+    <style>
+      .title { font: 700 29px "Microsoft YaHei", Arial, sans-serif; fill: #172033; }
+      .sub { font: 15px "Microsoft YaHei", Arial, sans-serif; fill: #526176; }
+      .head { font: 700 18px "Microsoft YaHei", Arial, sans-serif; fill: #172033; }
+      .body { font: 14px "Microsoft YaHei", Arial, sans-serif; fill: #334155; }
+      .small { font: 12px "Microsoft YaHei", Arial, sans-serif; fill: #526176; }
+      .warn { font: 700 13px "Microsoft YaHei", Arial, sans-serif; fill: #92400E; }
+      .box { stroke-width: 2; rx: 8; }
+      .input { fill: #EFF6FF; stroke: #2563EB; }
+      .main { fill: #ECFDF5; stroke: #059669; }
+      .audit { fill: #FFF7ED; stroke: #EA580C; }
+      .result { fill: #F5F3FF; stroke: #7C3AED; }
+      .limit { fill: #FEF2F2; stroke: #DC2626; }
+      .arrow { stroke: #475569; stroke-width: 2.3; fill: none; marker-end: url(#arrow); }
+      .warnarrow { stroke: #B45309; stroke-width: 2.2; stroke-dasharray: 8 6; fill: none; marker-end: url(#warnArrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="850" fill="#FFFFFF"/>
+  <text x="50" y="52" class="title">SHRGT45 全信息基准版 Demo：实际使用数据关系</text>
+  <text x="50" y="80" class="sub">对应 0808 权威 Demo。严格前推数据仅支撑 3 条替换 control，不构成额外最终样本。</text>
+
+  <rect x="50" y="118" width="275" height="142" class="box input"/>
+  <text x="72" y="150" class="head">核心输入与规则</text>
+  <text x="72" y="180" class="body">6 个事件种子与 provenance</text>
+  <text x="72" y="204" class="body">查询清单 + 6 份 JSOC JSON</text>
+  <text x="72" y="228" class="small">DataPlan、QUALITY、时间/AR 规则</text>
+
+  <rect x="390" y="118" width="300" height="142" class="box main"/>
+  <text x="412" y="150" class="head">主运行记录与门控</text>
+  <text x="412" y="180" class="body">360 条理论查询 -> 333 条返回</text>
+  <text x="412" y="204" class="body">AR 273 -> 历史窗 178 -> 位置 132</text>
+  <text x="412" y="228" class="small">真实 T_REC 时间轴；上游记录不是最终样本</text>
+
+  <rect x="755" y="118" width="320" height="142" class="box audit"/>
+  <text x="777" y="150" class="head">control 区间审计</text>
+  <text x="777" y="180" class="body">NCEI M+ 完整区间 + 临时 control</text>
+  <text x="777" y="204" class="body">51 条：36 排除、15 保留</text>
+  <text x="777" y="228" class="small">只按完整区间相交判断，不只看起始时刻</text>
+
+  <path d="M325 190 L390 190" class="arrow"/>
+  <path d="M690 190 L755 190" class="arrow"/>
+
+  <rect x="50" y="337" width="350" height="145" class="box audit"/>
+  <text x="72" y="369" class="head">替换 control 的补充审计数据</text>
+  <text x="72" y="399" class="body">6 份严格前推 JSOC JSON</text>
+  <text x="72" y="423" class="body">候选 T0、时间块、逐帧和目录清洁审计</text>
+  <text x="72" y="451" class="warn">仅支撑 3 条同 AR 替换记录</text>
+
+  <rect x="460" y="337" width="310" height="145" class="box result"/>
+  <text x="482" y="369" class="head">最终 Demo 样本</text>
+  <text x="482" y="399" class="body">37 条事件前 3--6h 正候选</text>
+  <text x="482" y="423" class="body">18 条同 AR 时间 control</text>
+  <text x="482" y="451" class="small">共 55 条记录，覆盖 4 个 AR</text>
+
+  <rect x="830" y="337" width="245" height="145" class="box result"/>
+  <text x="852" y="369" class="head">下游结果表</text>
+  <text x="852" y="399" class="body">斜率连续分布</text>
+  <text x="852" y="423" class="body">USFLUX 背景关系</text>
+  <text x="852" y="451" class="small">图表只从最终样本派生</text>
+
+  <path d="M915 260 L915 302 L615 302 L615 337" class="arrow"/>
+  <path d="M400 410 L460 410" class="warnarrow"/>
+  <path d="M770 410 L830 410" class="arrow"/>
+
+  <rect x="50" y="565" width="1025" height="145" class="box limit"/>
+  <text x="72" y="599" class="head">使用边界</text>
+  <text x="72" y="629" class="body">55 条记录来自 4 个 AR，三小时历史窗重叠；不能按 55 个独立样本解释。</text>
+  <text x="72" y="655" class="body">同 AR 时间 control 通过的是完整 M+ 时间资格筛查，不等同于独立阴性样本；正式独立安静 control 数量为 0。</text>
+  <text x="72" y="681" class="small">本包不含 FITS。事件 provenance 仍为 NEEDS_CLARIFICATION，FITS header、WCS、单位与像素质量由磁图侧独立核验。</text>
+</svg>

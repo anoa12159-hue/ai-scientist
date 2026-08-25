@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-labelledby="title desc">
+  <title id="title">SHRGT45 全信息基准版 Demo 输出可视化处理流程</title>
+  <desc id="desc">只描述本轮可视化工作：从已生成的 CSV 输出读取数据，按固定分母和时间规则生成六类图表，执行数值、版式和解释边界检查，最后封存总览图、报告、追溯清单和 ZIP。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748B"/>
+    </marker>
+    <style>
+      .title { font: 700 30px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 15px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #475569; }
+      .section { font: 700 17px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #334155; }
+      .box-title { font: 700 18px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #0F172A; }
+      .box-text { font: 14px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #334155; }
+      .small { font: 13px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #475569; }
+      .note { font: 700 17px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #7F1D1D; }
+      .arrow { stroke: #64748B; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .input { fill: #EFF6FF; stroke: #2563EB; }
+      .rule { fill: #ECFDF5; stroke: #059669; }
+      .chart { fill: #F5F3FF; stroke: #7C3AED; }
+      .audit { fill: #FFF7ED; stroke: #EA580C; }
+      .output { fill: #F0FDFA; stroke: #0F766E; }
+      .boundary { fill: #FEF2F2; stroke: #DC2626; }
+      .box { stroke-width: 2; rx: 8; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1040" fill="#FFFFFF"/>
+  <text x="60" y="54" class="title">SHRGT45 全信息基准版 Demo 输出可视化处理流程</text>
+  <text x="60" y="84" class="subtitle">本图只覆盖本轮可视化：现有 CSV 输出 → 固定口径绘图 → 质量检查 → 追溯封存</text>
+
+  <text x="60" y="126" class="section">一、读取已完成的数据输出</text>
+  <rect x="60" y="148" width="340" height="180" class="box input"/>
+  <text x="84" y="181" class="box-title">主表与门控</text>
+  <text x="84" y="210" class="box-text">逐行主表（结果数据）</text>
+  <text x="84" y="234" class="box-text">333 条逐行记录</text>
+  <text x="84" y="258" class="box-text">最终分析样本与门控计数</text>
+  <text x="84" y="282" class="box-text">360 → 55 的最终处理链</text>
+  <text x="84" y="306" class="small">状态划分和主门结果均沿用原表</text>
+
+  <rect x="60" y="348" width="340" height="150" class="box input"/>
+  <text x="84" y="381" class="box-title">事件可得性</text>
+  <text x="84" y="410" class="box-text">cadence 审计（结果数据）</text>
+  <text x="84" y="434" class="box-text">理论 360 / 实返 333 / 缺帧 27</text>
+  <text x="84" y="458" class="box-text">六个事件分别核对</text>
+  <text x="84" y="482" class="small">缺帧不补齐</text>
+
+  <rect x="60" y="518" width="340" height="150" class="box input"/>
+  <text x="84" y="551" class="box-title">趋势与上下文</text>
+  <text x="84" y="580" class="box-text">主表 OLS 斜率字段</text>
+  <text x="84" y="604" class="box-text">USFLUX 关联审计</text>
+  <text x="84" y="628" class="box-text">原始 USFLUX pooled r</text>
+  <text x="84" y="652" class="small">相关口径不在绘图时反选</text>
+
+  <path d="M400 238 H438" class="arrow"/>
+  <path d="M400 423 H420 V238 H438" class="arrow"/>
+  <path d="M400 593 H420 V238 H438" class="arrow"/>
+
+  <text x="450" y="126" class="section">二、固定可视化口径</text>
+  <rect x="438" y="148" width="340" height="180" class="box rule"/>
+  <text x="462" y="181" class="box-title">分母与分组</text>
+  <text x="462" y="210" class="box-text">环图只用互斥 sample_state</text>
+  <text x="462" y="234" class="box-text">门控图以理论 360 作参照</text>
+  <text x="462" y="258" class="box-text">最终趋势使用 55 条记录</text>
+  <text x="462" y="282" class="box-text">不把行数写成独立样本数</text>
+  <text x="462" y="306" class="small">37 条正候选 / 18 条同 AR control</text>
+
+  <rect x="438" y="348" width="340" height="180" class="box rule"/>
+  <text x="462" y="381" class="box-title">时间和尺度</text>
+  <text x="462" y="410" class="box-text">折线使用真实 T_REC 时间轴</text>
+  <text x="462" y="434" class="box-text">间隔 &gt; 24 分钟处断线</text>
+  <text x="462" y="458" class="box-text">不对缺帧做插值</text>
+  <text x="462" y="482" class="box-text">USFLUX 横轴为 log10 值</text>
+  <text x="462" y="506" class="small">图中同时标明原始尺度相关</text>
+
+  <rect x="438" y="548" width="340" height="120" class="box rule"/>
+  <text x="462" y="581" class="box-title">输出形式</text>
+  <text x="462" y="610" class="box-text">六张单图：SVG + 240 dpi PNG</text>
+  <text x="462" y="634" class="box-text">另生成 00_visualization_dashboard</text>
+  <text x="462" y="658" class="small">图表名称、来源、分母写入 summary</text>
+
+  <path d="M778 238 H820" class="arrow"/>
+  <path d="M778 438 H800 V238 H820" class="arrow"/>
+  <path d="M778 608 H800 V238 H820" class="arrow"/>
+
+  <text x="840" y="126" class="section">三、生成六类结果图</text>
+  <rect x="820" y="148" width="220" height="132" class="box chart"/>
+  <text x="844" y="181" class="box-title">数量链</text>
+  <text x="844" y="210" class="box-text">01 门控柱状图</text>
+  <text x="844" y="234" class="box-text">02 状态环图</text>
+  <text x="844" y="262" class="small">记录数与互斥组成</text>
+
+  <rect x="1060" y="148" width="220" height="132" class="box chart"/>
+  <text x="1084" y="181" class="box-title">事件可得性</text>
+  <text x="1084" y="210" class="box-text">03 理论/实返柱状图</text>
+  <text x="1084" y="234" class="box-text">04 六事件时间折线图</text>
+  <text x="1084" y="262" class="small">缺帧显式显示</text>
+
+  <rect x="1300" y="148" width="240" height="132" class="box chart"/>
+  <text x="1324" y="181" class="box-title">趋势与上下文</text>
+  <text x="1324" y="210" class="box-text">05 OLS 斜率分布</text>
+  <text x="1324" y="234" class="box-text">06 USFLUX 散点图</text>
+  <text x="1324" y="262" class="small">不加回归线</text>
+
+  <path d="M930 280 V330 H1180 V348" class="arrow"/>
+  <path d="M1170 280 V348" class="arrow"/>
+  <path d="M1420 280 V330 H1180 V348" class="arrow"/>
+
+  <rect x="820" y="348" width="720" height="180" class="box chart"/>
+  <text x="846" y="381" class="box-title">图形输出：04_图表/visualizations/</text>
+  <text x="846" y="414" class="box-text">00_visualization_dashboard.png：总览图</text>
+  <text x="846" y="438" class="box-text">01--06：六张单图，每张同时提供 .svg 与 .png</text>
+  <text x="846" y="462" class="box-text">visualization_summary.csv：图表、源文件、分母和解释边界</text>
+  <text x="846" y="486" class="box-text">visualization_metrics.json：数量一致性和图件存在性检查</text>
+  <text x="846" y="512" class="small">图表只表达当前 Demo 输出，不新增标签或效应估计</text>
+
+  <text x="60" y="730" class="section">四、可视化质量检查和独立交付</text>
+  <rect x="60" y="752" width="470" height="150" class="box audit"/>
+  <text x="84" y="785" class="box-title">数值一致性</text>
+  <text x="84" y="814" class="box-text">原始状态合计 = 333</text>
+  <text x="84" y="838" class="box-text">最终分析 55 = 正候选 37 + control 18</text>
+  <text x="84" y="862" class="box-text">cadence 合计 = 360 / 333 / 27</text>
+  <text x="84" y="886" class="small">三项机器检查全部 PASS</text>
+
+  <rect x="565" y="752" width="470" height="150" class="box audit"/>
+  <text x="589" y="785" class="box-title">版式和文件质量</text>
+  <text x="589" y="814" class="box-text">六个 SVG 可解析，PNG 非空且高分辨率</text>
+  <text x="589" y="838" class="box-text">图例、单位、脚注和分母可直接核对</text>
+  <text x="589" y="862" class="box-text">折线缺帧断线，散点尺度标注明确</text>
+  <text x="589" y="886" class="small">总览图用于浏览，单图用于精读</text>
+
+  <rect x="1070" y="752" width="470" height="150" class="box output"/>
+  <text x="1094" y="785" class="box-title">封存与递交</text>
+  <text x="1094" y="814" class="box-text">主报告：图表质量评估</text>
+  <text x="1094" y="838" class="box-text">manifest + SHA256 清单</text>
+  <text x="1094" y="862" class="box-text">封存脚本 → 正式 ZIP</text>
+  <text x="1094" y="886" class="small">包外正式 ZIP 为唯一封存件</text>
+
+  <path d="M1180 528 V700 H295 V752" class="arrow"/>
+  <path d="M1180 528 V700 H800 V752" class="arrow"/>
+  <path d="M1180 528 V700 H1305 V752" class="arrow"/>
+
+  <rect x="60" y="934" width="1480" height="52" class="box boundary"/>
+  <text x="84" y="967" class="note">图中范围：已有数据输出经固定口径生成图表并封存；最终图表使用 55 条分析记录，原始状态和缺帧信息单独保留。</text>
+</svg>

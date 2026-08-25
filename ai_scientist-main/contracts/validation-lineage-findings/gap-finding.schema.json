@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/validation-lineage-findings/gap-finding.schema.json",
+  "title": "GapFinding",
+  "description": "A stage capability not yet implemented or a project-material gap; not a compatibility seam. Frozen semantics: CONTRACTS.md 5.5.",
+  "type": "object",
+  "properties": {
+    "finding_id": { "type": "string" },
+    "logical_finding_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "revision": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/positive_integer" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "stage_id": { "type": "string" },
+    "code": { "type": "string" },
+    "severity": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/finding_severity" },
+    "initial_status": { "const": "OPEN" },
+    "summary": { "type": "string" },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "impact": { "type": "string" },
+    "required_action": { "type": "string" },
+    "supersedes_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "required": [
+    "finding_id", "logical_finding_id", "schema_version", "revision",
+    "content_hash", "stage_id", "code", "severity", "initial_status",
+    "summary", "impact", "required_action", "created_at"
+  ],
+  "additionalProperties": false
+}

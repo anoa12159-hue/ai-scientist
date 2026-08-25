@@ -1,0 +1,75 @@
+{
+  "record_id": "TASK-004-COMPLETION-20260820",
+  "record_type": "TASK_COMPLETION",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "1E12F67939334CDD60E653D97355F841F15A736EEA63E4F4DB008D6FC3C64385",
+  "status": "ACCEPTED",
+  "task_ref": "tasks/TASK-004.md",
+  "task_sha256": "C0517307B0E1899EF02B0DDB4F98B0EE49579210C941DCB0F31281E5D0B418B1",
+  "correction_card_ref": "tasks/TASK-004-CORRECTION-1.md",
+  "correction_card_sha256": "201A056B919531451FBCB38BDD2CA3B5D455234DB539D0995C79FF90816CB6B8",
+  "closeout_card_ref": "tasks/TASK-004-CLOSEOUT.md",
+  "closeout_card_sha256": "290C5D776EEB35593DB1B088355BE4C8BFA77A5ED283B910D372D13A4DE30A52",
+  "accepted_at": "2026-08-20T20:00:00+08:00",
+  "accepted_by": {
+    "actor_id": "project_owner_01",
+    "actor_role": "project_owner"
+  },
+  "verdict": {
+    "implementation": "ACCEPTED",
+    "independent_review": "APPROVED",
+    "formal_closeout": "COMPLETED",
+    "next_task": "tasks/TASK-005.md",
+    "next_task_sha256": "4865684CF7B4E8577F9E4AC521D0787152B82390A4CEAA1B68743F0652479EFB",
+    "next_task_status": "READY_NOT_STARTED"
+  },
+  "implementation_chain": [
+    {
+      "commit_id": "3b0304ca1ebff7eb3915a2f392608df162d3647b",
+      "subject": "T004: implement artifact store, ledger and checkpoint kernel",
+      "role": "执行同事首次构建"
+    },
+    {
+      "commit_id": "3143649b11b2ad4b01d7047734d0c9e03554d24b",
+      "subject": "T004: enforce persistence contracts and integrity",
+      "role": "主 Agent 直接审查、修正与反例补充"
+    }
+  ],
+  "verification": {
+    "focused_storage_tests": "42 passed",
+    "full_suite": "172 passed (unit/integration/smoke/fixtures/contract)",
+    "ruff": "All checks passed",
+    "mypy": "Success: no issues found in 16 source files",
+    "import_check": "import OK 0.1.0",
+    "verify_script": "ALL CHECKS PASSED (venv activated in child PowerShell)",
+    "baseline_hash_recheck": "0 failures",
+    "fixture_identity": "unchanged and verified",
+    "git_diff_check": "clean",
+    "worktree": "clean",
+    "remote": "0"
+  },
+  "boundary": {
+    "contracts_changed": false,
+    "governance_baseline_changed": false,
+    "fixture_bytes_changed": false,
+    "langgraph_started": false,
+    "t005_started": false
+  },
+  "observations": [
+    {
+      "observation_id": "T004-ENV-01",
+      "category": "VERIFICATION_ENVIRONMENT",
+      "statement": "统一脚本需在项目 .venv 激活的子 PowerShell 中运行；未修改系统执行策略或全局 PATH。",
+      "disposition": "RECORDED_NO_ACTION",
+      "accepted_by": "project_owner_01"
+    },
+    {
+      "observation_id": "T004-ARCH-01",
+      "category": "CONCURRENCY",
+      "statement": "MVP LocalStorage 仍按单进程写入假设运行；多进程 WAL/锁策略属于后续任务，不改变本次 Artifact 身份语义。",
+      "disposition": "DEFERRED_TO_PLANNED_TASKS",
+      "accepted_by": "project_owner_01"
+    }
+  ],
+  "scope_note": "本记录正式关闭 T004；T005 任务卡已生成但执行尚未开始。执行同事只负责 T005 首次构建，主 Agent 负责后续审查和修正。"
+}

@@ -1,0 +1,21 @@
+﻿test,status,detail
+median_empty,PASS,empty returns None
+median_single,PASS,single sample
+median_odd,PASS,odd sample
+median_even,PASS,even sample averages middle pair
+quality_0x00000000,PASS,"got ('ZERO_QUALITY', 0, 0)"
+quality_0x80000000,PASS,"got ('FATAL_EXCLUDED_PROVISIONAL', 1, 0)"
+quality_0x40000000,PASS,"got ('FATAL_EXCLUDED_PROVISIONAL', 1, 0)"
+quality_0xC0000000,PASS,"got ('FATAL_EXCLUDED_PROVISIONAL', 1, 0)"
+quality_0x00010400,PASS,"got ('NONZERO_RETAINED_PROVISIONAL', 0, 1)"
+quality_0x00000400,PASS,"got ('NONZERO_RETAINED_PROVISIONAL', 0, 1)"
+history_14_of_16_pass,PASS,"14 frames, no >24m gap"
+history_13_of_16_fail,PASS,13 frames fail
+history_span_fail,PASS,14 frames but span 156m fail
+history_gap_36_fail,PASS,missing two consecutive frames creates 36m gap
+ols_real_time_axis,PASS,uses actual elapsed minutes
+anchor_nearest_with_tolerance,PASS,near anchor selected
+anchor_far_rejected,PASS,far anchor rejected
+distribution_median_STRICT_BASELINE_QUEUE_POSITIVE_CANDIDATE,PASS,"expected approx 0.471007, actual 0.471007"
+distribution_median_ALL_SAMPLE_STRICT_BASELINE_AFTER_GATES_NEGATIVE_CANDIDATE,PASS,"expected approx -0.111901, actual -0.111901"
+distribution_median_ALL_SAMPLE_STRICT_BASELINE_AFTER_GATES_POSITIVE_CANDIDATE,PASS,"expected approx 0.441195, actual 0.441194"

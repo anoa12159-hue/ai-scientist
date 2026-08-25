@@ -1,0 +1,40 @@
+{
+  "request_id": "D-001",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "A264ED6FD90C36317F56CC9365165AB86DAC07CCB5BA81F5F0C4E839590397BB",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/MVP_CONTRACT_DECISIONS.request.md",
+    "document_sha256": "C226AB3B85063AA19EC0000B261342D5907B528C985FDD941C8E8BBAEBA25FBD"
+  },
+  "gate_id": "GOV_MVP_SCOPE",
+  "prompt": "首个 MVP 怎样处理现有流程链中的版本、方法和来源身份不一致？",
+  "context_artifact_refs": [],
+  "context_finding_refs": [],
+  "context_stage_attempt_keys": [],
+  "options": [
+    {
+      "option_id": "A",
+      "label": "忠实历史回放",
+      "description": "完整展示现有流程 01-07，显式保留专家预选种子、V2.2/V2.3、Theil-Sen/OLS 和输入包身份未核验等历史事实。",
+      "consequences": "最快形成完整系统框架，但只能称为历史产物回放，不能称为版本一致的端到端科学重放。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "B",
+      "label": "版本一致的窄切片",
+      "description": "只实现 MechanismBrief V2.3 到新 Hypothesis DRAFT、Validator 和人工审核。",
+      "consequences": "语义较干净，但首版不能证明流程 04-07、并行分支和完整前端路径已接通，并会提前引入新内容生成。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    }
+  ],
+  "recommended_option_id": "A",
+  "recommendation_reason": "忠实回放最适合先验证完整系统框架，并能把已知不一致转为可审计 Finding。",
+  "risk_summary": "选择 A 时若隐藏历史不一致，会形成错误的科学和版本主张。",
+  "impact_summary": "决定首个 MVP 的产品含义、工作流覆盖范围和报告措辞上限。",
+  "allowed_scope": "MVP_BASELINE/D-001",
+  "allowed_actor_roles": [
+    "project_owner"
+  ],
+  "requested_at": "2026-08-19T19:54:16+08:00"
+}

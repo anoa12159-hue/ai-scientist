@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/validation-lineage-findings/compatibility-finding.schema.json",
+  "title": "CompatibilityFinding",
+  "description": "Distinguishes 'the system can display two historical artifacts' from 'they are scientifically/version compatible'. Frozen semantics: CONTRACTS.md 5.4.",
+  "type": "object",
+  "properties": {
+    "finding_id": { "type": "string" },
+    "logical_finding_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "revision": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/positive_integer" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "upstream_artifact_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "downstream_artifact_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "code": { "type": "string" },
+    "severity": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/finding_severity" },
+    "initial_status": { "const": "OPEN" },
+    "summary": { "type": "string" },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "impact": { "type": "string" },
+    "required_action": { "type": "string" },
+    "supersedes_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "required": [
+    "finding_id", "logical_finding_id", "schema_version", "revision",
+    "content_hash", "code", "severity", "initial_status", "summary",
+    "impact", "required_action", "created_at"
+  ],
+  "additionalProperties": false
+}

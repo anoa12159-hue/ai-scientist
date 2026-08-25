@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/governance-release/release-disposition.schema.json",
+  "title": "ReleaseDisposition",
+  "description": "Independent release-scope decision bound to an exact report. Never produced by FINAL_REPLAY_REVIEW. Frozen semantics: CONTRACTS.md 6.4.",
+  "type": "object",
+  "properties": {
+    "release_disposition_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "report_artifact_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "release_scope": { "type": "string", "enum": ["READY_FOR_INTERNAL_DEMO", "PUBLIC_OR_COMPETITION"] },
+    "decision_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "authorization_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "actor_id": { "type": "string" },
+    "actor_role": { "type": "string" },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "supersedes_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "release_scope": { "const": "PUBLIC_OR_COMPETITION" } } },
+      "then": { "required": ["authorization_ref"] }
+    }
+  ],
+  "required": [
+    "release_disposition_id", "schema_version", "content_hash",
+    "report_artifact_ref", "release_scope", "decision_ref",
+    "actor_id", "actor_role", "created_at"
+  ],
+  "additionalProperties": false
+}

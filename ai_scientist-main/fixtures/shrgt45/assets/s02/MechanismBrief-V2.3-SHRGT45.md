@@ -1,0 +1,138 @@
+# MechanismBrief V2.3：结构化交接包 — SHRGT45
+
+
+
+## 1. 参数基本信息
+
+- **参数名称**：SHRGT45（Fraction of Area with Shear > 45°）
+- **参数定义**：活动区内观测到的三维矢量磁场与势场之间的剪切角超过 45° 的像素面积占 HARP 有效像素总面积的比例 [10.1007/s11207-014-0529-3]。剪切角 Φ_i = arccos(**B**_Obs,i · **B**_Pot,i / (|**B**_Obs,i| |**B**_Pot,i|))，其中势场由观测法向场 B_z 经格林函数法导出，势场水平分量由 Sakurai (1982) 离散格林函数计算，势场垂直分量保留原始观测 B_z [10.1007/s11207-014-0529-3]。
+- **单位**：percent（SHARP keyword 原始单位；取值范围 0–100。若后续分析中归一化至 0–1，需另记转换）
+- **观测层级**：光球单层（photospheric，来自矢量磁图的三分量测量，不涉及日冕外推）
+- **数据来源**：SDO/HMI SHARP 数据系列（`hmi.sharp_cea_720s`，柱面等面积投影），Fe I 6173.3 Å 谱线，12 分钟 cadence [10.1007/s11207-014-0529-3]。矢量磁场经 VFISV 反演、ME0 最小能量法 180° 方位角消歧义。仅 BITMAP ≥ 33（HARP 内部像素）且 CONF_DISAMBIG = 90（最高置信度消歧义）的像素计入 SHRGT45 计算，满足条件的像素总数即 CMASK 标量 [10.1007/s11207-014-0529-3]。
+  - BITMAP 取值定义：0=off-disk, 1=弱场在 HARP 外, 2=强场在 HARP 外, 33=弱场+HARP 内, 34=强场+HARP 内。官方来源：http://jsoc.stanford.edu/doc/data/hmi/sharp/sharp.htm#bit_map（JSOC SHARP 页面；注意 1/2/33/34 四值在页面上可直接核验，0=off-disk 来自 Bobra et al. 2014 Table A.2）。
+  - CONF_DISAMBIG 取值定义：90=强场像素最小能量法 annealed（最高置信度），60=强场外围平滑，50=弱场未经 annealed，0=off-disk。官方来源：http://jsoc.stanford.edu/doc/data/hmi/sharp/sharp.htm（JSOC SHARP 页面，Disambiguation Module Outputs 节）及 Bobra et al. 2014 Appendix A.5。
+  - CONF_DISAMBIG=90 与 BITMAP≥33 属于 SHRGT45 参数自身的像素计算口径，不等于项目后续的数据质量规则（QUALITY 筛选、cadence 完整性、位置窗口等），后者由 DataPlan 预注册。
+- **直接测量什么**：活动区中强非势性区域的**空间覆盖范围**——即实际磁场显著偏离最低能量势场位形的区域所占面积比例。是光球层非势性的代理量 [10.1007/s11207-014-0529-3]。
+- **不能直接测量什么**：(1) 小尺度/局部剪切——全场平均可能掩盖空间局部的显著剪切信号 [10.1007/s11207-014-0529-3, §7]；(2) 垂直方向的场梯度——HMI 无法确定 ∂/∂z [10.1007/s11207-014-0529-3]；(3) 日冕三维磁拓扑信息（磁绳高度、上覆场衰减指数、重联位置等）——SHRGT45 是光球单层量，够不到日冕触发位形 [10.3847/1538-4357/ab4355][10.1007/s41116-019-0019-7]。
+- **数据来源是否已核实**：已核实。BITMAP（http://jsoc.stanford.edu/doc/data/hmi/sharp/sharp.htm#bit_map；Bobra 2014 Table A.2），CONF_DISAMBIG（http://jsoc.stanford.edu/doc/data/hmi/sharp/sharp.htm；Bobra 2014 Appendix A.5），CMASK（Bobra 2014 Appendix A.5）。
+
+---
+
+## 2. 证据表（按假设五部分 × 四类组织）
+
+### P1：参数定义
+
+| 类别 | 证据编号 | 内容摘要 | 方向 | 直/间接 | 原始文献 | 原文位置 | 可信度 |
+|---|---|---|---|---|---|---|---|
+| 正向 | E01 | SHRGT45 = 剪切角 >45° 的像素面积 / HARP 总面积，剪切角 = arccos(B_obs·B_pot / \|B_obs\|\|B_pot\|) [10.1007/s11207-014-0529-3] | 支持 | 直接 | Bobra et al. 2014 (SHARPs 管线) | Table 3 | 高 |
+| 不确定 | E02 | Falconer et al. (2008) 以观测水平场与势场水平场的剪切角 >45° 定义 LSSM/LSSA（中性线长度），方法沿袭自 Falconer et al. (2006) [10.1086/591045, §2.2]。Bobra et al. (2014) 引入 SHRGT45 时独立采用了 45° 这一数值，但剪切角定义为三维矢量场与势场的夹角（非水平场），测量对象为全 HARP 面积比（非中性线长度）[10.1007/s11207-014-0529-3, Table 3]。二者共享"强剪切→非势性"的物理直觉，但剪切定义维度不同，且 Bobra (2014) 未引用 Falconer 系列作为 45° 阈值的出处；Falconer (2006) 原文未直接核实 | 混合 | 间接 | Falconer et al. 2008; Bobra et al. 2014 | §2.2, Table 1; Table 3 | 中 |
+
+### P2：前兆窗口+趋势
+
+| 类别 | 证据编号 | 内容摘要 | 方向 | 直/间接 | 原始文献 | 原文位置 | 可信度 |
+|---|---|---|---|---|---|---|---|
+| 不确定 | E13 | 2011-03-09 X1.5 耀斑前 SHRGT45 下降了几个百分点，作者认为"may or may not be significant" [10.1007/s11207-014-0529-3] | 不确定 | 直接 | Bobra et al. 2014 | §5 | 中 |
+| 局限 | E14 | Kniezewski et al. (2025) 对 18 个耀斑（C/M/X 各 6 例）做 NLFFF 外推，发现剪切 Ψ 及其他参数在耀斑前 2–4h 标准差比值显著增大并持续至耀斑 onset，而均值无耀斑前趋势 [arXiv:2506.14004, §3.1–3.2, Conclusions]。信号在变异性（方差）而非均值趋势，且研究对象是 NLFFF 三维参数，不是光球 SHRGT45 | 混合 | 间接 | Kniezewski et al. 2025 | §3.1, §3.2, Conclusions | 中 |
+
+### P3：预测窗口
+
+| 类别 | 证据编号 | 内容摘要 | 方向 | 直/间接 | 原始文献 | 原文位置 | 可信度 |
+|---|---|---|---|---|---|---|---|
+| — | DIRECT_EVIDENCE_NONE | 当前无任何文献直接检验 SHRGT45 在"未来 3–6h"窗口内的耀斑对应关系。该窗口来自项目/专家先验 | — | — | — | — | — |
+
+### P4：统计关联方向
+
+| 类别 | 证据编号 | 内容摘要 | 方向 | 直/间接 | 原始文献 | 原文位置 | 可信度 |
+|---|---|---|---|---|---|---|---|
+| 正向 | E09 | SHRGT45 的 Fisher 单变量分数为 740.8，在 25 个 SHARP 参数中排名第 13，入选 13 特征 SVM 模型 [10.1088/0004-637X/798/2/135, Table 1]。该 13 特征全模型在操作式模式（24h 窗）下的 TSS 为 0.761 ± 0.039 [10.1088/0004-637X/798/2/135, Table 3]。Bobra & Couvidat (2015) 未报告 SHRGT45 单参数独立 TSS；0.761 为全模型成绩，不可归给 SHRGT45 单参数。论文随机按样本拆分，同一 AR 多次耀斑可重复计数，未证明按 AR 隔离后的泛化——不支撑 3h trend | 支持 | 直接 | Bobra & Couvidat 2015 (ML) | Table 1, Table 3 | 高 |
+| 正向 | E04 | Schrijver (2007) 定义参数 R 为强场高梯度极性分离线附近 ~15 Mm 范围内的加权无符号磁通量，发现所有 M/X 级耀斑均与 R>0 的活动区相关联，log R<2.8 可作为 24h 无大耀斑的"晴空"判据 [10.1086/511857, Abstract, §3, Table 1]。R 与 SHRGT45 均为光球层非势性的定量代理，但 R 量度 PIL 附近的磁通集中度（SOHO/MDI 数据），SHRGT45 量度全 HARP 区域剪切角 >45° 的面积比（SDO/HMI 数据），二者定义、数据源和测量对象均不同 | 支持 | 间接 | Schrijver 2007 | Abstract, §3, Table 1 | 高 |
+| 正向 | E03 | Falconer 2008 以 LSSM/LSSA（水平场剪切角 >45° 的中性线长度）预测 CME，成功率 ~75–85%（0–72h 窗）[10.1086/591045]。LSSM 与 SHRGT45 共享 >45° 剪切判据的物理直觉（强剪切→非势性→爆发），但 LSSM 量中性线长度、SHRGT45 量全 HARP 面积比，且剪切定义不同（水平场 vs 三维矢量） | 支持 | 间接 | Falconer et al. 2008 | §1, Table 1 | 中 |
+| 局限 | E10 | Fisher 分数最高的 4 个参数（总无符号电流螺旋度、洛伦兹力总大小、光球磁自由能密度、总无符号垂直电流）即可获得与 13 特征全模型大致相同的 TSS [10.1088/0004-637X/798/2/135, §5.1, Conclusions]。SHRGT45 排名第 13，不在前 4 中 | 反对 | 直接 | Bobra & Couvidat 2015 (ML) | §5.1, Conclusions, Table 1 | 高 |
+| 局限 | E07 | 在 Leka & Barnes 2007 的样本、参数集和分类任务中，496 AR、1212 幅磁图：没有任何单一光球参数能可靠区分耀斑与非耀斑群体 [10.1086/510282] | 反对 | 直接 | Leka & Barnes 2007 | Abstract, §5 | 高 |
+| 局限 | E11 | "仅凭光球磁场数据能否显著提升耀斑预报能力——尚不明确" [10.1088/0004-637X/798/2/135] | 反对 | 直接 | Bobra & Couvidat 2015 (ML) | Conclusions | 高 |
+
+### P5：物理机制关联
+
+| 类别 | 证据编号 | 内容摘要 | 方向 | 直/间接 | 原始文献 | 原文位置 | 可信度 |
+|---|---|---|---|---|---|---|---|
+| 正向 | E05 | 日冕非势性活动区耀斑频率为近势场区的 2.4 倍，X 射线峰值亮度高 3.3 倍 [10.1086/430733]。非势性由 PFSS 外推 vs TRACE EUV 目视比较判定，是日冕层的定性评估，而 SHRGT45 是光球层的定量参数——该证据在"非势性→耀斑"的物理逻辑链上提供跨层级旁证，但不直接检验光球非势性与日冕非势性的映射关系 | 支持 | 间接 | Schrijver et al. 2005 | Abstract, §4.2 | 中 |
+| 机制背景 | E08 | Kutsenko et al. (2024) 对 100 个 M5.0+ 耀斑 AR 分类：11 个属 IV 型（整个观测期内无任何可检测浮现），但仍产生了包括 NOAA 09415 (X14.4) 和 NOAA 10486 (X17.0) 在内的强耀斑；II–IV 型 AR 均以 δ 构型和强剪切为特征 [10.1088/1674-4527/ad2e4d, Abstract, §3.1, §4]。该文未使用 SHRGT45 或任何 SHARP 定量参数，"SHRGT45" 和 "SHARP" 全文未出现，"shear" 仅作定性描述。该证据表明浮现对强耀斑既非必要也非充分，剪切结构可独立于浮现维持耀斑潜力，但不构成对 SHRGT45 的直接检验 | 支持 | 间接 | Kutsenko et al. 2024 | Abstract, §3.1, §4, Fig. 6, Table A.1 | 高 |
+| 局限 | E06 | 驱动日冕非势性和增强耀斑活性的前提是 ~30h 内的复杂动态磁通浮现，剪切流本身不足以驱动 [10.1086/430733]。SHRGT45 在浮现期可能升高——若其与耀斑的关联主要由浮现驱动（浮现→同时推高 SHRGT45 和耀斑概率），则 SHRGT45 可能仅是浮现的伴随指标，而非独立于浮现的前兆信号 | 反对 | 间接 | Schrijver et al. 2005 | §4.4, §5 | 中 |
+| 局限 | E12 | Zou et al. (2019) 对 66 例伴随快速 CME（>800 km/s）的暗条喷发统计发现：AR 暗条 62.5% 由磁重联触发，IF 暗条 36.4%，QS 暗条 16.1%（余数由理想 MHD 不稳定性触发）[10.3847/1538-4357/ab4355, §3.3]。触发类型的判别依赖磁绳高度、上覆场衰减指数等日冕三维拓扑信息 [10.3847/1538-4357/ab4355, §1, §2.3–2.4]。该文研究暗条喷发触发机制与 CME 速度的关系，不涉及 M+ occurrence 预测，未使用 SHRGT45 或 SHARP 参数。该证据作为日冕触发机制边界参考：耀斑/喷发触发涉及日冕三维拓扑，光球单层参数 SHRGT45 不包含此类信息。注意：该文研究伴随高速 CME 的暗条喷发，不外推为全部 M+ 耀斑普遍服从同一触发机制 | 反对 | 间接 | Zou et al. 2019 | §1, §2.3–2.4, §3.3, Figure 2 | 高 |
+
+## 3. 机制链与解释边界
+
+- **参数变化（主候选）**：SHRGT45 在过去 3h 内呈上升趋势——强非势性像素面积占比预期在特征窗内呈正向趋势（项目拟检验的主候选形式）。原值和高位水平、6h 趋势仅作探索性参考，不作为主候选参数形式。
+- **反映的物理状态**：光球层磁场偏离势场位形的空间范围可能正在扩大，与非势性/磁自由能状态变化相关 [10.1007/s11207-014-0529-3][10.1086/591045]。
+- **可能关联的现象**：M 级及以上耀斑（通过非势性增强这一中间环节）。无浮现时强剪切结构仍可维持耀斑潜力 [10.1088/1674-4527/ad2e4d]。
+- **证据支持到哪里——参数层（P1–P2：参数定义 + 前兆窗口/趋势）**：SHRGT45↑ → 非势性↑。支持来自定义文献 [10.1007/s11207-014-0529-3]；边界来自 45° 阈值未验证 [10.1086/503699]。
+- **证据支持到哪里——时间变换与机制层（P3–P5：预测窗口 + 统计关联 + 物理机制）**：**时间变换证据不足。** 与耀斑活性存在统计关联——支持来自统计关联 [10.1086/511857][10.1088/0004-637X/798/2/135]、浮现独立性 [10.1088/1674-4527/ad2e4d]；边界来自单参数局限 [10.1086/510282]、参数排名 [10.1088/0004-637X/798/2/135]、光球天花板 [10.1088/0004-637X/798/2/135]、触发机制 [10.3847/1538-4357/ab4355]。
+- **科学声称上限**：SHRGT45 是光球层非势性的定量代理，可能与非势性/自由能状态变化相关，可作为候选前兆特征。不得声称触发磁重联或理想 MHD 失稳，不得声称可作为独立充分判据。（SHRGT45 不直接测量总自由能或能量注入率。）
+- **禁止表述**：触发磁重联/MHD 失稳、给出精确概率、作为独立充分判据。
+
+## 4. 适用范围与局限
+
+- **适用对象**：SHARP 数据系列覆盖的、满足数据质量条件的活动区。SHRGT45 是 Bobra et al. (2014) 定义的 16 个 SHARP 参数之一，无磁分类限制 [10.1007/s11207-014-0529-3, Table 3]。
+- **项目主分析范围**：|Stonyhurst 经度| < 50° 且 |纬度| < 50°。原论文 Bobra et al. (2014) §9 样本筛选条件为：活动区在 GOES X-ray peak 时位于中央子午线经度 ±45° 内（注意：该 ±45° 筛选不含纬度限制；本项目 |经度|<50°, |纬度|<50° 为独立分析口径；±68°/±70° 为另一套样本口径）。SHARP 数据可覆盖近边缘区域但横向场噪声增大 [10.1007/s11207-014-0529-3, §5]。
+- **适用条件**：(1) 活动区位于上述经度和纬度范围内；(2) CONF_DISAMBIG = 90 [10.1007/s11207-014-0529-3, §4]；(3) HARP 掩码内有效像素充足。
+- **统计局限**：(1) 496 AR、1212 幅磁图：没有任何单一光球参数能可靠区分耀斑与非耀斑群体，最佳单参数仅比基线提升 ~7%（全耀斑）至 ~1%（M 级以上）[10.1086/510282]；(2) SHRGT45 排名 13/25，前 4 求和型参数即可等效 [10.1088/0004-637X/798/2/135]。
+- **物理局限**：(1) 光球单层量，耀斑触发取决于日冕三维拓扑 [10.3847/1538-4357/ab4355]；(2) 全场面积比掩盖局部剪切信号 [10.1007/s11207-014-0529-3, §7]；(3) 日面中心-边缘横向场噪声、SDO 轨道日变化、弱场信噪比、180° 消歧义不确定性 [10.1007/s11207-014-0529-3, §5]。
+- **观测系统替代解释**：SHRGT45 的短时变化可能由中心到边缘横向场噪声、SDO 轨道日变化、CMASK/参与像素集变化及弱/中场阈值变化造成。因此，观测到的正趋势在验证前不能直接解释为真实非势性增长。具体质量门、诊断量和敏感性分析由 Hypothesis/DataPlan 环节预注册。
+- **潜在混杂／替代解释**：(1) USFLUX 作为活动区规模/总磁通的候选混杂 [10.1007/s11207-014-0529-3, Table 3]；(2) TOTPOT 作为竞争/替代非势性代理——同一物理对象（偏离势场），但 TOTPOT 不因 45° 截断舍弃低于该角度的场偏离；仍受共同 CMASK/噪声阈值限制 [10.1007/s11207-014-0529-3, Table 3]；(3) Hale δ 构型作为伴随度量——SHRGT45 可能是 δ 构型的定量投影而非独立信息 [10.1088/1674-4527/ad2e4d]；(4) 上覆日冕场约束——光球非势性测量单独可能不足以约束耀斑是否伴随 CME，需结合日冕三维拓扑信息 [10.1007/s41116-019-0019-7, §2.2]。
+- **负面证据**：(1) SHRGT45 耀斑前下降而非升高 [10.1007/s11207-014-0529-3]；(2) 光球磁场单时刻状态对耀斑发生影响力有限 [10.1086/510282]；(3) 光球数据能否显著提升预报能力尚不明确 [10.1088/0004-637X/798/2/135]；(4) X 级事件可不发生在 δ 黑子或强梯度 PIL 上（Inter-AR events）[10.1007/s41116-019-0019-7]。
+- **尚未解决的问题**：(1) t-3h→t 窗内上升趋势与 t+3h→t+6h 窗内耀斑发生的时序关联未经统计确认（E13 仅单例，且讨论的是原值下降而非趋势）；(2) 未做 USFLUX/TOTPOT 条件独立性检验；(3) 45° 阈值未经验证（E02）；(4) SHRGT45 区分 confined/eruptive 的表现未测试；(5) 原值 vs 方差 vs 趋势哪个是有效信号形式（E14）。
+
+## 5. 候选假设种子
+
+- **研究总体**：满足数据质量（CONF_DISAMBIG=90、HARP 掩码内有效像素充足）和位置条件（|Stonyhurst 经度|<50°, |纬度|<50°）的活动区—时间窗口。总体中允许正例（窗口内发生 ≥M 级耀斑）和负例（窗口内未发生），而非仅包含产生 M+ 的活动区。
+- **主候选参数**：SHRGT45（Fraction of Area with Shear > 45°）
+- **主候选参数形式**：过去 3h 的上升趋势。6h 趋势及 SHRGT45 原值/高位水平仅作探索性参考。
+- **预期方向**：正（上升）
+- **预期变化发生的时段**：特征历史窗 t-3h～t 内 SHRGT45 呈上升趋势，未来事件窗 t+3h～t+6h 内发生 ≥M 级耀斑。文献仅天级窗口有统计证据且均为原值水平比较而非趋势 [10.1088/0004-637X/798/2/135][10.1086/591045]；一项间接研究提示信号可能在方差而非均值 [arXiv:2506.14004]，但使用 NLFFF 三维外推非光球 SHRGT45。
+- **目标事件**：M 级及以上耀斑（按 GOES 1–8 Å 通道 peak flux 定义，≥M1.0 即 ≥1×10⁻⁵ W/m²）
+- **事件时间窗**：未来 t+3h～t+6h。事件是否落入该窗以 GOES SXR onset 时刻判断。
+- **特征历史窗**：过去 t-3h～t。SHRGT45 上升趋势在此窗内计算。
+- **机制依据**：SHRGT45（t-3h→t 上升趋势）→ 非势性区域扩大 → 可能伴随非势性/自由能状态变化 →（假设）与 t+3h→t+6h 内 ≥M 级耀斑统计相关。
+- **对应证据编号**：参数层(P1-P2): E01, E02；时间变换与机制层(P3-P5): E13, E14, E04, E09, E05, E08（E13属前兆窗口单例，E08属机制背景，二者均非直接正证据）
+- **适用范围**：研究总体中的活动区—时间窗口。目标事件为 M 级及以上耀斑，按 GOES peak flux 定义，以 SXR onset 判断事件是否落入 t+3h→t+6h 窗。
+- **当前不确定性**：(1) 3h 窗内上升趋势作为前兆信号未经直接统计检验（E13 仅单例且方向不确定，且为原值而非趋势）；(2) 未控制 USFLUX/TOTPOT 做条件独立性检验；(3) 45° 阈值未经验证（E02）；(4) E14 提示信号可能在方差而非均值或趋势；(5) SHRGT45 的 t-3h→t 趋势可能受 CMASK/像素集演变、中心-边缘横向场噪声和 SDO 轨道日变化等观测系统因素污染，需排除仪器/掩码伪趋势（见 §4 观测系统替代解释）。
+
+候选假设表述：
+
+SHRGT45 在过去 3h（t-3h→t）内呈上升趋势，可能反映活动区强非势性区域空间覆盖扩大及磁自由能状态变化，并与未来 3–6h（t+3h→t+6h）内发生 M 级以上耀斑存在统计关联。
+
+## 6. 候选准入建议
+
+- **建议结论**：SHRGT45 在参数层面有条件支持形成校准性 Hypothesis；“过去 3h 上升→未来 3–6h M+”的精确时间变换证据不足，其方向和时间窗当前来自项目／专家先验。本 MechanismBrief 不授权正式验证。
+
+- **主要依据**：SHRGT45 的参数定义和光球非势性代理意义成立；现有研究仅对相邻物理构念或较长窗口的原值提供有限支持，没有直接验证当前 3h trend。Bobra 2014 的单例和 Kniezewski 2025 的近似证据均不支持把稳定均值上升写成已有事实。
+
+- **交接边界**：曾子晖负责将该先验转化为含精确定义、不支持条件和替代解释的可证伪 Hypothesis；王杰锋在 DataPlan 中预注册质量、样本独立性、对照、混杂处理和统计方法。齐仅登记 USFLUX 为候选规模混杂、TOTPOT 为竞争／替代非势性代理，以及仪器／掩码伪趋势，不指定控制模型、多参数组合或验证算法。
+
+- **执行门**：当前只允许形成下游 Hypothesis 草案；经上游复验、联合冻结和预注册后，才可启动正式验证。
+
+---
+
+## 引用文献
+
+[10.1007/s11207-014-0529-3] Bobra M G, Sun X, Hoeksema J T, et al. The Helioseismic and Magnetic Imager (HMI) Vector Magnetic Field Pipeline: SHARPs – Space-Weather HMI Active Region Patches [J]. Solar Physics, 2014, 289: 3549–3578. DOI: 10.1007/s11207-014-0529-3
+
+[10.1086/503699] Falconer D A, Moore R L, Gary G A. Magnetic Causes of Solar Coronal Mass Ejections: Dominance of the Free Magnetic Energy over the Magnetic Twist Alone [J]. The Astrophysical Journal, 2006, 644: 1258–1272. DOI: 10.1086/503699
+
+[10.1086/591045] Falconer D A, Moore R L, Gary G A. Magnetogram Measures of Total Nonpotentiality for Prediction of Solar Coronal Mass Ejections from Active Regions of Any Degree of Magnetic Complexity [J]. The Astrophysical Journal, 2008, 689: 1433–1442. DOI: 10.1086/591045
+
+[10.1086/511857] Schrijver C J. A Characteristic Magnetic Field Pattern Associated with All Major Solar Flares and Its Use in Flare Forecasting [J]. The Astrophysical Journal Letters, 2007, 655: L117–L120. DOI: 10.1086/511857
+
+[10.1086/430733] Schrijver C J, DeRosa M L, Title A M, Metcalf T R. The Nonpotentiality of Active-Region Coronae and the Dynamics of the Photospheric Magnetic Field [J]. The Astrophysical Journal, 2005, 628: 501–513. DOI: 10.1086/430733
+
+[10.1086/510282] Leka K D, Barnes G. Photospheric Magnetic Field Properties of Flaring versus Flare-quiet Active Regions. IV. A Statistically Significant Sample [J]. The Astrophysical Journal, 2007, 656: 1173–1186. DOI: 10.1086/510282
+
+[10.1088/1674-4527/ad2e4d] Kutsenko A S, Abramenko V I, Plotnikov A A. A Statistical Study of Magnetic Flux Emergence in Solar Active Regions Prior to Strongest Flares [J]. Research in Astronomy and Astrophysics, 2024, 24: 045014. DOI: 10.1088/1674-4527/ad2e4d
+
+[10.1088/0004-637X/798/2/135] Bobra M G, Couvidat S. Solar Flare Prediction Using SDO/HMI Vector Magnetic Field Data with a Machine-learning Algorithm [J]. The Astrophysical Journal, 2015, 798: 135. DOI: 10.1088/0004-637X/798/2/135
+
+[10.3847/1538-4357/ab4355] Zou P, Jiang C, Wei F, Zuo P, Wang Y. A Statistical Study of Solar Filament Eruptions that Form High-speed Coronal Mass Ejections [J]. The Astrophysical Journal, 2019, 884: 157. DOI: 10.3847/1538-4357/ab4355
+
+[arXiv:2506.14004] Kniezewski K L, et al. Magnetic Field Variability as a Consistent Predictor of Solar Flares [J]. arXiv:2506.14004, 2025.
+
+[10.1007/s41116-019-0019-7] Toriumi S, Wang H. Flare-productive Active Regions [J]. Living Reviews in Solar Physics, 2019, 16: 3. DOI: 10.1007/s41116-019-0019-7

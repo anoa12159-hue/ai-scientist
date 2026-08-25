@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/foundation/source-asset-ref.schema.json",
+  "title": "SourceAssetRef",
+  "description": "Identity and usage boundary of one source file. asset_sha256 covers raw file bytes; content_hash covers this reference record itself. Frozen semantics: CONTRACTS.md 3.2.",
+  "type": "object",
+  "properties": {
+    "asset_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "role": { "type": "string" },
+    "origin_path": { "type": "string", "description": "Audit only; never the runtime resolution mechanism." },
+    "repository_relative_path": { "type": "string" },
+    "source_version": { "type": "string" },
+    "source_authored_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "ingested_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "media_type": { "type": "string" },
+    "byte_size": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/non_negative_integer" },
+    "asset_sha256": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/sha256" },
+    "provenance_status": { "type": "string" },
+    "usage_boundary": { "type": "string" }
+  },
+  "required": [
+    "asset_id", "schema_version", "content_hash", "role", "origin_path",
+    "repository_relative_path", "source_version", "source_authored_at",
+    "ingested_at", "media_type", "byte_size", "asset_sha256",
+    "provenance_status", "usage_boundary"
+  ],
+  "additionalProperties": false
+}

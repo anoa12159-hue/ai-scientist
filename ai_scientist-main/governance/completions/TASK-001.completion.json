@@ -1,0 +1,74 @@
+{
+  "record_id": "TASK-001-COMPLETION-20260820",
+  "record_type": "TASK_COMPLETION",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "5589F1A772DF898520D58ED48AC0098AC548CB8ED52D52C54030CAC250F4A175",
+  "status": "ACCEPTED",
+  "task_ref": "tasks/TASK-001.md",
+  "task_sha256": "E4B18DF9EA7E287968934F8F073F8C293068BFCF7BC786DAA0F54C6E189A6B62",
+  "closeout_card_ref": "tasks/TASK-001-CLOSEOUT.md",
+  "closeout_card_sha256": "0A6A382B816541D9E7A9F1017E9071D62F7E9E59A27FA5A8D5DE9BBDD8334336",
+  "accepted_at": "2026-08-20T09:22:00+08:00",
+  "accepted_by": {
+    "actor_id": "project_owner_01",
+    "actor_role": "project_owner"
+  },
+  "verdict": {
+    "implementation": "ACCEPTED",
+    "formal_closeout": "COMPLETED",
+    "next_task": "tasks/TASK-002.md",
+    "next_task_sha256": "E4E1D99F6FCFB062178643E09C421E2C86DF8085667EA28054AED26A81863149",
+    "next_task_status": "READY_NOT_STARTED"
+  },
+  "verification": {
+    "pytest": "10 passed",
+    "ruff": "All checks passed",
+    "mypy": "Success: no issues found in 7 source files",
+    "import_check": "import OK 0.1.0",
+    "verify_script": "ALL CHECKS PASSED (本机未携带 ExecutionPolicy 旗标执行；ci.yml 保留任务卡原始命令)",
+    "git_diff_check": "unstaged clean; staged check 仅命中冻结文件既有行尾空白，见 T001-DEV-03",
+    "git_status": "仅含冻结基线与 T001 白名单文件，无密钥、无 .env、无缓存、无运行产物、无机器绝对路径",
+    "baseline_hash_recheck": "46/46 PASS"
+  },
+  "environment": {
+    "python": "3.12.4",
+    "pytest": "9.1.1",
+    "ruff": "0.16.3",
+    "mypy": "2.3.1",
+    "git": "本地 checkpoint commit，无 remote、无推送"
+  },
+  "baseline": {
+    "baseline_lock_content_hash": "55F7F20CC02BBBF8A59823166CD16A256394048E28F5F7D7A24651D1C9E91047",
+    "contracts_version": "0.1.0",
+    "workflow_version": "0.1.0",
+    "decision_records": "D-001=A 至 D-008=A 全部存在且 sha256/content_hash 有效",
+    "offline_scope": "运行时检查离线、无 API Key；首次开发工具安装不保证完全断网"
+  },
+  "deviations": [
+    {
+      "deviation_id": "T001-DEV-01",
+      "category": "ENVIRONMENT",
+      "statement": "首次开发工具安装需联网（本次经国内 PyPI 镜像一次性安装 pytest/ruff/mypy）。按项目所有者验收意见，把“离线”限定为“运行时离线，不包含首次开发工具安装”。",
+      "disposition": "ACCEPTED_BY_PROJECT_OWNER",
+      "accepted_by": "project_owner_01",
+      "accepted_at": "2026-08-20T09:22:00+08:00"
+    },
+    {
+      "deviation_id": "T001-DEV-02",
+      "category": "ENVIRONMENT",
+      "statement": "本机执行 scripts/verify_project.ps1 时未携带 -ExecutionPolicy Bypass 旗标（本地执行策略允许直接运行脚本，四项检查全部通过）；ci.yml 保留任务卡原始命令。",
+      "disposition": "RECORDED_NO_ACTION",
+      "accepted_by": "project_owner_01",
+      "accepted_at": "2026-08-20T09:22:00+08:00"
+    },
+    {
+      "deviation_id": "T001-DEV-03",
+      "category": "OBSERVATION",
+      "statement": "冻结文件 governance/decisions/source/MVP_CONTRACT_DECISIONS.request.md 含 3 处 T000 历史行尾空白；该文件哈希锁定，按冻结规则未修改，继续保留。",
+      "disposition": "RECORDED_NO_ACTION",
+      "accepted_by": "project_owner_01",
+      "accepted_at": "2026-08-20T09:22:00+08:00"
+    }
+  ],
+  "scope_note": "T001 Allowed changes 白名单 19/19 全部覆盖；范围外修改 0；无业务实现、Schema、Fixture、LangGraph、API 或前端提前进入。T002 任务卡已生成但未开始。"
+}

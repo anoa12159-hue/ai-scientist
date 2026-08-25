@@ -1,0 +1,2 @@
+﻿source_relative_path,source_sha256,source_valid_rows,screening_rule
+03_结果数据/09_严格对照审计/02_审计数据/02_official_Mplus_event_catalog_NCEI_v1-0-1_subset.csv,a6f60944f895c603803efbef06a572d9c7a5ca165920ae6edc9ebd0a32dbdcb1,975,"Exclude when any NCEI M+ event interval overlaps [T0-4h,T0+7h)."

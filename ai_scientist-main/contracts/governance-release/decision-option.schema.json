@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/governance-release/decision-option.schema.json",
+  "title": "DecisionOption",
+  "description": "One frozen, human-selectable option. The frontend submits only option_id plus rationale; it cannot construct out-of-contract actions. Frozen semantics: CONTRACTS.md 6.1.",
+  "type": "object",
+  "properties": {
+    "option_id": { "type": "string" },
+    "label": { "type": "string" },
+    "description": { "type": "string" },
+    "consequences": { "type": "string" },
+    "required_capability": { "type": "string" }
+  },
+  "required": ["option_id", "label", "description", "consequences", "required_capability"],
+  "additionalProperties": false
+}

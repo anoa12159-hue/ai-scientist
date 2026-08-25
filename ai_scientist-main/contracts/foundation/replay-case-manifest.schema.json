@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/foundation/replay-case-manifest.schema.json",
+  "title": "ReplayCaseManifest",
+  "description": "Describes a repeatable replay case, not a single run. Declares expected Findings without pre-fabricating Findings bound to non-existent artifacts. Frozen semantics: CONTRACTS.md 3.1.",
+  "type": "object",
+  "properties": {
+    "case_id": { "type": "string" },
+    "manifest_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "mode": { "const": "REPLAY" },
+    "research_question_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "workflow_version": { "type": "string" },
+    "stage_asset_refs": { "type": "object" },
+    "included_asset_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "excluded_assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "origin_path": { "type": "string" },
+          "reason": { "type": "string" },
+          "known_identity": { "type": "string" }
+        },
+        "required": ["origin_path", "reason", "known_identity"],
+        "additionalProperties": false
+      }
+    },
+    "declared_finding_specs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "finding_kind": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/finding_kind" },
+          "related_stage_ids": { "type": "array", "items": { "type": "string" } },
+          "related_asset_roles": { "type": "array", "items": { "type": "string" } },
+          "required": { "type": "boolean" },
+          "expected_severity": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/finding_severity" },
+          "replay_policy": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/replay_policy" },
+          "rationale_source_refs": {
+            "type": "array",
+            "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+          }
+        },
+        "required": ["code", "finding_kind", "replay_policy"],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "code": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/fail_closed_finding_code" }
+              },
+              "required": ["code"]
+            },
+            "then": {
+              "properties": { "replay_policy": { "const": "FAIL_CLOSED" } }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "replay_policy": { "const": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" }
+              },
+              "required": ["replay_policy"]
+            },
+            "then": {
+              "properties": {
+                "code": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/acceptable_replay_finding_code" }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "workflow_graph_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "stage_dependencies": { "type": "object" },
+    "join_policy": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/join_policy" },
+    "acceptance_profile": {
+      "type": "object",
+      "properties": {
+        "acceptable_finding_codes": {
+          "type": "array",
+          "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/acceptable_replay_finding_code" },
+          "minItems": 10,
+          "maxItems": 10,
+          "uniqueItems": true
+        },
+        "fail_closed_finding_codes": {
+          "type": "array",
+          "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/fail_closed_finding_code" },
+          "minItems": 14,
+          "maxItems": 14,
+          "uniqueItems": true
+        },
+        "join_condition": { "const": "REQUIRE_S05_AND_S06_FOR_FINAL_REPLAY_REPORT" }
+      },
+      "required": ["acceptable_finding_codes", "fail_closed_finding_codes", "join_condition"],
+      "additionalProperties": false
+    },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" }
+  },
+  "required": [
+    "case_id", "manifest_version", "schema_version", "mode",
+    "research_question_ref", "workflow_version", "stage_asset_refs",
+    "included_asset_refs", "excluded_assets", "declared_finding_specs",
+    "workflow_graph_ref", "stage_dependencies", "join_policy",
+    "acceptance_profile", "content_hash"
+  ],
+  "additionalProperties": false
+}

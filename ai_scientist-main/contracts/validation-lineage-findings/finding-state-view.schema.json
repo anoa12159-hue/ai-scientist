@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/validation-lineage-findings/finding-state-view.schema.json",
+  "title": "FindingStateView",
+  "description": "Query projection of a Finding's current status, derived from appended dispositions, not mutated on the Finding. Frozen semantics: CONTRACTS.md 5.3.",
+  "type": "object",
+  "properties": {
+    "finding_ref": {
+      "type": "object",
+      "properties": {
+        "finding_id": { "type": "string" },
+        "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+        "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" }
+      },
+      "required": ["finding_id", "content_hash", "schema_version"],
+      "additionalProperties": false
+    },
+    "finding_status": {
+      "type": "string",
+      "enum": ["OPEN", "ACCEPTED_FOR_REPLAY", "RESOLVED"]
+    }
+  },
+  "required": ["finding_ref", "finding_status"],
+  "additionalProperties": false
+}

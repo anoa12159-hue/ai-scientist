@@ -1,0 +1,58 @@
+{
+  "request_id": "D-008",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "8CED9EBBC423D1A74CF7173860406806E5B94CFF9C3375A68B2AE3BA7D9E6F5E",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/D-008.request.md",
+    "document_sha256": "950235A72949D59184F50306955E9F659A5394399C7D229A34C8046E5318D998"
+  },
+  "context_artifact_refs": [
+    {
+      "ref": "decisions/records/D-005.decision.json",
+      "content_hash": "2B9849C3D92CD45DB7A060BA9361C4C42301092220BBB5489E50BB5418604553"
+    },
+    {
+      "ref": "decisions/records/D-007.decision.json",
+      "content_hash": "56879B92CAB4AD2529A924AE47B9939470C188668ACD97698159DCA643A6F7A0"
+    },
+    {
+      "ref": "CONTRACTS_DRAFT.md",
+      "sha256": "9F9156C5DBC5ABA5DC1C506ECB6AA1061ABA5B3A0C1CA0B7A2E7BA51474761AB"
+    }
+  ],
+  "prompt": "哪些已登记 Finding 可以在精确哈希审核后用于历史 Replay，哪些情况必须 Fail Closed？",
+  "options": [
+    {
+      "option_id": "A",
+      "label": "分层处置",
+      "description": "已声明的历史兼容性/来源限制可在 FIXTURE_IMPORT_REVIEW 精确绑定并批准后 ACCEPTED_FOR_REPLAY；输入、来源、配置、授权、执行和 Report Join 错误一律 Fail Closed。",
+      "consequences": "能完整回放历史链路并保留限制；接受仅对当前精确 Fixture/Artifact 生效，不适用于 Live Run 或科学结论。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "B",
+      "label": "全部阻断",
+      "description": "任何 Finding 都阻止 S07 和最终报告。",
+      "consequences": "最保守但无法回放已知历史接缝，MVP 无法展示完整链路。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "C",
+      "label": "全部 Warning 可接受",
+      "description": "所有标记为 Warning 的 Finding 均可由人工点击接受。",
+      "consequences": "容易掩盖损坏输入、来源不明和 Join 失败，破坏 Fail Closed 和审计边界。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    }
+  ],
+  "recommended_option_id": "A",
+  "recommendation_reason": "分层政策区分可追溯的历史兼容性限制与无法证明输入/执行正确的错误，兼顾历史 Replay 可用性、精确哈希审批和失败关闭。",
+  "risk_summary": "任何 ACCEPTED_FOR_REPLAY 都必须绑定本次 Run 的 Finding/Artifact/StageAttempt 哈希；不得用于 Live Run、正式统计或发布授权。",
+  "impact_summary": "决定 FIXTURE_IMPORT_REVIEW 的 Finding 路由、S07 是否可运行、ReportManifest 是否可生成以及前端对限制/阻断的展示。",
+  "gate_id": "GOV_REPLAY_FINDING_POLICY",
+  "allowed_scope": "MVP_BASELINE/D-008",
+  "allowed_actor_roles": [
+    "project_owner"
+  ],
+  "requested_at": "2026-08-19T23:45:00+08:00"
+}

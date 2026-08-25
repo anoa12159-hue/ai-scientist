@@ -1,0 +1,127 @@
+{
+  "record_id": "TASK-003-COMPLETION-20260820",
+  "record_type": "TASK_COMPLETION",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "42B6ACCCB55DFD7733CBE7891492ADC96C0BEEC5347269B9748DCF0394E01DFA",
+  "status": "ACCEPTED",
+  "task_ref": "tasks/TASK-003.md",
+  "task_sha256": "C5175B84B347697B55AF21A44F8952D0D510AFE75B115301C6471040501BFBDC",
+  "correction_card_ref": "tasks/TASK-003-CORRECTION-1.md",
+  "correction_card_sha256": "97F2E7818327D770676E2837A4D148D1C73080DAB2694606BDD18B33FB3A34C5",
+  "closeout_card_ref": "tasks/TASK-003-CLOSEOUT.md",
+  "closeout_card_sha256": "73A292A840A053A4AE7F152546696BE714A1B3FE95C30F7E97042945FCF54CEE",
+  "accepted_at": "2026-08-20T18:11:16+08:00",
+  "accepted_by": {
+    "actor_id": "project_owner_01",
+    "actor_role": "project_owner"
+  },
+  "verdict": {
+    "implementation": "ACCEPTED",
+    "independent_review": "WAIVED_BY_PROJECT_OWNER",
+    "formal_closeout": "COMPLETED",
+    "next_task": "tasks/TASK-004.md",
+    "next_task_sha256": "C0517307B0E1899EF02B0DDB4F98B0EE49579210C941DCB0F31281E5D0B418B1",
+    "next_task_status": "READY_NOT_STARTED"
+  },
+  "implementation_chain": [
+    {
+      "commit_id": "f32f53edd33f8d434881e96429cc243d07393041",
+      "subject": "T003: import SHRGT45 fixture manifest and audit",
+      "role": "初始 Fixture 导入与 Manifest"
+    },
+    {
+      "commit_id": "df9ff1ffd20c0041f9b34cad7a170370e8036bcb",
+      "subject": "T003: correct fixture SourceAssetRef and lineage identity",
+      "role": "SourceAssetRef、SourcePackageRef 与版本化血缘修正"
+    },
+    {
+      "commit_id": "fe9da83294d939f1fd17ff63ea0fbaacf8b79810",
+      "subject": "T003: fix package lineage, origin paths and time evidence",
+      "role": "包血缘、来源路径与时间证据修正"
+    },
+    {
+      "commit_id": "0c4ced142e98460e903fd8c7f441c6ba888ecc93",
+      "subject": "T003: close fixture identity validation gaps",
+      "role": "最终引用身份、重哈希反例与时间代理 guardrail"
+    }
+  ],
+  "verification": {
+    "pytest": "128 passed (fixture 31 + smoke 13 + contract 84)",
+    "ruff": "All checks passed",
+    "mypy": "Success: no issues found in 9 source files",
+    "import_check": "import OK 0.1.0",
+    "verify_script": "ALL CHECKS PASSED",
+    "baseline_hash_recheck": "0 failures",
+    "git_diff_check": "clean",
+    "worktree_before_closeout": "clean",
+    "remote": "0"
+  },
+  "fixture_identity": {
+    "manifest_ref": "fixtures/shrgt45/manifest.json",
+    "manifest_sha256": "9EB8895D2E35AD3E34D09B0E5241888F7F961E6FAB4B8EF48725F7274BE1845B",
+    "case_manifest_ref": "fixtures/shrgt45/case-manifest.json",
+    "case_manifest_sha256": "C1208BD68740B6CB96A276ED9DC0298D992A02F5875F294F2A7672BD762062BA",
+    "case_manifest_content_hash": "3C8F5054FB1859E1947420775F52D89BE3FFBA1525A4E83574FBDB5035A824F0",
+    "import_audit_ref": "fixtures/shrgt45/import-audit.json",
+    "import_audit_sha256": "65EF961C471C032C7DE391CCC650A7E499590048AC7186CA8667E53AEFE9BF7A",
+    "import_audit_content_hash": "288B379B8EF96216DC105ED51E300630892EF346B4C85A2575D9B856CA862275",
+    "logical_file_count": 171,
+    "logical_total_bytes": 9725849,
+    "source_asset_ref_count": 171,
+    "included_asset_ref_count": 171,
+    "member_derived_from_edge_count": 37,
+    "s04_runtime_asset_ref_count": 43,
+    "s04_0808": {
+      "package_id": "s04.source0808",
+      "content_hash": "FECBF207411B2A6E4C0F9FF7B51C08FAC4895BA8BBB6B7F600F34BC33E934259",
+      "member_count": 90,
+      "total_bytes": 3818486,
+      "tree_hash": "A45E77758CA59D98A7FB333326F5463177AD62944376A95C4880230595E6C032",
+      "runtime_usage": "PROVENANCE_AND_AUDIT_ONLY"
+    },
+    "s04_0814": {
+      "package_id": "s04.demo0814",
+      "content_hash": "59C48C8606207BED2BB92591B1946C69B54077B373D3765D8776727E1B349040",
+      "member_count": 43,
+      "total_bytes": 1284797,
+      "tree_hash": "E577951858466B40CC001627EF27185267D9ED63E249F6EF78B500723D9C47DC",
+      "runtime_usage": "DEFAULT_S04_REPLAY_INPUT"
+    }
+  },
+  "baseline": {
+    "baseline_lock_content_hash": "55F7F20CC02BBBF8A59823166CD16A256394048E28F5F7D7A24651D1C9E91047",
+    "contracts_version": "0.1.0",
+    "workflow_version": "0.1.0"
+  },
+  "review_waiver": {
+    "waived_by": "project_owner_01",
+    "instruction": "不需要再验证了，直接下一步",
+    "scope": "额外一轮 T003 独立复核",
+    "basis": "依赖已完成的 T003 实现验证与 0c4ced1 的直接审阅修正证据",
+    "does_not_mean": "T003_INDEPENDENT_REVIEW_APPROVED"
+  },
+  "observations": [
+    {
+      "observation_id": "T003-DATA-01",
+      "category": "SOURCE_TIME_PRECISION",
+      "statement": "source_authored_at 使用有来源证据的日精度代理值；T00:00:00+08:00 仅为表示占位，不声明为实际创作时刻。",
+      "disposition": "RECORDED_NO_ACTION",
+      "accepted_by": "project_owner_01"
+    },
+    {
+      "observation_id": "T003-DATA-02",
+      "category": "INERT_HISTORICAL_BYTES",
+      "statement": "0808 中历史脚本与嵌套 ZIP 仅作不可执行来源字节保存，未执行、未导入、未解压。",
+      "disposition": "REQUIRED_BOUNDARY_PRESERVED",
+      "accepted_by": "project_owner_01"
+    },
+    {
+      "observation_id": "T003-ARCH-01",
+      "category": "DEFERRED_RUNTIME_LINEAGE",
+      "statement": "T003 以 VersionedRef 记录 Fixture 包级和成员血缘；运行时 ArtifactRef/LineageEdge 由 T004/T005 负责。",
+      "disposition": "DEFERRED_TO_PLANNED_TASKS",
+      "accepted_by": "project_owner_01"
+    }
+  ],
+  "scope_note": "本记录正式关闭 T003；T004 任务卡已生成但执行尚未开始。"
+}

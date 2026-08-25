@@ -1,0 +1,29 @@
+# External handoff/source materials are kept outside the project history.
+/*.zip
+/*.pdf
+/*.docx
+/AI_Scientist_MVP_学长移交报告.md
+/网站补充信息.md
+
+# Python and local verification artifacts.
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.coverage
+**/htmlcov/
+**/*.egg-info/
+**/build/
+**/dist/
+**/.venv/
+**/venv/
+**/env/
+
+# Secrets and local runtime output.
+**/.env
+**/.env.*
+!**/.env.example
+**/runs/
+**/outputs/
+**/work/

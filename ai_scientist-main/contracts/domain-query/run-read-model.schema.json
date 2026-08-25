@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/domain-query/run-read-model.schema.json",
+  "title": "RunReadModel",
+  "description": "D-006 aggregate query projection consumed by the frontend. It is a projection, not a scientific artifact and not an approval target; it must not derive workflow state, Finding blocking, Join, authorization or scientific verdict. Frozen semantics: CONTRACTS.md 4.3.1.",
+  "type": "object",
+  "properties": {
+    "read_model_schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "run": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "stages": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "domain_snapshots": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" }
+    },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "gate_id": { "type": "string" },
+          "status": { "type": "string" }
+        },
+        "required": ["gate_id", "status"],
+        "additionalProperties": false
+      }
+    },
+    "lineage_summary": {
+      "type": "object",
+      "properties": {
+        "lineage_status": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/lineage_status" }
+      },
+      "required": ["lineage_status"],
+      "additionalProperties": false
+    },
+    "report": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+  },
+  "required": [
+    "read_model_schema_version", "run", "stages", "domain_snapshots",
+    "artifacts", "findings", "gates", "lineage_summary"
+  ],
+  "additionalProperties": false
+}

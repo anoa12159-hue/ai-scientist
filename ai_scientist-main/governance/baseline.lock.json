@@ -1,0 +1,120 @@
+{
+  "baseline_id": "AI_SCIENTIST_MVP_BASELINE_0_1_0",
+  "schema_version": "0.1.0",
+  "content_hash": "55F7F20CC02BBBF8A59823166CD16A256394048E28F5F7D7A24651D1C9E91047",
+  "status": "ACCEPTED",
+  "accepted_at": "2026-08-19T23:58:00+08:00",
+  "accepted_by": {
+    "actor_id": "project_owner_01",
+    "actor_role": "project_owner"
+  },
+  "canonicalization": "RFC8785-JCS+UTF-8+SHA256",
+  "documents": [
+    {
+      "ref": "docs/PROJECT_CHARTER.md",
+      "sha256": "3D42D9BC32B33DAD7A21495CB68EAA385B109222DCAF918FC93EE26C84954F6D"
+    },
+    {
+      "ref": "docs/CONTEXT_BASELINE.md",
+      "sha256": "A992DA3AA945F8B9B47F328AC4ADFD9FCA4DDCFF9EC88B93AB071E5A60312EE5"
+    },
+    {
+      "ref": "docs/contracts/CONTRACTS.md",
+      "version": "0.1.0",
+      "sha256": "64521C352706088CA283EF8BC7AE61B54E72389500A42B6E520B771CA7094EAC"
+    },
+    {
+      "ref": "docs/contracts/SCHEMA_CATALOG.md",
+      "sha256": "A065094CF15524BFEF7B573E8DFFDBB1DF0FE915E25635790EFA3AB34AEB03B9"
+    },
+    {
+      "ref": "docs/adr/ADR-001-mvp-architecture.md",
+      "sha256": "164505D0F89E1D410840DCEE70996EC4C13FD8A28DEC49EF39712DA2B18B8A3D"
+    },
+    {
+      "ref": "docs/decisions/MVP_CONTRACT_DECISIONS.md",
+      "sha256": "735223FDA52738A359152CECB0F72B7E4856361282D5639A263555F5342AE4E8"
+    }
+  ],
+  "decision_records": [
+    {
+      "ref": "governance/decisions/records/D-001.decision.json",
+      "content_hash": "61AD23CA10E353803384DD05F7DF086B3A124129258A54654A84ABB2E55CC9D5",
+      "sha256": "B954CCB2330C0BAC3EB2D2C1A57B0D1CB3AA89AA26EF191D1F4C225D826F9AB1"
+    },
+    {
+      "ref": "governance/decisions/records/D-002.decision.json",
+      "content_hash": "53C3BC96C26C40BF5892D7F0058C02E26204AE45818112E2817286A1D5070712",
+      "sha256": "B11DCC0325191F89504D8EE57B45B790F9B489F9AC041CC549C9CD5F9D3A1258"
+    },
+    {
+      "ref": "governance/decisions/records/D-003.decision.json",
+      "content_hash": "D68F591098F2F1242BE8ECE4D10BC68A0DA809B430A9CD0284EC8160BF469439",
+      "sha256": "10869286178ABF5108FB05790E618D1855200B67D58672E4DAD64D70B19AB012"
+    },
+    {
+      "ref": "governance/decisions/records/D-004.decision.json",
+      "content_hash": "51C7E708BF2B51B1B6E2AF30AA697EE2056D67E91CB1A5E73225628AD3447D4F",
+      "sha256": "8FF1C026905D1C7AE576B340DC2B215CB145F1A1E87DF4026E130F0850019664"
+    },
+    {
+      "ref": "governance/decisions/records/D-005.decision.json",
+      "content_hash": "2B9849C3D92CD45DB7A060BA9361C4C42301092220BBB5489E50BB5418604553",
+      "sha256": "EB4150AE42B98F01EB6F7F5F75CD6829E49ABE4E5910F6FAC27C20D68DBD9988"
+    },
+    {
+      "ref": "governance/decisions/records/D-006.decision.json",
+      "content_hash": "1695AD389B7BCD7776A4F5BF6176A52ABC86BD885A5E2EC1E8E4AFCB277D42C5",
+      "sha256": "A8C1347B99D7A3ED6F9718227FE111CD58FFCFEDA2AF055055E4CC60BB7C7887"
+    },
+    {
+      "ref": "governance/decisions/records/D-007.decision.json",
+      "content_hash": "56879B92CAB4AD2529A924AE47B9939470C188668ACD97698159DCA643A6F7A0",
+      "sha256": "75D984F44F6BCA1E6D75D08B962CFA7B9E0EC44B15AB0DE83B93E6EF8B5B2DF7"
+    },
+    {
+      "ref": "governance/decisions/records/D-008.decision.json",
+      "content_hash": "21A901EC0FEDC9FA61FC2478C920C647AE45D07CE4A6C852504E5E1A74DF60D9",
+      "sha256": "1CA42E3275F201CC8E1C2C28A0CB9C0AD9679DCD0F29C6F8B1475D31FD09F885"
+    }
+  ],
+  "research_question": {
+    "ref": "governance/research-question.json",
+    "content_hash": "E73DB0BF9155A9C4A0F1A369D97DE318BD58D37EDC9002ABBE9354F6377FD88E",
+    "sha256": "40DA07758983160EB091B07FB9C9A88A0D3FE65FC3043AE8651D2BC51E066887"
+  },
+  "workflow": {
+    "ref": "governance/workflow.json",
+    "workflow_version": "0.1.0",
+    "content_hash": "5561765903A73B652D0BD4A58CBA2C1DFEE7AF28253603B8AFE289D5EB9E2A25",
+    "sha256": "4E23C70E63382B6404A5B587972606062CD981106B8DD8FAD38DB6B052869F11"
+  },
+  "fixture_scope": {
+    "policy": "CURATED_READ_ONLY_SNAPSHOT_WITH_SHA256",
+    "approved_whitelist_ref": "governance/decisions/source/D-005.fixture-whitelist.accepted.md",
+    "approved_whitelist_sha256": "7AF9B45A4D88D9B2DF601D3EE07B81105E8B5EC5B5804C54CB74BA8349D0E58E",
+    "logical_file_count": 171,
+    "logical_total_bytes": 9725849,
+    "s04_0808": {
+      "role": "AUTHORITATIVE_COMPLETE_SOURCE_PACKAGE",
+      "member_count": 90,
+      "total_bytes": 3818486,
+      "manifest_sha256": "19EF1540033584ECA4BA4964B4412FA4A30B370250EFA579451836BDE1309569",
+      "tree_hash": "A45E77758CA59D98A7FB333326F5463177AD62944376A95C4880230595E6C032"
+    },
+    "s04_0814": {
+      "role": "DERIVED_RUNTIME_FIXTURE_PROJECTION",
+      "member_count": 43,
+      "total_bytes": 1284797,
+      "tree_hash": "E577951858466B40CC001627EF27185267D9ED63E249F6EF78B500723D9C47DC"
+    },
+    "runtime_default": "S04_0814_ONLY",
+    "source_library_access": "READ_ONLY"
+  },
+  "authorization": {
+    "project_implementation": "TASK_CARD_ONLY",
+    "formal_data_execution": "NOT_AUTHORIZED",
+    "public_or_competition_release": "NOT_AUTHORIZED"
+  },
+  "next_task": "tasks/TASK-001.md"
+}

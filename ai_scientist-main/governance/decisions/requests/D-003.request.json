@@ -1,0 +1,40 @@
+{
+  "request_id": "D-003",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "97C5F22E3BC742DC614F408B4239723D689BE8669DF1186A4DB4B0E938A5EB5F",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/MVP_CONTRACT_DECISIONS.request.md",
+    "document_sha256": "C226AB3B85063AA19EC0000B261342D5907B528C985FDD941C8E8BBAEBA25FBD"
+  },
+  "gate_id": "GOV_MVP_FIXTURE_STRATEGY",
+  "prompt": "Fixture 如何进入新项目？",
+  "context_artifact_refs": [],
+  "context_finding_refs": [],
+  "context_stage_attempt_keys": [],
+  "options": [
+    {
+      "option_id": "A",
+      "label": "精选只读快照和 SHA256",
+      "description": "将最小必要历史文件复制到 fixtures/shrgt45，并记录逻辑 ID、原始路径、版本、字节数、SHA256、用途边界和缺口。",
+      "consequences": "Replay 可移植、可复现且可断网测试；精确文件白名单仍需第二轮审阅。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "B",
+      "label": "只引用 D 盘原路径",
+      "description": "运行时直接读取 D:\\桌面\\揭榜-移交版。",
+      "consequences": "启动较快，但目录改名、文件更新或换机器会破坏重放和运行身份。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    }
+  ],
+  "recommended_option_id": "A",
+  "recommendation_reason": "内容寻址的精选快照是断网重放、换机器复现和 Fixture 变更检测的基础。",
+  "risk_summary": "确认策略不等于批准任意文件复制；精确白名单和大文件边界仍需单独确认。",
+  "impact_summary": "决定 Replay 的可移植性、来源审计方式和数据锁实现。",
+  "allowed_scope": "MVP_BASELINE/D-003",
+  "allowed_actor_roles": [
+    "project_owner"
+  ],
+  "requested_at": "2026-08-19T19:54:16+08:00"
+}

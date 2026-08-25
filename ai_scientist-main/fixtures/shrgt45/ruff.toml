@@ -1,0 +1,3 @@
+# Fixtures are inert historical source bytes (D-005), not project code.
+# Never lint, format or import them.
+extend-exclude = ["**"]

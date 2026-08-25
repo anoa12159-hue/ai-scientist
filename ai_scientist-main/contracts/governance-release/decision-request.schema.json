@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/governance-release/decision-request.schema.json",
+  "title": "DecisionRequest",
+  "description": "An auditable choice request created before a human decision, with exact context. Frozen semantics: CONTRACTS.md 6.1.",
+  "type": "object",
+  "properties": {
+    "request_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "decision_context": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/decision_context" },
+    "governance_context_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "gate_id": { "type": "string" },
+    "prompt": { "type": "string" },
+    "context_artifact_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" }
+    },
+    "context_finding_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "context_stage_attempt_keys": { "type": "array", "items": { "type": "object" } },
+    "options": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/governance-release/decision-option.schema.json" }
+    },
+    "recommended_option_id": { "type": "string" },
+    "recommendation_reason": { "type": "string" },
+    "risk_summary": { "type": "string" },
+    "impact_summary": { "type": "string" },
+    "allowed_scope": { "type": "string" },
+    "allowed_actor_roles": { "type": "array", "items": { "type": "string" } },
+    "requested_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" },
+    "expires_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "decision_context": { "const": "PROJECT_GOVERNANCE" } } },
+      "then": { "required": ["governance_context_ref"] }
+    },
+    {
+      "if": { "properties": { "decision_context": { "const": "RUN_GATE" } } },
+      "then": { "required": ["gate_id"] }
+    }
+  ],
+  "required": [
+    "request_id", "schema_version", "content_hash", "decision_context",
+    "options", "allowed_scope", "allowed_actor_roles", "requested_at"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/domain-query/magnetogram-qa-snapshot.schema.json",
+  "title": "MagnetogramQASnapshot",
+  "description": "Magnetogram QA summary: file/frame/provenance checks plus a QA verdict. QA PASS is never evidence of mechanism or prediction. Frozen semantics: CONTRACTS.md 4.3.",
+  "type": "object",
+  "properties": {
+    "snapshot_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "file_checks": { "type": "array", "items": { "type": "string" } },
+    "frame_checks": { "type": "array", "items": { "type": "string" } },
+    "provenance_checks": { "type": "array", "items": { "type": "string" } },
+    "qa_verdict": { "type": "string" },
+    "qa_scope_note": { "type": "string" }
+  },
+  "required": [
+    "snapshot_id", "schema_version", "content_hash",
+    "file_checks", "frame_checks", "provenance_checks", "qa_verdict", "qa_scope_note"
+  ],
+  "additionalProperties": false
+}

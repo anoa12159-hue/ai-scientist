@@ -1,0 +1,5 @@
+﻿queue,sample_state,n,value_name,unit,min,median,max,mean,note
+FINAL_ANALYSIS,NEGATIVE_CANDIDATE,18,SHRGT45_slope_3h_percent_per_hr,percentage points per hour,-0.597147,-0.154577,0.883588,-0.108785,最终分析样本；记录按 AR 聚集，不能按行数视作独立样本。
+FINAL_ANALYSIS,POSITIVE_CANDIDATE,37,SHRGT45_slope_3h_percent_per_hr,percentage points per hour,-0.619838,0.207560,0.669735,0.161880,最终分析样本；记录按 AR 聚集，不能按行数视作独立样本。
+FINAL_STRICT_SENSITIVITY,NEGATIVE_CANDIDATE,7,SHRGT45_slope_3h_strict_percent_per_hr,percentage points per hour,-0.183257,0.149478,0.883588,0.259515,最终分析样本；记录按 AR 聚集，不能按行数视作独立样本。
+FINAL_STRICT_SENSITIVITY,POSITIVE_CANDIDATE,8,SHRGT45_slope_3h_strict_percent_per_hr,percentage points per hour,0.078529,0.441194,0.669735,0.425905,最终分析样本；记录按 AR 聚集，不能按行数视作独立样本。

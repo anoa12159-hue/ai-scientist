@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/domain-query/counterexample-snapshot.schema.json",
+  "title": "CounterexampleSnapshot",
+  "description": "Counterexample review summary. Scientific counterexamples, data/label issues, not-evaluable items and next steps are listed separately, never merged into one verdict. Frozen semantics: CONTRACTS.md 4.3.",
+  "type": "object",
+  "properties": {
+    "snapshot_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "scientific_counterexample_candidates": { "type": "array", "items": { "type": "string" } },
+    "data_label_issues": { "type": "array", "items": { "type": "string" } },
+    "not_evaluable_items": { "type": "array", "items": { "type": "string" } },
+    "next_steps": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": [
+    "snapshot_id", "schema_version", "content_hash",
+    "scientific_counterexample_candidates", "data_label_issues",
+    "not_evaluable_items", "next_steps"
+  ],
+  "additionalProperties": false
+}

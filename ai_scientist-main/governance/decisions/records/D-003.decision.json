@@ -1,0 +1,26 @@
+{
+  "decision_id": "D-003-A-20260819",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "D68F591098F2F1242BE8ECE4D10BC68A0DA809B430A9CD0284EC8160BF469439",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/MVP_CONTRACT_DECISIONS.request.md",
+    "document_sha256": "C226AB3B85063AA19EC0000B261342D5907B528C985FDD941C8E8BBAEBA25FBD"
+  },
+  "decision_request_ref": {
+    "request_id": "D-003",
+    "content_hash": "97C5F22E3BC742DC614F408B4239723D689BE8669DF1186A4DB4B0E938A5EB5F"
+  },
+  "gate_id": "GOV_MVP_FIXTURE_STRATEGY",
+  "action": "APPROVE",
+  "decision_mode": "HUMAN_SELECTED",
+  "selected_option_id": "A",
+  "actor_id": "project_owner_01",
+  "actor_role": "project_owner",
+  "reason": "项目所有者明确选择方案 A，未提供与本决定相关的额外理由。",
+  "scope": "MVP_BASELINE/D-003",
+  "bound_artifact_refs": [],
+  "bound_finding_refs": [],
+  "bound_stage_attempt_keys": [],
+  "created_at": "2026-08-19T20:42:38+08:00"
+}

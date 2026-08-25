@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/domain-query/research-summary.schema.json",
+  "title": "ResearchSummary",
+  "description": "Developmental system-execution summary. scientific_verdict, result_maturity, authorization_status and release_scope are orthogonal states carried separately; MVP holds NOT_EVALUATED / DEVELOPMENTAL / NOT_AUTHORIZED / NOT_READY. Frozen semantics: CONTRACTS.md 4.3 / 7.",
+  "type": "object",
+  "properties": {
+    "summary_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "execution_result": { "type": "string" },
+    "validation_status": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/validation_status" },
+    "lineage_status": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/lineage_status" },
+    "scientific_verdict": { "const": "NOT_EVALUATED" },
+    "result_maturity": { "const": "DEVELOPMENTAL" },
+    "authorization_status": { "const": "NOT_AUTHORIZED" },
+    "release_scope": { "const": "NOT_READY" },
+    "finding_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    }
+  },
+  "required": [
+    "summary_id", "schema_version", "content_hash", "execution_result",
+    "scientific_verdict", "result_maturity", "authorization_status", "release_scope"
+  ],
+  "additionalProperties": false
+}

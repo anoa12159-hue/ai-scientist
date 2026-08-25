@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/foundation/source-package-ref.schema.json",
+  "title": "SourcePackageRef",
+  "description": "Immutable package-level reference (S04 0808 authoritative source package / 0814 derived runtime projection). tree_hash is an import audit identity, not an author signature. Frozen semantics: CONTRACTS.md 3.3.",
+  "type": "object",
+  "properties": {
+    "package_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "package_role": { "type": "string" },
+    "origin_path": { "type": "string" },
+    "repository_relative_root": { "type": "string" },
+    "member_asset_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "member_count": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/non_negative_integer" },
+    "total_bytes": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/non_negative_integer" },
+    "tree_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/sha256" },
+    "tree_hash_algorithm": { "type": "string" },
+    "identity_authority": { "type": "string" },
+    "authored_package_seal_status": { "type": "string" },
+    "lineage_edges": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+    },
+    "runtime_usage_boundary": { "type": "string" }
+  },
+  "required": [
+    "package_id", "schema_version", "content_hash", "package_role",
+    "origin_path", "repository_relative_root", "member_asset_refs",
+    "member_count", "total_bytes", "tree_hash", "tree_hash_algorithm",
+    "identity_authority", "authored_package_seal_status", "lineage_edges",
+    "runtime_usage_boundary"
+  ],
+  "additionalProperties": false
+}

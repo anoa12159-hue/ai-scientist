@@ -1,0 +1,58 @@
+{
+  "request_id": "D-007",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "4F85DCF2618626181D881D3B04CB8BEBC4D8DB530BB3BD0E4643770E08A98748",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/D-007.request.md",
+    "document_sha256": "6943EE081ECE93A789EC2BF96CD3C98BA91C284E3DC3B96346935FB62B9E6645"
+  },
+  "context_artifact_refs": [
+    {
+      "ref": "decisions/records/D-002.decision.json",
+      "content_hash": "53C3BC96C26C40BF5892D7F0058C02E26204AE45818112E2817286A1D5070712"
+    },
+    {
+      "ref": "decisions/records/D-006.decision.json",
+      "content_hash": "1695AD389B7BCD7776A4F5BF6176A52ABC86BD885A5E2EC1E8E4AFCB277D42C5"
+    },
+    {
+      "ref": "CONTRACTS_DRAFT.md",
+      "sha256": "C09B960E65BC0CBE622CDFC18959A1B05FB670AE59401ED893C20B2C9D647ED2"
+    }
+  ],
+  "prompt": "两个 Replay 人工闸门应放在 LangGraph 的什么位置，并允许哪些动作？",
+  "options": [
+    {
+      "option_id": "A",
+      "label": "S01-S06 后与 S07 前，S07 后演示前",
+      "description": "FIXTURE_IMPORT_REVIEW 在 S01-S06 两条分支完成并生成实际 Artifact/Finding 后、S07 报告生成前；FINAL_REPLAY_REVIEW 在不可变 ReportManifest 生成后、内部演示发布前。",
+      "consequences": "第一闸门能绑定完整实际接缝证据并决定是否放行 S07；第二闸门只批准内部开发演示，不改变科学状态或授权。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "B",
+      "label": "S01 前导入闸门",
+      "description": "所有 Fixture 扫描后、S01 之前进行 FIXTURE_IMPORT_REVIEW，S07 之后进行 FINAL_REPLAY_REVIEW。",
+      "consequences": "早期阻止坏输入，但第一闸门通常没有 S02-S06 实际 Artifact/Finding，无法完整满足精确绑定契约。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "C",
+      "label": "S04 后分支前闸门",
+      "description": "FIXTURE_IMPORT_REVIEW 在 S04 后、S05/S06 并列分支前；FINAL_REPLAY_REVIEW 在 S07 后、内部演示前。",
+      "consequences": "能早审主数据，但第一闸门遗漏 S05/S06 自身接缝，需要额外路由才能阻止未审查分支进入最终报告。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    }
+  ],
+  "recommended_option_id": "A",
+  "recommendation_reason": "A 同时满足实际 Artifact/Finding 精确绑定、S05/S06 并列、S07 汇合、不可变报告审核和内部演示权限边界，避免把静态白名单审批误当成运行时接缝接受。",
+  "risk_summary": "第一闸门拒绝或必需错误未处理时不得生成最终 ReportManifest；第二闸门不能授权正式数据执行、公开发布或比赛发布。",
+  "impact_summary": "决定 LangGraph WAITING_HUMAN 节点位置、DecisionRequest 绑定对象、S07 是否可运行以及前端 Gate/RunReadModel 状态。",
+  "gate_id": "GOV_REPLAY_GATE_PLACEMENT",
+  "allowed_scope": "MVP_BASELINE/D-007",
+  "allowed_actor_roles": [
+    "project_owner"
+  ],
+  "requested_at": "2026-08-19T23:10:00+08:00"
+}

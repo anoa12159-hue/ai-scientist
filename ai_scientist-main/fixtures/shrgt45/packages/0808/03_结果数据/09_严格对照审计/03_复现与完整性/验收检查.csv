@@ -1,0 +1,8 @@
+﻿check,expected,observed,status
+AR_count,6,6,PASS
+all_candidate_selection_outcome_blind,catalog+strict data gates only,no SHRGT45/USFLUX/MEANALP/model metric in selection,PASS
+all_grid_catalog_guard_pass,all candidate-pool rows,672/672,PASS
+AR11429_start_only_false_clean_rejected,201203050222,201203050222,PASS
+representative_count_no_more_than_one_per_AR,<=6,3,PASS
+formal_independent_control_count,0,0,PASS
+approved_main_report_retained,source report exists,f518572725c6f0c4cdf304fe30802fd740cc1f70c51e23751a6e85fda0026661,PASS

@@ -1,0 +1,293 @@
+{
+  "bundle": "SHRGT45_全信息基准版_最新Demo使用数据_20260814",
+  "source_run": "SHRGT45_全信息基准版_20260808",
+  "purpose": "Organized current Demo inputs, main-run records, final outputs, and control audit evidence.",
+  "not_included": [
+    "0806-or-earlier result versions",
+    "FITS",
+    "visualization images",
+    "reproduction scripts",
+    "archived ZIP files",
+    "provisional queues superseded by the final sample"
+  ],
+  "key_metrics": {
+    "event_seeds": 6,
+    "expected_records": 360,
+    "returned_records": 333,
+    "ar_mapping_pass": 273,
+    "history_pass": 178,
+    "position_pass": 132,
+    "final_rows": 55,
+    "positive_rows": 37,
+    "control_rows": 18,
+    "event_count": 4,
+    "ar_count": 4,
+    "control_audit_rows": 51,
+    "control_excluded": 36,
+    "control_retained": 15,
+    "replacements": 3,
+    "main_json_count": 6,
+    "strict_json_count": 6
+  },
+  "source_files": [
+    {
+      "source_path": "02_数据与规则/03_event_seed_table.csv",
+      "bundle_path": "01_核心输入与规则/01_event_seed_table.csv",
+      "layer": "核心输入",
+      "result_usage": "主运行输入",
+      "sha256": "24f9b444bb3ac4372970992d426af93660c3763a5a4410ccd7f56a60b62bf746"
+    },
+    {
+      "source_path": "02_数据与规则/04_jsoc_query_manifest.csv",
+      "bundle_path": "01_核心输入与规则/02_jsoc_query_manifest.csv",
+      "layer": "核心输入",
+      "result_usage": "主运行输入",
+      "sha256": "6793c07cb2cbf951c4729f49c27ff7d78094bb671e845493b399524948250885"
+    },
+    {
+      "source_path": "02_数据与规则/05_event_provenance_audit.csv",
+      "bundle_path": "01_核心输入与规则/03_event_provenance_audit.csv",
+      "layer": "核心输入",
+      "result_usage": "主运行输入",
+      "sha256": "59471a2f38718a9cb2e18a9f30b7cd53e6fb73c0f4c2bb643f7728164042af98"
+    },
+    {
+      "source_path": "02_数据与规则/01_数据处理规则.md",
+      "bundle_path": "01_核心输入与规则/04_数据处理规则.md",
+      "layer": "核心规则",
+      "result_usage": "主运行规则",
+      "sha256": "01c8b99b20361b4a10f63f064a510ebe155999a7751af5361cb602486a113025"
+    },
+    {
+      "source_path": "02_数据与规则/02_DataPlan.md",
+      "bundle_path": "01_核心输入与规则/05_DataPlan.md",
+      "layer": "核心规则",
+      "result_usage": "主运行规则",
+      "sha256": "dd927cbeac1e5d5a1df2291ac4565902d7e2a8295047223c91ea0cfa4d114cfe"
+    },
+    {
+      "source_path": "02_数据与规则/06_QUALITY位掩码处理规则.md",
+      "bundle_path": "01_核心输入与规则/06_QUALITY位掩码处理规则.md",
+      "layer": "核心规则",
+      "result_usage": "主运行规则",
+      "sha256": "44d99257b1ff95c7cac3c4d41064afa907685872068bc2044b88ba3f402c499c"
+    },
+    {
+      "source_path": "03_结果数据/01_all_sample_supplement.csv",
+      "bundle_path": "02_主运行记录/01_all_returned_records_with_final_status.csv",
+      "layer": "主运行记录",
+      "result_usage": "主运行输入与门控结果",
+      "sha256": "ac2e0abda1a2416d014affc4e234007156f0ff77eff042c5653ed90a3fc93be9"
+    },
+    {
+      "source_path": "03_结果数据/04_gate_counts.csv",
+      "bundle_path": "02_主运行记录/02_gate_counts.csv",
+      "layer": "主运行记录",
+      "result_usage": "主运行结果汇总",
+      "sha256": "a0828da64d83b2fc571f5e557d042479ed12e08eed4eea4f6157262a8ba6c113"
+    },
+    {
+      "source_path": "03_结果数据/07_quality_bit_policy.csv",
+      "bundle_path": "02_主运行记录/03_quality_bit_policy.csv",
+      "layer": "主运行记录",
+      "result_usage": "主运行审计",
+      "sha256": "3a6bd9629f242df8deb9e7fabdd6aab39bc16cf8c01dfc8d4e06fe9335351ab4"
+    },
+    {
+      "source_path": "03_结果数据/08_cadence_audit.csv",
+      "bundle_path": "02_主运行记录/04_cadence_audit.csv",
+      "layer": "主运行记录",
+      "result_usage": "主运行审计",
+      "sha256": "80275f7f37a2c9fe81628eab92c915247f38f06e2e94aa31cfb6e7054d3cd9d7"
+    },
+    {
+      "source_path": "03_结果数据/10_final_analysis_sample.csv",
+      "bundle_path": "03_最终Demo结果/01_final_analysis_sample.csv",
+      "layer": "最终结果",
+      "result_usage": "直接进入 Demo 结果",
+      "sha256": "f979bd0662eb59a2d145dc834d878cea654a9e0e77ad31ba1045fdfbff7efce7"
+    },
+    {
+      "source_path": "03_结果数据/05_continuous_distribution.csv",
+      "bundle_path": "03_最终Demo结果/02_continuous_distribution.csv",
+      "layer": "最终结果",
+      "result_usage": "直接进入 Demo 结果",
+      "sha256": "4a7e82ace80ed52c89dc6f1dc072886dc0a6bc509a33464fe17d129db6d8c73e"
+    },
+    {
+      "source_path": "03_结果数据/06_usflux_context_correlation.csv",
+      "bundle_path": "03_最终Demo结果/03_usflux_context_correlation.csv",
+      "layer": "最终结果",
+      "result_usage": "直接进入 Demo 结果",
+      "sha256": "bcd9f79b5878210d78b8d9d437af749782764b7d32e1f86402b9694111eaf26e"
+    },
+    {
+      "source_path": "03_结果数据/11_final_control_audit.csv",
+      "bundle_path": "04_control审计与替换依据/01_final_control_audit.csv",
+      "layer": "control 审计",
+      "result_usage": "直接支撑最终 control 身份",
+      "sha256": "6d647ba614777d6cc9a2f796c9216c90ef6e932251b1d4086d5cc16a49928ac7"
+    },
+    {
+      "source_path": "03_结果数据/12_final_control_replacements.csv",
+      "bundle_path": "04_control审计与替换依据/02_final_control_replacements.csv",
+      "layer": "control 审计",
+      "result_usage": "直接支撑最终 control 身份",
+      "sha256": "2fcd917cebb423e7e4b6a7ba0337e1ac8f691555135b5033a93fc3bc4a205fad"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/02_official_Mplus_event_catalog_NCEI_v1-0-1_subset.csv",
+      "bundle_path": "04_control审计与替换依据/03_official_Mplus_event_catalog_NCEI_subset.csv",
+      "layer": "control 审计输入",
+      "result_usage": "审计支撑",
+      "sha256": "a6f60944f895c603803efbef06a572d9c7a5ca165920ae6edc9ebd0a32dbdcb1"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/NCEI目录来源说明.csv",
+      "bundle_path": "04_control审计与替换依据/04_NCEI目录来源说明.csv",
+      "layer": "control 审计输入",
+      "result_usage": "审计支撑",
+      "sha256": "e383a2848c6f4e6ca631f16a7ef1a6f484f762351ced9aba9267f6889b4aa611"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/AR11429候选更正审计.csv",
+      "bundle_path": "04_control审计与替换依据/05_AR11429候选更正审计.csv",
+      "layer": "control 审计输入",
+      "result_usage": "审计支撑",
+      "sha256": "41688eacd484c9dc436d3fa2f9a82f495b7760f1755103f37c7f9c3a2b419a7c"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/严格数据门汇总.csv",
+      "bundle_path": "04_control审计与替换依据/06_严格数据门汇总.csv",
+      "layer": "替换依据",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "d6e4ae9d1ca01876e72d61366c70065397989ccbca3b0d590de9ca6cf52cb7b1"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/候选T0与NCEI区间审计.csv",
+      "bundle_path": "04_control审计与替换依据/07_候选T0与NCEI区间审计.csv",
+      "layer": "替换依据",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "30ed2b05dc881252f92a8d473ca37a0e32c543bdd1b3ebacb0868d23f868e8f6"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/候选时间块选择审计.csv",
+      "bundle_path": "04_control审计与替换依据/08_候选时间块选择审计.csv",
+      "layer": "替换依据",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "d81bec174dcaa0583a50fc433109ce7f0798f92db60d99046b8caf66d2776133"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/活动区最终选择摘要.csv",
+      "bundle_path": "04_control审计与替换依据/09_活动区最终选择摘要.csv",
+      "layer": "替换依据",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "1e0aa45695f8fa03fcf1b7c97a1a84186cd7d79806d9cecd6644ec303d35150d"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/全量目录清洁候选门控.csv",
+      "bundle_path": "04_control审计与替换依据/10_全量目录清洁候选门控.csv",
+      "layer": "替换依据",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "44a6ed47bde565b46f054f3a8b065a90585f996eba96bc89751b79254e17e8ce"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/逐帧关键词核验.csv",
+      "bundle_path": "04_control审计与替换依据/11_逐帧关键词核验.csv",
+      "layer": "替换依据",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "49a800d2159632773b1d10fd37fa6b6cc8dd8c25a3ebfaa291193ab98a3d7411"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/JSOC重取清单.csv",
+      "bundle_path": "04_control审计与替换依据/12_JSOC重取清单.csv",
+      "layer": "替换依据",
+      "result_usage": "审计支撑",
+      "sha256": "a6d72b0521f37b8a75af9b5b94ee651cf8df2c46428c1904f385f1cbff54461b"
+    },
+    {
+      "source_path": "02_数据与规则/raw_jsoc_keywords/NOAA11158_X2.2_20110215.json",
+      "bundle_path": "01_核心输入与规则/raw_jsoc_keywords/NOAA11158_X2.2_20110215.json",
+      "layer": "核心输入快照",
+      "result_usage": "主运行输入",
+      "sha256": "67c1d8854574aae4fedb3c77f9887323828206bc516b550b2104febe5883de7c"
+    },
+    {
+      "source_path": "02_数据与规则/raw_jsoc_keywords/NOAA11429_X5.4_20120307.json",
+      "bundle_path": "01_核心输入与规则/raw_jsoc_keywords/NOAA11429_X5.4_20120307.json",
+      "layer": "核心输入快照",
+      "result_usage": "主运行输入",
+      "sha256": "968e16589bec3f76369ab77e9ad51e7d2215968dfed8d02769e2e123d73be162"
+    },
+    {
+      "source_path": "02_数据与规则/raw_jsoc_keywords/NOAA11520_X1.4_20120712.json",
+      "bundle_path": "01_核心输入与规则/raw_jsoc_keywords/NOAA11520_X1.4_20120712.json",
+      "layer": "核心输入快照",
+      "result_usage": "主运行输入",
+      "sha256": "d76c788930e26beb5c50f7d2e06fdee795034637c1e0c1c0b90b83271da1dc64"
+    },
+    {
+      "source_path": "02_数据与规则/raw_jsoc_keywords/NOAA12192_X1.1_20141019.json",
+      "bundle_path": "01_核心输入与规则/raw_jsoc_keywords/NOAA12192_X1.1_20141019.json",
+      "layer": "核心输入快照",
+      "result_usage": "主运行输入",
+      "sha256": "8f176b2b3b5a2a718aed2c2d309c665bd24149680879550db2d7f864b76ebb61"
+    },
+    {
+      "source_path": "02_数据与规则/raw_jsoc_keywords/NOAA12297_X2.1_20150311.json",
+      "bundle_path": "01_核心输入与规则/raw_jsoc_keywords/NOAA12297_X2.1_20150311.json",
+      "layer": "核心输入快照",
+      "result_usage": "主运行输入",
+      "sha256": "5ad909bf77236e29db624b4f3509e5f1ec318e530e531c87385ab0d46c877164"
+    },
+    {
+      "source_path": "02_数据与规则/raw_jsoc_keywords/NOAA12673_X9.3_20170906.json",
+      "bundle_path": "01_核心输入与规则/raw_jsoc_keywords/NOAA12673_X9.3_20170906.json",
+      "layer": "核心输入快照",
+      "result_usage": "主运行输入",
+      "sha256": "f8a61b8ad6be009004cc10bfe120994770aa41fa49ee02b0311f5336643136e5"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA11158_X2.2_20110215_preflare_80h_scan.json",
+      "bundle_path": "04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA11158_X2.2_20110215_preflare_80h_scan.json",
+      "layer": "替换依据快照",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "c9fbf59604bd5af841b801c0141c007a9ba7179ceccfb9f502d39bc865db2d30"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA11429_X5.4_20120307_preflare_80h_scan.json",
+      "bundle_path": "04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA11429_X5.4_20120307_preflare_80h_scan.json",
+      "layer": "替换依据快照",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "2aa67e6b0d0da62f6fba7e6c5456e29ffa78b348ed26a97a52ecf03e834898ab"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA11520_X1.4_20120712_preflare_80h_scan.json",
+      "bundle_path": "04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA11520_X1.4_20120712_preflare_80h_scan.json",
+      "layer": "替换依据快照",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "30bf8d6caf536f436f9c05e7707e5ba858b85f077aa215f05c3887ed8f33c881"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA12192_X1.1_20141019_preflare_80h_scan.json",
+      "bundle_path": "04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA12192_X1.1_20141019_preflare_80h_scan.json",
+      "layer": "替换依据快照",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "4255777d3a8ec7dcc24e8b16c0ed1294906e0e3658e41da09203ac26a6509129"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA12297_X2.1_20150311_preflare_80h_scan.json",
+      "bundle_path": "04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA12297_X2.1_20150311_preflare_80h_scan.json",
+      "layer": "替换依据快照",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "8c060ea2d5bec8f37738b50523205cbaa189f6f7439a54a69f2f0d18bfb24949"
+    },
+    {
+      "source_path": "03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA12673_X9.3_20170906_preflare_80h_scan.json",
+      "bundle_path": "04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA12673_X9.3_20170906_preflare_80h_scan.json",
+      "layer": "替换依据快照",
+      "result_usage": "仅支撑 3 条替换记录",
+      "sha256": "a2df52df6d0a1364caa7ead1ee19d07b861fffc762e8ff9645035151de5f8405"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/foundation/research-question.schema.json",
+  "title": "ResearchQuestionSnapshot",
+  "description": "Immutable research-question version. A StudyRun binds a specific snapshot, never a mutable latest. Frozen semantics: CONTRACTS.md 2.2.",
+  "type": "object",
+  "properties": {
+    "question_id": { "type": "string" },
+    "question_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "parameter": { "type": "string" },
+    "scientific_question": { "type": "string" },
+    "history_window": {
+      "type": "object",
+      "properties": {
+        "start_offset": { "const": "-PT3H" },
+        "end_offset": { "const": "PT0H" },
+        "boundary": { "const": "CLOSED_CLOSED" }
+      },
+      "required": ["start_offset", "end_offset", "boundary"],
+      "additionalProperties": false
+    },
+    "target_event": { "type": "string" },
+    "event_anchor": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/event_anchor" },
+    "grading_variable": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/grading_variable" },
+    "lead_window": {
+      "type": "object",
+      "properties": {
+        "start_offset": { "const": "PT3H" },
+        "end_offset": { "const": "PT6H" },
+        "boundary": { "const": "CLOSED_OPEN" }
+      },
+      "required": ["start_offset", "end_offset", "boundary"],
+      "additionalProperties": false
+    },
+    "same_unit_requirement": { "const": "SAME_ANALYSIS_UNIT_REQUIRED" },
+    "claim_ceiling": {
+      "type": "object",
+      "properties": {
+        "allowed_interpretation": { "type": "string" },
+        "forbidden_claims": { "type": "array", "items": { "type": "string" } },
+        "source_refs": {
+          "type": "array",
+          "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" }
+        }
+      },
+      "required": ["allowed_interpretation", "forbidden_claims", "source_refs"],
+      "additionalProperties": false
+    },
+    "supersedes_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" }
+  },
+  "required": [
+    "question_id", "question_version", "schema_version", "parameter",
+    "scientific_question", "history_window", "target_event", "event_anchor",
+    "grading_variable", "lead_window", "same_unit_requirement", "claim_ceiling",
+    "content_hash"
+  ],
+  "additionalProperties": false
+}

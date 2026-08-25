@@ -1,0 +1,10 @@
+# Byte-integrity policy (TASK-001-CLOSEOUT).
+#
+# The frozen baseline is SHA-256 locked on raw file bytes, and future
+# fixtures are byte-addressed imports. Git must therefore never convert
+# line endings or encodings on checkout, on any platform: what is stored
+# is exactly what gets checked out and hashed.
+#
+# New text files are authored as LF (see .editorconfig), enforced by the
+# T001 smoke guardrail which rejects CRLF in project files.
+* -text

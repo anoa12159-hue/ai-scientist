@@ -1,0 +1,7 @@
+﻿chart_id,title,source,denominator,interpretation_note
+01_gate_funnel_bar,逐级门控柱状图,03_结果数据/04_gate_counts.csv,理论 360 条,各阶段为处理链计数，记录按事件和 AR 结构解读
+02_sample_state_donut,最终分析样本组成环图,03_结果数据/10_final_analysis_sample.csv,互斥合计 55 条,最终正候选与最终 control 的组成
+03_event_returned_vs_expected_bar,事件理论/实返对比柱状图,03_结果数据/08_cadence_audit.csv,6 个事件；360/333 条,显示缺帧和事件间数据可得性差异
+04_shrgt45_timeline_by_event,各事件时间趋势折线图,03_结果数据/01_all_sample_supplement.csv,333 条实际记录,使用真实时间；间隔超过 24 分钟处断线
+05_ols_slope_distribution,最终样本 OLS 斜率箱线/散点图,03_结果数据/10_final_analysis_sample.csv,55 条最终分析记录,最终 control 已通过完整 M+ 未来六小时筛查；记录按 AR 聚集
+06_usflux_vs_shrgt45_scatter,USFLUX 与 SHRGT45 上下文散点图,03_结果数据/10_final_analysis_sample.csv / 03_结果数据/06_usflux_context_correlation.csv,55 条最终分析记录；原始 USFLUX pooled r,横轴为 log10(USFLUX)；图中标注原始和对数横轴相关口径

@@ -1,0 +1,1604 @@
+{
+  "case_id": "SHRGT45-REPLAY-001",
+  "manifest_version": "0.1.0",
+  "schema_version": "0.1.0",
+  "mode": "REPLAY",
+  "research_question_ref": {
+    "id": "RQ-SHRGT45-001",
+    "schema_version": "0.1.0",
+    "content_hash": "E73DB0BF9155A9C4A0F1A369D97DE318BD58D37EDC9002ABBE9354F6377FD88E"
+  },
+  "workflow_version": "0.1.0",
+  "stage_asset_refs": {
+    "S01_CANDIDATE": [
+      {
+        "id": "s01.current-research-constraints",
+        "schema_version": "0.1.0",
+        "content_hash": "AFB549655D666FDA2CF47998FAF02D873FD951B72B6EFDD99533C09DBB4B9A9F"
+      },
+      {
+        "id": "s01.parameter-ranking-current-state",
+        "schema_version": "0.1.0",
+        "content_hash": "FCB55487F63813E05FE9B1C946524B9D88585BB65CF84DD346BE44C61900733B"
+      }
+    ],
+    "S02_MECHANISM": [
+      {
+        "id": "s02.mechanism-brief-v2_3",
+        "schema_version": "0.1.0",
+        "content_hash": "6068139E85EA18B12561D2A91B1F5480317AE10131583776ADEA82AB580CBCD7"
+      },
+      {
+        "id": "s02.mechanism-brief-v2_2-historical",
+        "schema_version": "0.1.0",
+        "content_hash": "A07A7D71A1F33329447119528E1F204E6B328516AB00F1EB696C9A1D3B87F493"
+      },
+      {
+        "id": "s02.agent-run-phase2-20260814",
+        "schema_version": "0.1.0",
+        "content_hash": "FAD21066578913C25BB7649B0044773E21C1898FFABE987300F7FDDFEDEF6E25"
+      },
+      {
+        "id": "s02.mechanism-human-summary",
+        "schema_version": "0.1.0",
+        "content_hash": "7C441CA33616317FF7F418277A73DA954E27461116042411781E9E485C740E26"
+      }
+    ],
+    "S03_HYPOTHESIS": [
+      {
+        "id": "s03.hypothesis-baseline",
+        "schema_version": "0.1.0",
+        "content_hash": "EB0BDB3F537360EB6CFAC969519BE1D702F0B63A7356C8671F13365931E7D969"
+      },
+      {
+        "id": "s03.trend-method-theil-sen",
+        "schema_version": "0.1.0",
+        "content_hash": "1AF17CE5450DA119118FA8A872D9280E89B1FCC63FF2CD7AA84C3B6EAB7A36AE"
+      },
+      {
+        "id": "s03.hamed-rao-spec",
+        "schema_version": "0.1.0",
+        "content_hash": "BDC20761E3D67B7EDE460A70EF52D41A04629572A849EBFCE615E4E2E4F758DC"
+      },
+      {
+        "id": "s03.hamed-rao-calibration-report",
+        "schema_version": "0.1.0",
+        "content_hash": "95408712C2D706C587B9D9FD5F55500FF9F2718FC5CE1B735676EE52877E25C4"
+      },
+      {
+        "id": "s03.hamed-rao-calibration-summary",
+        "schema_version": "0.1.0",
+        "content_hash": "CD07551257F3A948254E60D956213F3844A3FF705BA192F81D87F28E19CBFF75"
+      },
+      {
+        "id": "s03.hamed-rao-run-metadata",
+        "schema_version": "0.1.0",
+        "content_hash": "4504C415E4BCC89850E555065AE9BB23502BC53F431DBA756288F14B23B83D5D"
+      }
+    ],
+    "S04_DATA_AND_VERIFICATION": [
+      {
+        "id": "s04.demo0814::00_阅读说明/README.md",
+        "schema_version": "0.1.0",
+        "content_hash": "F6CF07F25AC0B638F3C85EBFFF3406E1A500AB548EC8011DCD48BBA1C9993365"
+      },
+      {
+        "id": "s04.demo0814::00_阅读说明/数据使用清单.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "E4B90363E2B077CAA8E01BED579B892F747ADAD597F4304E0883232CD7AC5ADB"
+      },
+      {
+        "id": "s04.demo0814::00_阅读说明/数据文件关系图.svg",
+        "schema_version": "0.1.0",
+        "content_hash": "9D2CDF53B13E12CA0592DB1613041798967E00D6D4EEEA6A4D033485FA504B36"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/01_event_seed_table.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "621EBDB7C980127E7B1EB18C7FA6DF2EF57E32131081711D507BA93FF188A264"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/02_jsoc_query_manifest.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "CA03A7C677670CA8C5BB2C89D7902B0A1DFF5DF78B56F1131FAF44C4F50DFCC2"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/03_event_provenance_audit.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "EA83BFC9B4F8ABAB4AF4A1CA5A359197DDB165C4865A708C044FBA694E77FF08"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/04_数据处理规则.md",
+        "schema_version": "0.1.0",
+        "content_hash": "4482A592019EAA6714E1C217D11907015DE0200A189E3D77B0E1351386260015"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/05_DataPlan.md",
+        "schema_version": "0.1.0",
+        "content_hash": "1E8D0B28C4F94D4C0E8E64CCF453288D19AF3234D5D4EADB2D47E0157EF2D618"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/06_QUALITY位掩码处理规则.md",
+        "schema_version": "0.1.0",
+        "content_hash": "D28B15E199BF7CDF1FBF688124D7703A0C2A2C1BF0BB51CE616050CD82FC45E1"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA11158_X2.2_20110215.json",
+        "schema_version": "0.1.0",
+        "content_hash": "3DEA4F774F76B33644FC52D3A07B83D38974782419AE6D9679F144DB4FF984A2"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA11429_X5.4_20120307.json",
+        "schema_version": "0.1.0",
+        "content_hash": "652298E8F20B9450FCC4FDAB94DC427E15A46C2BFF3D2B235C8DF42DBE38D5AD"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA11520_X1.4_20120712.json",
+        "schema_version": "0.1.0",
+        "content_hash": "A9A9A4C3D34A6410F834ED708EA6EFB88E9EB695A8D8DD3FCDB46739EE2A0AEA"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA12192_X1.1_20141019.json",
+        "schema_version": "0.1.0",
+        "content_hash": "E829E46791053084F77CF73ED1B169D2AB3324BA13B097E59121AFD7622D5735"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA12297_X2.1_20150311.json",
+        "schema_version": "0.1.0",
+        "content_hash": "A5F9236711EE717DF966CE4ED13971AC41DB193232631B840E6A8E96C73C6864"
+      },
+      {
+        "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA12673_X9.3_20170906.json",
+        "schema_version": "0.1.0",
+        "content_hash": "59CA283310078B9DD03273466770B6476DDEC0772438606B648EF1C667DC5128"
+      },
+      {
+        "id": "s04.demo0814::02_主运行记录/01_all_returned_records_with_final_status.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "7568E5385A9CA12932DE68DC7D263D405EF0BCDB2E311A932E349E06537CD200"
+      },
+      {
+        "id": "s04.demo0814::02_主运行记录/02_gate_counts.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "6AC53E5E542177A9F80F9BA853C34E87CEF3F9E7730CE5ECCA669FA9A6F93DC5"
+      },
+      {
+        "id": "s04.demo0814::02_主运行记录/03_quality_bit_policy.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "AA1726A6B89E5C427737EE023F66E58337A0EE09247831EBBFBBC6E8000B1D08"
+      },
+      {
+        "id": "s04.demo0814::02_主运行记录/04_cadence_audit.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "D01D0C595FE8C514069CC8FF5B921D5F1D675293BA469A9931EE576A21A5589E"
+      },
+      {
+        "id": "s04.demo0814::03_最终Demo结果/01_final_analysis_sample.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "8CFE35504EF599191FA85776984025FE679D20801A72678E64DB512B26AFFB4C"
+      },
+      {
+        "id": "s04.demo0814::03_最终Demo结果/02_continuous_distribution.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "2F297781621413E6F483CD3DEF3D2B5C1E7CD7281070415C77791EFC1C8B897D"
+      },
+      {
+        "id": "s04.demo0814::03_最终Demo结果/03_usflux_context_correlation.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "FCC712F45900D90F7C6867D6DA97E7258341628990E544142CD1B4C75013830A"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/01_final_control_audit.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "1510986BDE12BD84C46A130BA85CDCE1F4D847815C712C280C64BE9EF038E238"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/02_final_control_replacements.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "C754A147678621F7173B3A5AFBF3D18F1A2173F7114A96FBB237D5216D4CD10E"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/03_official_Mplus_event_catalog_NCEI_subset.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "58403AA32F014AC9A9341E7D52F46DA8DB1F03ED54BDEAB2DC4592E6B8906531"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/04_NCEI目录来源说明.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "A58CA5C5D7431738DCBF1A7484EBB5D72BAACD30567A9D2FA8296430E2B69526"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/05_AR11429候选更正审计.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "683766337CF3EB604F3BDDDD9DAC67071024E90F4966443435223F9D045F8F62"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/06_严格数据门汇总.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "F92D11B60192C73F0C10B364EF6A840E34D713FC5E66164B30C95550EA1D3260"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/07_候选T0与NCEI区间审计.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "92FAF0C36D0F2FFF2F9CF6E9B398DCCFC091B089CF7F1092193E6B52928A6FBB"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/08_候选时间块选择审计.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "16E7E5F727479E25A58388012AF4570310B014FBE4221F4BD70620D90C86A41B"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/09_活动区最终选择摘要.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "FC747CCDED8EDDF99105D6FB0AB2C2A7B52BC38960BB55ACD61C9D9DD7A82E13"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/10_全量目录清洁候选门控.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "6C4F796021FC22DCC05090A1164AAFE05B55C9CD30BEE306A072773DFD6C3695"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/11_逐帧关键词核验.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "1719E5371B7569CCD036141B27BD4C726335C7B07DDC9486449DD7A1CD50B8FE"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/12_JSOC重取清单.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "983D6F4FB8C5F3ED2257ED379562B095EDCB1E5C93D64B42C3BB082CF5158093"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA11158_X2.2_20110215_preflare_80h_scan.json",
+        "schema_version": "0.1.0",
+        "content_hash": "2DB2B13CB07A33375A4FA9B07A878730004447F681F1F6C3D99472550C5D910E"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA11429_X5.4_20120307_preflare_80h_scan.json",
+        "schema_version": "0.1.0",
+        "content_hash": "39DACCEA20D597698C8E1C520B021C2B4FADC99E1935AD38C5992A81D1B59B2A"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA11520_X1.4_20120712_preflare_80h_scan.json",
+        "schema_version": "0.1.0",
+        "content_hash": "F53CE2DF8F846201F740E521ABF203B2E5901CA9E6519CCD9964C63A1A27C512"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA12192_X1.1_20141019_preflare_80h_scan.json",
+        "schema_version": "0.1.0",
+        "content_hash": "FE65CC1442E79E0450FA81A356CA69D926214717E87486E13226BA00127074D2"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA12297_X2.1_20150311_preflare_80h_scan.json",
+        "schema_version": "0.1.0",
+        "content_hash": "99408E10391FAF922DFD3B86B38F4AC224A6996FD54FE5C4B2A21055862EE160"
+      },
+      {
+        "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA12673_X9.3_20170906_preflare_80h_scan.json",
+        "schema_version": "0.1.0",
+        "content_hash": "5581133181FFC9038EE86A138F5E18A2B0930B3212292D2016AD5365AE794A9D"
+      },
+      {
+        "id": "s04.demo0814::05_完整性/acceptance_check.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "A09EC57C0E0BD370C35749106D6562351AF1F4EC92F202BF76ED0651BD424F5D"
+      },
+      {
+        "id": "s04.demo0814::05_完整性/file_sha256_manifest.csv",
+        "schema_version": "0.1.0",
+        "content_hash": "5E2D2167D0D6AC865333CFA8746D5622257EB2ABA24E224509445D523EA0E28E"
+      },
+      {
+        "id": "s04.demo0814::05_完整性/manifest.json",
+        "schema_version": "0.1.0",
+        "content_hash": "7BC94D2F858E5DB3D7C8EBCD4D0F86AF6D19DB3B5F6953BC7C3EFD8BB358E9DC"
+      }
+    ],
+    "S05_COUNTEREXAMPLE": [
+      {
+        "id": "s05.counterexample-report",
+        "schema_version": "0.1.0",
+        "content_hash": "EC39C074A038E6DD930CD9F4E318D6532DBF299697A5223097A74D36F45BE102"
+      },
+      {
+        "id": "s05.next-validation-plan",
+        "schema_version": "0.1.0",
+        "content_hash": "D2ED9873177DCD53D10B0733183E90FC9B1A896A4621BDBA1B7743521767FF82"
+      },
+      {
+        "id": "s05.usflux-ar-stratification",
+        "schema_version": "0.1.0",
+        "content_hash": "190A49659D8F45EEE80B263023F9FCD33E9194E2710030EF9287C042BD668E5C"
+      },
+      {
+        "id": "s05.counterexample-catalog",
+        "schema_version": "0.1.0",
+        "content_hash": "DC609208F46BEFB60291CA08FD19C1BF8D02CD30CF66E528B739487A9962562C"
+      },
+      {
+        "id": "s05.sensitivity-results",
+        "schema_version": "0.1.0",
+        "content_hash": "E6DC90DE4DFD1AA2D2A036BD63B3AF962CA934629ECE4A16A08DB058481583C4"
+      },
+      {
+        "id": "s05.acceptance-criteria",
+        "schema_version": "0.1.0",
+        "content_hash": "648969083BABE3654D15BA7C3C293CD4EA4803B1611371B938A41D979DA7F4FD"
+      }
+    ],
+    "S06_MAGNETOGRAM_QA": [
+      {
+        "id": "s06.readme",
+        "schema_version": "0.1.0",
+        "content_hash": "5A9DCF986B0C895A9A3EAE94730052D3D99D7EC355082DA840428DC7194B4EA3"
+      },
+      {
+        "id": "s06.qa-spec",
+        "schema_version": "0.1.0",
+        "content_hash": "7856EBEACD7E4603C131F0E7DECDC90D049527BDC08B09A5502825B44094467F"
+      },
+      {
+        "id": "s06.manifest",
+        "schema_version": "0.1.0",
+        "content_hash": "B583875D777B2DA2AB3B78E7B3FD917F691BDE44BA1FF60B7866C450B4A339F8"
+      },
+      {
+        "id": "s06.case-keyword-timeseries",
+        "schema_version": "0.1.0",
+        "content_hash": "578B46A7F10165DDACB68ABEB2FEF6C79DA38C7506D21EF39C941B579BEC7F19"
+      },
+      {
+        "id": "s06.delivery-sha256",
+        "schema_version": "0.1.0",
+        "content_hash": "1D8E606F65AC675B0A379DA4A418B80D5D3803DB814D1D635A2C8048387C3AA4"
+      },
+      {
+        "id": "s06.input-handoff",
+        "schema_version": "0.1.0",
+        "content_hash": "EBD66A58178FF188D89B4A07BC18F4D2E311D7DF45CFE74498DABAED1BB01A4B"
+      },
+      {
+        "id": "s06.required-case-status",
+        "schema_version": "0.1.0",
+        "content_hash": "BF6DD1BCCFE2C466597097F3D3677B1B64AD9DD332B6EB9C49F81B9DD0E4C664"
+      },
+      {
+        "id": "s06.case-label-audit",
+        "schema_version": "0.1.0",
+        "content_hash": "0FF9DB9D13CDB71598846E1442C5A647670FF3A8ECF44FFA3D675094D8B1CAC4"
+      },
+      {
+        "id": "s06.file-quality",
+        "schema_version": "0.1.0",
+        "content_hash": "F3899B9B55301A54842C01C4DE111B562856982B25446F6193D61CA56EE79F1A"
+      },
+      {
+        "id": "s06.frame-quality",
+        "schema_version": "0.1.0",
+        "content_hash": "A8FF40B5A7139E706E17EE56F2A8570CD30CC1E681AF2BCC311A1412B59ADD6C"
+      },
+      {
+        "id": "s06.display-config",
+        "schema_version": "0.1.0",
+        "content_hash": "92705581818DA4F9473C8EB07318EE65011978C517FA66CDCB002C7DF1608175"
+      },
+      {
+        "id": "s06.upstream-basis",
+        "schema_version": "0.1.0",
+        "content_hash": "1BB07C1F851EEE6F5E62F33B5F3D8F6BF757CC5A3292E65EC67248610E1D4DCC"
+      },
+      {
+        "id": "s06.upstream-jsoc-list",
+        "schema_version": "0.1.0",
+        "content_hash": "DB73C0A9210E498B0F84CA632131B1A8C3E94D3B7162F78D6C13FF3C2908E509"
+      },
+      {
+        "id": "s06.upstream-window-audit",
+        "schema_version": "0.1.0",
+        "content_hash": "433BBFA2C76D550D58838DCF8102176C584103A89620F6EB295DD3DDF6EE1A54"
+      },
+      {
+        "id": "s06.upstream-row-extract",
+        "schema_version": "0.1.0",
+        "content_hash": "67EAC90E95BD426D8DA4A6D4411F822EB180E90DBB99BF5CA08EDCD5DF5A4584"
+      },
+      {
+        "id": "s06.upstream-sample-list",
+        "schema_version": "0.1.0",
+        "content_hash": "C1B482992313BE5E6404C06D01DC88B956CDF8793AA715186FD883A820AE9283"
+      },
+      {
+        "id": "s06.portrait-panel",
+        "schema_version": "0.1.0",
+        "content_hash": "C196D11B274DBBAC016F9D0C7F8F3248F4314ADAF0D4226913D840CCA55B1DC3"
+      },
+      {
+        "id": "s06.full-context-panel",
+        "schema_version": "0.1.0",
+        "content_hash": "76FD7AA087BA9E80B9168132E03626BE05F685C34FEB781657BA9D6C3B79CD41"
+      }
+    ],
+    "S07_REPORT": [
+      {
+        "id": "s07.teacher-review-draft",
+        "schema_version": "0.1.0",
+        "content_hash": "7B49512633B78C2A0F548CADBC736A95A085B44E17A1DC5AF5AC6C366142DC6E"
+      },
+      {
+        "id": "s07.data-rule-independent-review",
+        "schema_version": "0.1.0",
+        "content_hash": "1F62131753CE6C449D9CEB7B2D7B8ADCA7D951FC45544B9834623C6FFB15883F"
+      }
+    ]
+  },
+  "included_asset_refs": [
+    {
+      "id": "s01.current-research-constraints",
+      "schema_version": "0.1.0",
+      "content_hash": "AFB549655D666FDA2CF47998FAF02D873FD951B72B6EFDD99533C09DBB4B9A9F"
+    },
+    {
+      "id": "s01.parameter-ranking-current-state",
+      "schema_version": "0.1.0",
+      "content_hash": "FCB55487F63813E05FE9B1C946524B9D88585BB65CF84DD346BE44C61900733B"
+    },
+    {
+      "id": "s02.mechanism-brief-v2_3",
+      "schema_version": "0.1.0",
+      "content_hash": "6068139E85EA18B12561D2A91B1F5480317AE10131583776ADEA82AB580CBCD7"
+    },
+    {
+      "id": "s02.mechanism-brief-v2_2-historical",
+      "schema_version": "0.1.0",
+      "content_hash": "A07A7D71A1F33329447119528E1F204E6B328516AB00F1EB696C9A1D3B87F493"
+    },
+    {
+      "id": "s02.agent-run-phase2-20260814",
+      "schema_version": "0.1.0",
+      "content_hash": "FAD21066578913C25BB7649B0044773E21C1898FFABE987300F7FDDFEDEF6E25"
+    },
+    {
+      "id": "s02.mechanism-human-summary",
+      "schema_version": "0.1.0",
+      "content_hash": "7C441CA33616317FF7F418277A73DA954E27461116042411781E9E485C740E26"
+    },
+    {
+      "id": "s03.hypothesis-baseline",
+      "schema_version": "0.1.0",
+      "content_hash": "EB0BDB3F537360EB6CFAC969519BE1D702F0B63A7356C8671F13365931E7D969"
+    },
+    {
+      "id": "s03.trend-method-theil-sen",
+      "schema_version": "0.1.0",
+      "content_hash": "1AF17CE5450DA119118FA8A872D9280E89B1FCC63FF2CD7AA84C3B6EAB7A36AE"
+    },
+    {
+      "id": "s03.hamed-rao-spec",
+      "schema_version": "0.1.0",
+      "content_hash": "BDC20761E3D67B7EDE460A70EF52D41A04629572A849EBFCE615E4E2E4F758DC"
+    },
+    {
+      "id": "s03.hamed-rao-calibration-report",
+      "schema_version": "0.1.0",
+      "content_hash": "95408712C2D706C587B9D9FD5F55500FF9F2718FC5CE1B735676EE52877E25C4"
+    },
+    {
+      "id": "s03.hamed-rao-calibration-summary",
+      "schema_version": "0.1.0",
+      "content_hash": "CD07551257F3A948254E60D956213F3844A3FF705BA192F81D87F28E19CBFF75"
+    },
+    {
+      "id": "s03.hamed-rao-run-metadata",
+      "schema_version": "0.1.0",
+      "content_hash": "4504C415E4BCC89850E555065AE9BB23502BC53F431DBA756288F14B23B83D5D"
+    },
+    {
+      "id": "s05.counterexample-report",
+      "schema_version": "0.1.0",
+      "content_hash": "EC39C074A038E6DD930CD9F4E318D6532DBF299697A5223097A74D36F45BE102"
+    },
+    {
+      "id": "s05.next-validation-plan",
+      "schema_version": "0.1.0",
+      "content_hash": "D2ED9873177DCD53D10B0733183E90FC9B1A896A4621BDBA1B7743521767FF82"
+    },
+    {
+      "id": "s05.usflux-ar-stratification",
+      "schema_version": "0.1.0",
+      "content_hash": "190A49659D8F45EEE80B263023F9FCD33E9194E2710030EF9287C042BD668E5C"
+    },
+    {
+      "id": "s05.counterexample-catalog",
+      "schema_version": "0.1.0",
+      "content_hash": "DC609208F46BEFB60291CA08FD19C1BF8D02CD30CF66E528B739487A9962562C"
+    },
+    {
+      "id": "s05.sensitivity-results",
+      "schema_version": "0.1.0",
+      "content_hash": "E6DC90DE4DFD1AA2D2A036BD63B3AF962CA934629ECE4A16A08DB058481583C4"
+    },
+    {
+      "id": "s05.acceptance-criteria",
+      "schema_version": "0.1.0",
+      "content_hash": "648969083BABE3654D15BA7C3C293CD4EA4803B1611371B938A41D979DA7F4FD"
+    },
+    {
+      "id": "s06.readme",
+      "schema_version": "0.1.0",
+      "content_hash": "5A9DCF986B0C895A9A3EAE94730052D3D99D7EC355082DA840428DC7194B4EA3"
+    },
+    {
+      "id": "s06.qa-spec",
+      "schema_version": "0.1.0",
+      "content_hash": "7856EBEACD7E4603C131F0E7DECDC90D049527BDC08B09A5502825B44094467F"
+    },
+    {
+      "id": "s06.manifest",
+      "schema_version": "0.1.0",
+      "content_hash": "B583875D777B2DA2AB3B78E7B3FD917F691BDE44BA1FF60B7866C450B4A339F8"
+    },
+    {
+      "id": "s06.case-keyword-timeseries",
+      "schema_version": "0.1.0",
+      "content_hash": "578B46A7F10165DDACB68ABEB2FEF6C79DA38C7506D21EF39C941B579BEC7F19"
+    },
+    {
+      "id": "s06.delivery-sha256",
+      "schema_version": "0.1.0",
+      "content_hash": "1D8E606F65AC675B0A379DA4A418B80D5D3803DB814D1D635A2C8048387C3AA4"
+    },
+    {
+      "id": "s06.input-handoff",
+      "schema_version": "0.1.0",
+      "content_hash": "EBD66A58178FF188D89B4A07BC18F4D2E311D7DF45CFE74498DABAED1BB01A4B"
+    },
+    {
+      "id": "s06.required-case-status",
+      "schema_version": "0.1.0",
+      "content_hash": "BF6DD1BCCFE2C466597097F3D3677B1B64AD9DD332B6EB9C49F81B9DD0E4C664"
+    },
+    {
+      "id": "s06.case-label-audit",
+      "schema_version": "0.1.0",
+      "content_hash": "0FF9DB9D13CDB71598846E1442C5A647670FF3A8ECF44FFA3D675094D8B1CAC4"
+    },
+    {
+      "id": "s06.file-quality",
+      "schema_version": "0.1.0",
+      "content_hash": "F3899B9B55301A54842C01C4DE111B562856982B25446F6193D61CA56EE79F1A"
+    },
+    {
+      "id": "s06.frame-quality",
+      "schema_version": "0.1.0",
+      "content_hash": "A8FF40B5A7139E706E17EE56F2A8570CD30CC1E681AF2BCC311A1412B59ADD6C"
+    },
+    {
+      "id": "s06.display-config",
+      "schema_version": "0.1.0",
+      "content_hash": "92705581818DA4F9473C8EB07318EE65011978C517FA66CDCB002C7DF1608175"
+    },
+    {
+      "id": "s06.upstream-basis",
+      "schema_version": "0.1.0",
+      "content_hash": "1BB07C1F851EEE6F5E62F33B5F3D8F6BF757CC5A3292E65EC67248610E1D4DCC"
+    },
+    {
+      "id": "s06.upstream-jsoc-list",
+      "schema_version": "0.1.0",
+      "content_hash": "DB73C0A9210E498B0F84CA632131B1A8C3E94D3B7162F78D6C13FF3C2908E509"
+    },
+    {
+      "id": "s06.upstream-window-audit",
+      "schema_version": "0.1.0",
+      "content_hash": "433BBFA2C76D550D58838DCF8102176C584103A89620F6EB295DD3DDF6EE1A54"
+    },
+    {
+      "id": "s06.upstream-row-extract",
+      "schema_version": "0.1.0",
+      "content_hash": "67EAC90E95BD426D8DA4A6D4411F822EB180E90DBB99BF5CA08EDCD5DF5A4584"
+    },
+    {
+      "id": "s06.upstream-sample-list",
+      "schema_version": "0.1.0",
+      "content_hash": "C1B482992313BE5E6404C06D01DC88B956CDF8793AA715186FD883A820AE9283"
+    },
+    {
+      "id": "s06.portrait-panel",
+      "schema_version": "0.1.0",
+      "content_hash": "C196D11B274DBBAC016F9D0C7F8F3248F4314ADAF0D4226913D840CCA55B1DC3"
+    },
+    {
+      "id": "s06.full-context-panel",
+      "schema_version": "0.1.0",
+      "content_hash": "76FD7AA087BA9E80B9168132E03626BE05F685C34FEB781657BA9D6C3B79CD41"
+    },
+    {
+      "id": "s07.teacher-review-draft",
+      "schema_version": "0.1.0",
+      "content_hash": "7B49512633B78C2A0F548CADBC736A95A085B44E17A1DC5AF5AC6C366142DC6E"
+    },
+    {
+      "id": "s07.data-rule-independent-review",
+      "schema_version": "0.1.0",
+      "content_hash": "1F62131753CE6C449D9CEB7B2D7B8ADCA7D951FC45544B9834623C6FFB15883F"
+    },
+    {
+      "id": "s04.source0808::01_主报告/01_全信息基准版Demo结果报告_20260808.md",
+      "schema_version": "0.1.0",
+      "content_hash": "9D50C6B2E7B29EE696F40142281A9AEC1412E34615633EBAD0F39FDC1DE1EF01"
+    },
+    {
+      "id": "s04.source0808::01_主报告/02_可视化与质量评估_20260808.md",
+      "schema_version": "0.1.0",
+      "content_hash": "B5BFE1E708FEC8B7FA50061AD3BB2C6583124700148D1FB57632FA8E844CACBC"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/00_输入快照/01_all_sample_supplement_before_control_revision.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "6D4154F2118B9DEF2C545633ABF9BBAEAD48AE7A0067C894B104301ED27EE6AB"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/01_数据处理规则.md",
+      "schema_version": "0.1.0",
+      "content_hash": "494D618ADFACC7DC436FD4355E679A8D6DCFAFAF3B2743E7339E8C8080D63E19"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/02_DataPlan.md",
+      "schema_version": "0.1.0",
+      "content_hash": "7418896204661167C14E9136CA8F49493270564CA4F2D168597481321E78B490"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/03_event_seed_table.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "400DF455069B702C370E05090777C940C71C083E9E8224E22329B413F2A225B1"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/04_jsoc_query_manifest.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "475F7CC39B8A7182EF7E687D0D604AD6103688A53CA05A5BB9ED38857B65FE00"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/05_event_provenance_audit.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "70D0F26C5F5C5E059C624C7351ED48AB571606EBC16E4381B55C3A4CB6ECE66E"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/06_QUALITY位掩码处理规则.md",
+      "schema_version": "0.1.0",
+      "content_hash": "37807D7D677E7E602F3F5221E8372BE19993FC53B76C70D787BDA67F8201F310"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/raw_jsoc_keywords/NOAA11158_X2.2_20110215.json",
+      "schema_version": "0.1.0",
+      "content_hash": "08D666AEDC530DD8ACD99F7006A49A1551E5896D796E6F8D4CCA1D835C7F6BF3"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/raw_jsoc_keywords/NOAA11429_X5.4_20120307.json",
+      "schema_version": "0.1.0",
+      "content_hash": "004E5AAB019AC45EB8AB3C3ACA29383B4025D2D0F0986E463945B55D4241F1E5"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/raw_jsoc_keywords/NOAA11520_X1.4_20120712.json",
+      "schema_version": "0.1.0",
+      "content_hash": "754C0537128A8A1327BACB5DE9C3EE1EAC0FFA2609E10B64441FA802D89E66C1"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/raw_jsoc_keywords/NOAA12192_X1.1_20141019.json",
+      "schema_version": "0.1.0",
+      "content_hash": "951BADDB61593FD6F71038668B35E1D15386EEAC4760310D070EE079F1CE29B4"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/raw_jsoc_keywords/NOAA12297_X2.1_20150311.json",
+      "schema_version": "0.1.0",
+      "content_hash": "20ADD2F398EFEDDFBB5C7087E2C7876E3C40D2E811A827C6DB9EBEDA78898705"
+    },
+    {
+      "id": "s04.source0808::02_数据与规则/raw_jsoc_keywords/NOAA12673_X9.3_20170906.json",
+      "schema_version": "0.1.0",
+      "content_hash": "8985DAB1EC07778EF35D9CE0DCEA900B24705738B63EA57A303CA5D7DF98648A"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/01_all_sample_supplement.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "760553BB628824BD3FE94C6EC2A6E0E97DA01E9A1401B276D18C595AE095E38C"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/02_provisional_mechanism_queue.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "C83D791F240EB062804D556B44CDEB311D2CAB88F5D11AB568877EE082514490"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/03_strict_quality0_sensitivity_queue.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "FF96F853419228A4D2B342DD3AB748CD8FE2128E769F74BA3E268FA67DE90055"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/04_gate_counts.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "DCFA1B718AF8DBC42E820A682D69482D364DD88FE64A4B6523067B52E709B7A7"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/05_continuous_distribution.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "7AED8D9EB2BB7A02C858D8ACDDF6A9790DB938A1EFFCE10510EDAD6C018C3E7F"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/06_usflux_context_correlation.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "8EF8FC496D61FD83AAB92CB49BD023558A97AB2538BF625843A1F251E4D324D0"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/07_quality_bit_policy.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "4D0C497929870AFC19900F9AA5DA3EAC37EB7D0B97DE62D61AEBB728EFA0183D"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/08_cadence_audit.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "B39C19FD8A1A6495A1B4B3DE95AE6779422B14E74DC365BE3ED9C3D6069D92D0"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/01_阅读说明/严格阴性对照前推检索结论.md",
+      "schema_version": "0.1.0",
+      "content_hash": "943675C2B8DE5D47AED1864C158B755AE36A6CAFF88D672286F77527C369CC63"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/02_official_Mplus_event_catalog_NCEI_v1-0-1_subset.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "A17E433798A3B40DBED9B824A10EF694AA3A9EBDCE75C3FE416AAADB44890F89"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/AR11429候选更正审计.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "94321BA3EA6758E4BBB86F6450E7A1DD945430849E6FAD3C14E97D47BA26D9DB"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/JSOC重取清单.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "462D19298970A12DAB03FA727A87E5EBEA4CBE9CAC1EEB8BE9F5565C8E2A1883"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/NCEI目录来源说明.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "5580212A549389766C94A9ECC5D06C722A63E7317AF89097C5D02C06A7F99988"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA11158_X2.2_20110215_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "B98159D554B17600E49C3944BD94DE9F7B11B37DCF7F47A5109991F3325BCC23"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA11429_X5.4_20120307_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "6AF649304C1B8A4FF0BBA8B4AED67C6EBA2929A6C03870581A09825835D6B6CD"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA11520_X1.4_20120712_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "DE23DCAB1309C926E8FABC48BA8418435A9D57C87770A07A9849B156353139EC"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA12192_X1.1_20141019_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "987E37C9F358169EC147DB82035F4A7D96D8AC3C9683058FC9B7916ECB576511"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA12297_X2.1_20150311_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "222B8A35F4E6A4876A53B3BA8DC1544C4FEDB17754E0FE5D99F893CCB72726CB"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/raw_jsoc_keywords/NOAA12673_X9.3_20170906_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "2FD46F761727B89B37475D9C4CDEAF7ECA5D7E8ACD88757E9DDFFBC8BCCAA7DC"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/严格数据门汇总.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "E7EA3393EE85C518121BA922B0FDE6A7DCCBBC3AEF018755F9D113E5813653B5"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/候选T0与NCEI区间审计.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "F536BA4262E03E190A01A7E332CBFBFC3B84223714275C89BBDF1F67FE710C43"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/候选时间块选择审计.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "939053478BA7AEF8C477150F111174C9101E53ED5D1539C1CE27EBCCDBE89B0C"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/全量目录清洁候选门控.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "D6CD177BBD6AF432407575025419A00A2E5731631B7999E36BA7842DE93A3193"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/活动区最终选择摘要.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "BDC4677A9C457B69636AA6F2918CD6CB66A8B59173162AC3EE1E82EF3B2B6746"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/02_审计数据/逐帧关键词核验.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "0CC80842B856B99FCC55154014DFF3775915C516C794B307DAAEA193C39BD993"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/03_复现与完整性/文件hash清单.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "1F191066860CE06AFD06D75A50796BA16566C7F90B8E597D2775CBD3383F2EEC"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/03_复现与完整性/本轮复现说明.md",
+      "schema_version": "0.1.0",
+      "content_hash": "7939F7DCC0F16887BECA4CDF3A5F6CBAAE147C5279854CCBE1A3E4A06214EF8F"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/03_复现与完整性/验收检查.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "E22D685E9196477C71034667027D962FB93588B55DF14B9926D314733D49205E"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/04_原始检索包/SHRGT45_严格阴性对照前推检索_20260807.zip",
+      "schema_version": "0.1.0",
+      "content_hash": "E0D33BBBEF1C956A850E036FC8AD516179F463BA3160E87BBC6D6B8DD1545081"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/04_原始检索包/发送包hash清单.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "7717F26AAAF2EFE7B94A967AA497E8A063F095E6EBCDCF971B7DCA6992579295"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/05_复现脚本/build_strict_negative_control_search_20260807.py",
+      "schema_version": "0.1.0",
+      "content_hash": "6C33190B5E7348D43A6BAA4B45D5F00CDECF8B0C1443E3A32D3049B0DC04FF48"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/05_复现脚本/finalize_full_preflare_strict_search_20260807.py",
+      "schema_version": "0.1.0",
+      "content_hash": "8BC414987D385027E298CB5234AA0A57F7B3BF3E7CB171421226244BFF84B3AD"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/06_整合后审计封存包/SHRGT45_严格阴性对照前推检索_20260807.zip",
+      "schema_version": "0.1.0",
+      "content_hash": "46094A38F135FA39B429D3ABDBB033CE0DB2F89F278C296F23566F384AD04D0B"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/06_整合后审计封存包/发送包hash清单.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "2C5E9728149563DDAAC1FA0E1EE96BF91953C4AE265A143DE3261B4383BBC06C"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/README.md",
+      "schema_version": "0.1.0",
+      "content_hash": "7400F89EA03FE82C4CB44433F330CDCD5AF468DF25617DB6F82CEBFC7BBCD035"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/README_严格阴性对照前推检索_20260807.md",
+      "schema_version": "0.1.0",
+      "content_hash": "EF1CA7938B64E1730149B2474E2D4719899313CF96D8BAC5A758DE4C5D9912ED"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/09_严格对照审计/README_整合说明.md",
+      "schema_version": "0.1.0",
+      "content_hash": "AD765961E801E09CD53225BFB84CF348C540BC07A4B6AA9AA93BD19023DDBD29"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/10_final_analysis_sample.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "C4B1D88F9ADB87C7A85B08DABFE71DFC5242B2946BB7143ADA8330D9488EBAB8"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/11_final_control_audit.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "A614643C14A102817EFE652FBE59DD8493E29A7D8675FEB5C0B068952F7ECCCF"
+    },
+    {
+      "id": "s04.source0808::03_结果数据/12_final_control_replacements.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "0B71D8AC187F03EDD4BC412FE955089EF7F3F5745C6E598684DD03380BCC1CDB"
+    },
+    {
+      "id": "s04.source0808::04_图表/01_数据处理流程图.svg",
+      "schema_version": "0.1.0",
+      "content_hash": "90CBD6A4EA5FBE922B098FBA030CAE34CD3F72DE830F9A9F6EFB78684DB7C743"
+    },
+    {
+      "id": "s04.source0808::04_图表/01_数据处理流程图说明.md",
+      "schema_version": "0.1.0",
+      "content_hash": "8C8E3A08E4E55543530ABF83131CF7F6A6393F7AB4A6117E54DD8C7FFF7A172E"
+    },
+    {
+      "id": "s04.source0808::04_图表/02_可视化处理流程图.svg",
+      "schema_version": "0.1.0",
+      "content_hash": "717A3105FBCDEDB2F7BF4493B9144D3DF45688267348DDE9BCA5262974544E9D"
+    },
+    {
+      "id": "s04.source0808::04_图表/02_可视化处理流程图说明.md",
+      "schema_version": "0.1.0",
+      "content_hash": "E14A7D514E5CFABF12088C6B0D10091B06BDEB382E38D4F1186C0BEE281934CC"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/00_visualization_dashboard.png",
+      "schema_version": "0.1.0",
+      "content_hash": "8C3453803EE77712195C2B4F930368769FA952506F3A7DE6B7F6FE5D0EE1024C"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/01_gate_funnel_bar.png",
+      "schema_version": "0.1.0",
+      "content_hash": "3880C643747B32A50BE6333077C76B690E24082D5E5DE60DE786E008ED075230"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/01_gate_funnel_bar.svg",
+      "schema_version": "0.1.0",
+      "content_hash": "999E6812F29C3FF74F57DBD2B98B6011FF0616F18147360A39B42AF7269DEAE6"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/02_sample_state_donut.png",
+      "schema_version": "0.1.0",
+      "content_hash": "88AC7EB3639491438D199ABB00C55B10BFB250174427280B1F6FA823BBD504E8"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/02_sample_state_donut.svg",
+      "schema_version": "0.1.0",
+      "content_hash": "2FCD6947D3284B80A333BFD4F073F6131CB601AC7D948C58C35DDB818FC60BCF"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/03_event_returned_vs_expected_bar.png",
+      "schema_version": "0.1.0",
+      "content_hash": "10332D5D271EB5C916BCEB86DC53679D25F0734B274235C1342A9F0686732A39"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/03_event_returned_vs_expected_bar.svg",
+      "schema_version": "0.1.0",
+      "content_hash": "88BEED689AF8D55088023639E55E3334FAC5F3CBCA6215DB0FB4D661AB6054CA"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/04_shrgt45_timeline_by_event.png",
+      "schema_version": "0.1.0",
+      "content_hash": "CE7A0D25AEF8D38937FEF998DC9A7616E877150FFFAC77E403EF1C19DEC326CD"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/04_shrgt45_timeline_by_event.svg",
+      "schema_version": "0.1.0",
+      "content_hash": "B1EEA1893255CAC9AFF57A5D6A9369B0A6AA408B431B5AD5BADD6D0FA3EAC33E"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/05_ols_slope_distribution.png",
+      "schema_version": "0.1.0",
+      "content_hash": "2BBA4FA02FB8959F41E57683B0E71A649504045737C544082AFC4126CAE7F60E"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/05_ols_slope_distribution.svg",
+      "schema_version": "0.1.0",
+      "content_hash": "D03FF3D07A11A7BE139DA33698F6536957F6549BD1D94553428AC81B9606606E"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/06_usflux_vs_shrgt45_scatter.png",
+      "schema_version": "0.1.0",
+      "content_hash": "25D81B13B4ACD18C3661F1501D47B6FE7DE15FB9C3760C607095ABFDE9E17892"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/06_usflux_vs_shrgt45_scatter.svg",
+      "schema_version": "0.1.0",
+      "content_hash": "D5DE017AF39F8AB1C7CD633807015C06CDA13E34F7FCB1DECCF904D250B229DF"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/visualization_metrics.json",
+      "schema_version": "0.1.0",
+      "content_hash": "DD3BD5D956814E6AE7C50D437149109E61D7C9883472B86F70FEED167A89B16F"
+    },
+    {
+      "id": "s04.source0808::04_图表/visualizations/visualization_summary.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "C3285ADD94C3FC0380CFFC18E991D5B7D7FCF4AC5F4381C05BCB2D69734B65FD"
+    },
+    {
+      "id": "s04.source0808::04_图表/图表说明.md",
+      "schema_version": "0.1.0",
+      "content_hash": "5D406B15CF7E377DCCDA09DBCA8B9E9F55394B2A1658C0E43C661B0B776F6729"
+    },
+    {
+      "id": "s04.source0808::05_复现脚本/build_demo_visualizations.py",
+      "schema_version": "0.1.0",
+      "content_hash": "B3898E72DD9C2D0EB565CC07A3C7E214B12A3C4EBD506BE0F53B6B127D3456B9"
+    },
+    {
+      "id": "s04.source0808::05_复现脚本/finalize_fullinfo_delivery_20260808.py",
+      "schema_version": "0.1.0",
+      "content_hash": "0F54736DF6D1B86E19B4BCE826EDFD72A406893EF16A00C170DF831CAA3DB823"
+    },
+    {
+      "id": "s04.source0808::05_复现脚本/README.md",
+      "schema_version": "0.1.0",
+      "content_hash": "FF5D058732295FA708E04A910AAA8BB2457A8885045EA5ED7D5B8A49D73833A4"
+    },
+    {
+      "id": "s04.source0808::05_复现脚本/reproduce_fullinfo_package.py",
+      "schema_version": "0.1.0",
+      "content_hash": "4EE91FE44F5A8308923E28704B930E857AC5B5C349BF0577166906EA2042EF6B"
+    },
+    {
+      "id": "s04.source0808::05_复现脚本/revise_shrgt45_fullinfo_20260808.py",
+      "schema_version": "0.1.0",
+      "content_hash": "C6FCF118194CA53960C8FA94736C07BD2D2A3207E719CC1045686EA199D19FEC"
+    },
+    {
+      "id": "s04.source0808::05_复现脚本/其他脚本/build_shrgt45_fullinfo_revision.py",
+      "schema_version": "0.1.0",
+      "content_hash": "C00561CCBE3109654FBB73F6360129CE668A74103E03FA43F436FE87019E1E4A"
+    },
+    {
+      "id": "s04.source0808::05_复现脚本/其他脚本/build_shrgt45_multievent_portrait.py",
+      "schema_version": "0.1.0",
+      "content_hash": "DE0289464D8D4B2949E26DC891EA6C076F734D922FB30002FF718B4FB6B0E6E3"
+    },
+    {
+      "id": "s04.source0808::06_审计与交付/acceptance_check.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "F29B6D08DD07C6CF56F34CFDB28C0C160E057FD372EAC9CB17AB4FE0152F8573"
+    },
+    {
+      "id": "s04.source0808::06_审计与交付/manifest.json",
+      "schema_version": "0.1.0",
+      "content_hash": "5FD790EE7392301F5F5166CCEB3924433CEBBE0B01E286C33D7FADB1096765DD"
+    },
+    {
+      "id": "s04.source0808::06_审计与交付/reproduction_log.txt",
+      "schema_version": "0.1.0",
+      "content_hash": "361B5F34DE41A36BD6B2B93926E927EB899EC182A7DAFEA3852BAD0DFBCA2CEE"
+    },
+    {
+      "id": "s04.source0808::06_审计与交付/self_test_results.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "9C583A5EF7773A6033ED67BD60C3B57AC8FD63025F3914312F46C51C5F6A0BAA"
+    },
+    {
+      "id": "s04.source0808::06_审计与交付/zip_sha256.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "FD2B92BDA457843590F033A7BCF49F28370421F7FA23C95C1B30B24F8DC54BB9"
+    },
+    {
+      "id": "s04.source0808::06_审计与交付/交付说明.md",
+      "schema_version": "0.1.0",
+      "content_hash": "BABE408DDF92771DDBA8BFFC952BC427BD78D53C5485990AE826D5218DBD4EC8"
+    },
+    {
+      "id": "s04.source0808::99_版本命名说明_README.md",
+      "schema_version": "0.1.0",
+      "content_hash": "4410307A74BFB9C7C75008CF8FA8D8D3FD729E4CA7DF4E85C50F20CCAEB94C63"
+    },
+    {
+      "id": "s04.source0808::README.md",
+      "schema_version": "0.1.0",
+      "content_hash": "6072334B3D41A79DE43DF985FE9320B21A26EBC2E4B25AF67CD46F72C65670CA"
+    },
+    {
+      "id": "s04.demo0814::00_阅读说明/README.md",
+      "schema_version": "0.1.0",
+      "content_hash": "F6CF07F25AC0B638F3C85EBFFF3406E1A500AB548EC8011DCD48BBA1C9993365"
+    },
+    {
+      "id": "s04.demo0814::00_阅读说明/数据使用清单.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "E4B90363E2B077CAA8E01BED579B892F747ADAD597F4304E0883232CD7AC5ADB"
+    },
+    {
+      "id": "s04.demo0814::00_阅读说明/数据文件关系图.svg",
+      "schema_version": "0.1.0",
+      "content_hash": "9D2CDF53B13E12CA0592DB1613041798967E00D6D4EEEA6A4D033485FA504B36"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/01_event_seed_table.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "621EBDB7C980127E7B1EB18C7FA6DF2EF57E32131081711D507BA93FF188A264"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/02_jsoc_query_manifest.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "CA03A7C677670CA8C5BB2C89D7902B0A1DFF5DF78B56F1131FAF44C4F50DFCC2"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/03_event_provenance_audit.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "EA83BFC9B4F8ABAB4AF4A1CA5A359197DDB165C4865A708C044FBA694E77FF08"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/04_数据处理规则.md",
+      "schema_version": "0.1.0",
+      "content_hash": "4482A592019EAA6714E1C217D11907015DE0200A189E3D77B0E1351386260015"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/05_DataPlan.md",
+      "schema_version": "0.1.0",
+      "content_hash": "1E8D0B28C4F94D4C0E8E64CCF453288D19AF3234D5D4EADB2D47E0157EF2D618"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/06_QUALITY位掩码处理规则.md",
+      "schema_version": "0.1.0",
+      "content_hash": "D28B15E199BF7CDF1FBF688124D7703A0C2A2C1BF0BB51CE616050CD82FC45E1"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA11158_X2.2_20110215.json",
+      "schema_version": "0.1.0",
+      "content_hash": "3DEA4F774F76B33644FC52D3A07B83D38974782419AE6D9679F144DB4FF984A2"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA11429_X5.4_20120307.json",
+      "schema_version": "0.1.0",
+      "content_hash": "652298E8F20B9450FCC4FDAB94DC427E15A46C2BFF3D2B235C8DF42DBE38D5AD"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA11520_X1.4_20120712.json",
+      "schema_version": "0.1.0",
+      "content_hash": "A9A9A4C3D34A6410F834ED708EA6EFB88E9EB695A8D8DD3FCDB46739EE2A0AEA"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA12192_X1.1_20141019.json",
+      "schema_version": "0.1.0",
+      "content_hash": "E829E46791053084F77CF73ED1B169D2AB3324BA13B097E59121AFD7622D5735"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA12297_X2.1_20150311.json",
+      "schema_version": "0.1.0",
+      "content_hash": "A5F9236711EE717DF966CE4ED13971AC41DB193232631B840E6A8E96C73C6864"
+    },
+    {
+      "id": "s04.demo0814::01_核心输入与规则/raw_jsoc_keywords/NOAA12673_X9.3_20170906.json",
+      "schema_version": "0.1.0",
+      "content_hash": "59CA283310078B9DD03273466770B6476DDEC0772438606B648EF1C667DC5128"
+    },
+    {
+      "id": "s04.demo0814::02_主运行记录/01_all_returned_records_with_final_status.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "7568E5385A9CA12932DE68DC7D263D405EF0BCDB2E311A932E349E06537CD200"
+    },
+    {
+      "id": "s04.demo0814::02_主运行记录/02_gate_counts.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "6AC53E5E542177A9F80F9BA853C34E87CEF3F9E7730CE5ECCA669FA9A6F93DC5"
+    },
+    {
+      "id": "s04.demo0814::02_主运行记录/03_quality_bit_policy.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "AA1726A6B89E5C427737EE023F66E58337A0EE09247831EBBFBBC6E8000B1D08"
+    },
+    {
+      "id": "s04.demo0814::02_主运行记录/04_cadence_audit.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "D01D0C595FE8C514069CC8FF5B921D5F1D675293BA469A9931EE576A21A5589E"
+    },
+    {
+      "id": "s04.demo0814::03_最终Demo结果/01_final_analysis_sample.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "8CFE35504EF599191FA85776984025FE679D20801A72678E64DB512B26AFFB4C"
+    },
+    {
+      "id": "s04.demo0814::03_最终Demo结果/02_continuous_distribution.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "2F297781621413E6F483CD3DEF3D2B5C1E7CD7281070415C77791EFC1C8B897D"
+    },
+    {
+      "id": "s04.demo0814::03_最终Demo结果/03_usflux_context_correlation.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "FCC712F45900D90F7C6867D6DA97E7258341628990E544142CD1B4C75013830A"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/01_final_control_audit.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "1510986BDE12BD84C46A130BA85CDCE1F4D847815C712C280C64BE9EF038E238"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/02_final_control_replacements.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "C754A147678621F7173B3A5AFBF3D18F1A2173F7114A96FBB237D5216D4CD10E"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/03_official_Mplus_event_catalog_NCEI_subset.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "58403AA32F014AC9A9341E7D52F46DA8DB1F03ED54BDEAB2DC4592E6B8906531"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/04_NCEI目录来源说明.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "A58CA5C5D7431738DCBF1A7484EBB5D72BAACD30567A9D2FA8296430E2B69526"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/05_AR11429候选更正审计.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "683766337CF3EB604F3BDDDD9DAC67071024E90F4966443435223F9D045F8F62"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/06_严格数据门汇总.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "F92D11B60192C73F0C10B364EF6A840E34D713FC5E66164B30C95550EA1D3260"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/07_候选T0与NCEI区间审计.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "92FAF0C36D0F2FFF2F9CF6E9B398DCCFC091B089CF7F1092193E6B52928A6FBB"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/08_候选时间块选择审计.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "16E7E5F727479E25A58388012AF4570310B014FBE4221F4BD70620D90C86A41B"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/09_活动区最终选择摘要.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "FC747CCDED8EDDF99105D6FB0AB2C2A7B52BC38960BB55ACD61C9D9DD7A82E13"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/10_全量目录清洁候选门控.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "6C4F796021FC22DCC05090A1164AAFE05B55C9CD30BEE306A072773DFD6C3695"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/11_逐帧关键词核验.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "1719E5371B7569CCD036141B27BD4C726335C7B07DDC9486449DD7A1CD50B8FE"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/12_JSOC重取清单.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "983D6F4FB8C5F3ED2257ED379562B095EDCB1E5C93D64B42C3BB082CF5158093"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA11158_X2.2_20110215_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "2DB2B13CB07A33375A4FA9B07A878730004447F681F1F6C3D99472550C5D910E"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA11429_X5.4_20120307_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "39DACCEA20D597698C8E1C520B021C2B4FADC99E1935AD38C5992A81D1B59B2A"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA11520_X1.4_20120712_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "F53CE2DF8F846201F740E521ABF203B2E5901CA9E6519CCD9964C63A1A27C512"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA12192_X1.1_20141019_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "FE65CC1442E79E0450FA81A356CA69D926214717E87486E13226BA00127074D2"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA12297_X2.1_20150311_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "99408E10391FAF922DFD3B86B38F4AC224A6996FD54FE5C4B2A21055862EE160"
+    },
+    {
+      "id": "s04.demo0814::04_control审计与替换依据/strict_search_raw_jsoc_keywords/NOAA12673_X9.3_20170906_preflare_80h_scan.json",
+      "schema_version": "0.1.0",
+      "content_hash": "5581133181FFC9038EE86A138F5E18A2B0930B3212292D2016AD5365AE794A9D"
+    },
+    {
+      "id": "s04.demo0814::05_完整性/acceptance_check.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "A09EC57C0E0BD370C35749106D6562351AF1F4EC92F202BF76ED0651BD424F5D"
+    },
+    {
+      "id": "s04.demo0814::05_完整性/file_sha256_manifest.csv",
+      "schema_version": "0.1.0",
+      "content_hash": "5E2D2167D0D6AC865333CFA8746D5622257EB2ABA24E224509445D523EA0E28E"
+    },
+    {
+      "id": "s04.demo0814::05_完整性/manifest.json",
+      "schema_version": "0.1.0",
+      "content_hash": "7BC94D2F858E5DB3D7C8EBCD4D0F86AF6D19DB3B5F6953BC7C3EFD8BB358E9DC"
+    }
+  ],
+  "excluded_assets": [
+    {
+      "origin_path": "01_项目定义与设计依据/04_专家意见与答疑/01_天文老师原文/老师答疑.md",
+      "reason": "只作后续专家评议，不是参数选择证明",
+      "known_identity": "EXTERNAL_REFERENCE"
+    },
+    {
+      "origin_path": "01_项目定义与设计依据/04_专家意见与答疑/01_天文老师原文/老师答疑2.md",
+      "reason": "后续评议材料",
+      "known_identity": "EXTERNAL_REFERENCE"
+    },
+    {
+      "origin_path": "02_研究流程/07_报告与前端展示/02_最新产物/老师评议材料/SHRGT45_阶段研究成果与Demo_天文老师提交版.pdf",
+      "reason": "排版交付，不是机器 Replay 必需输入",
+      "known_identity": "EXTERNAL_REFERENCE"
+    },
+    {
+      "origin_path": "02_研究流程/06_磁图QA/02_最新产物/杨嘉梁-MagnetogramQA-AR11158固定三例_20260811/杨嘉梁-MagnetogramQA-AR11158固定三例_20260809/panels/AR11158_buffer_0_to_3h_20110214_2248_TAI_t_pred_20110214_224800_TAI_Br-Bp-Bt-COCOMAG.png",
+      "reason": "单案例 panel 图；两张总览图已纳入 Fixture",
+      "known_identity": "EXTERNAL_REFERENCE"
+    },
+    {
+      "origin_path": "02_研究流程/06_磁图QA/02_最新产物/杨嘉梁-MagnetogramQA-AR11158固定三例_20260811/杨嘉梁-MagnetogramQA-AR11158固定三例_20260809/panels/AR11158_event_pre_3_to_6h_20110214_2236_TAI_t_pred_20110214_223600_TAI_Br-Bp-Bt-COCOMAG.png",
+      "reason": "单案例 panel 图；两张总览图已纳入 Fixture",
+      "known_identity": "EXTERNAL_REFERENCE"
+    },
+    {
+      "origin_path": "02_研究流程/06_磁图QA/02_最新产物/杨嘉梁-MagnetogramQA-AR11158固定三例_20260811/杨嘉梁-MagnetogramQA-AR11158固定三例_20260809/panels/AR11158_same_ar_temporal_control_20110213_1012_TAI_t_pred_20110213_101200_TAI_Br-Bp-Bt-COCOMAG.png",
+      "reason": "单案例 panel 图；两张总览图已纳入 Fixture",
+      "known_identity": "EXTERNAL_REFERENCE"
+    },
+    {
+      "origin_path": "02_研究流程/03_假设生成与操作化/02_最新产物/SHRGT45_假设与操作化_20260807/Hamed-Rao方案合成数据校准/results/calibration_replicate_results.csv.gz",
+      "reason": "大体积合成原始样本，EXCLUDE",
+      "known_identity": "EXCLUDE"
+    },
+    {
+      "origin_path": "02_研究流程/03_假设生成与操作化/02_最新产物/SHRGT45_假设与操作化_20260807/Hamed-Rao方案合成数据校准/results/paired_missing_results.csv.gz",
+      "reason": "大体积合成原始样本，EXCLUDE",
+      "known_identity": "EXCLUDE"
+    }
+  ],
+  "declared_finding_specs": [
+    {
+      "code": "MECHANISM_V23_VS_HYPOTHESIS_V22_DEPENDENCY",
+      "finding_kind": "COMPATIBILITY",
+      "related_stage_ids": [
+        "S02_MECHANISM",
+        "S03_HYPOTHESIS"
+      ],
+      "related_asset_roles": [
+        "S02_MECHANISM_SOURCE",
+        "S02_MECHANISM_SOURCE",
+        "S03_HYPOTHESIS_SOURCE"
+      ],
+      "required": true,
+      "expected_severity": "WARNING",
+      "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW",
+      "rationale_source_refs": [
+        {
+          "id": "s02.mechanism-brief-v2_3",
+          "schema_version": "0.1.0",
+          "content_hash": "6068139E85EA18B12561D2A91B1F5480317AE10131583776ADEA82AB580CBCD7"
+        },
+        {
+          "id": "s02.mechanism-brief-v2_2-historical",
+          "schema_version": "0.1.0",
+          "content_hash": "A07A7D71A1F33329447119528E1F204E6B328516AB00F1EB696C9A1D3B87F493"
+        },
+        {
+          "id": "s03.hypothesis-baseline",
+          "schema_version": "0.1.0",
+          "content_hash": "EB0BDB3F537360EB6CFAC969519BE1D702F0B63A7356C8671F13365931E7D969"
+        }
+      ]
+    },
+    {
+      "code": "THEIL_SEN_VS_OLS_IMPLEMENTATION",
+      "finding_kind": "COMPATIBILITY",
+      "related_stage_ids": [
+        "S03_HYPOTHESIS",
+        "S04_DATA_AND_VERIFICATION"
+      ],
+      "related_asset_roles": [
+        "S03_HYPOTHESIS_SOURCE"
+      ],
+      "required": true,
+      "expected_severity": "WARNING",
+      "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW",
+      "rationale_source_refs": [
+        {
+          "id": "s03.trend-method-theil-sen",
+          "schema_version": "0.1.0",
+          "content_hash": "1AF17CE5450DA119118FA8A872D9280E89B1FCC63FF2CD7AA84C3B6EAB7A36AE"
+        }
+      ]
+    },
+    {
+      "code": "COUNTEREXAMPLE_INPUT_PACKAGE_IDENTITY_UNVERIFIED",
+      "finding_kind": "COMPATIBILITY",
+      "related_stage_ids": [
+        "S05_COUNTEREXAMPLE"
+      ],
+      "related_asset_roles": [
+        "S05_COUNTEREXAMPLE_SOURCE"
+      ],
+      "required": true,
+      "expected_severity": "WARNING",
+      "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW",
+      "rationale_source_refs": [
+        {
+          "id": "s05.counterexample-report",
+          "schema_version": "0.1.0",
+          "content_hash": "EC39C074A038E6DD930CD9F4E318D6532DBF299697A5223097A74D36F45BE102"
+        }
+      ]
+    },
+    {
+      "code": "LEAD_WINDOW_BOUNDARY_IMPLEMENTATION_MISMATCH",
+      "finding_kind": "COMPATIBILITY",
+      "related_stage_ids": [
+        "S03_HYPOTHESIS",
+        "S04_DATA_AND_VERIFICATION"
+      ],
+      "related_asset_roles": [
+        "S03_HYPOTHESIS_SOURCE"
+      ],
+      "required": true,
+      "expected_severity": "WARNING",
+      "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW",
+      "rationale_source_refs": [
+        {
+          "id": "s03.hypothesis-baseline",
+          "schema_version": "0.1.0",
+          "content_hash": "EB0BDB3F537360EB6CFAC969519BE1D702F0B63A7356C8671F13365931E7D969"
+        }
+      ]
+    },
+    {
+      "code": "CONTROL_WINDOW_POLICY_MISMATCH",
+      "finding_kind": "COMPATIBILITY",
+      "related_stage_ids": [
+        "S04_DATA_AND_VERIFICATION"
+      ],
+      "related_asset_roles": [
+        "DERIVED_RUNTIME_FIXTURE_PROJECTION"
+      ],
+      "required": true,
+      "expected_severity": "WARNING",
+      "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW",
+      "rationale_source_refs": [
+        {
+          "id": "s04.demo0814",
+          "schema_version": "0.1.0",
+          "content_hash": "59C48C8606207BED2BB92591B1946C69B54077B373D3765D8776727E1B349040"
+        }
+      ]
+    },
+    {
+      "code": "CONTROL_CATALOG_SPATIAL_ATTRIBUTION_UNFILTERED",
+      "finding_kind": "COMPATIBILITY",
+      "related_stage_ids": [
+        "S04_DATA_AND_VERIFICATION"
+      ],
+      "related_asset_roles": [
+        "DERIVED_RUNTIME_FIXTURE_PROJECTION"
+      ],
+      "required": true,
+      "expected_severity": "WARNING",
+      "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW",
+      "rationale_source_refs": [
+        {
+          "id": "s04.demo0814",
+          "schema_version": "0.1.0",
+          "content_hash": "59C48C8606207BED2BB92591B1946C69B54077B373D3765D8776727E1B349040"
+        }
+      ]
+    },
+    {
+      "code": "HARP_NOAA_MAPPING_PARTIAL_OR_AMBIGUOUS",
+      "finding_kind": "COMPATIBILITY",
+      "related_stage_ids": [
+        "S04_DATA_AND_VERIFICATION"
+      ],
+      "related_asset_roles": [
+        "DERIVED_RUNTIME_FIXTURE_PROJECTION"
+      ],
+      "required": true,
+      "expected_severity": "WARNING",
+      "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW",
+      "rationale_source_refs": [
+        {
+          "id": "s04.demo0814",
+          "schema_version": "0.1.0",
+          "content_hash": "59C48C8606207BED2BB92591B1946C69B54077B373D3765D8776727E1B349040"
+        }
+      ]
+    },
+    {
+      "code": "EVENT_SEED_OFFICIAL_PROVENANCE_UNVERIFIED",
+      "finding_kind": "GAP",
+      "related_stage_ids": [
+        "S04_DATA_AND_VERIFICATION"
+      ],
+      "related_asset_roles": [
+        "DERIVED_RUNTIME_FIXTURE_PROJECTION"
+      ],
+      "required": true,
+      "expected_severity": "INFO",
+      "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW",
+      "rationale_source_refs": [
+        {
+          "id": "s04.demo0814",
+          "schema_version": "0.1.0",
+          "content_hash": "59C48C8606207BED2BB92591B1946C69B54077B373D3765D8776727E1B349040"
+        }
+      ]
+    },
+    {
+      "code": "HISTORICAL_ROWS_NOT_INDEPENDENT_SAMPLES",
+      "finding_kind": "GAP",
+      "related_stage_ids": [
+        "S04_DATA_AND_VERIFICATION"
+      ],
+      "related_asset_roles": [
+        "DERIVED_RUNTIME_FIXTURE_PROJECTION"
+      ],
+      "required": true,
+      "expected_severity": "WARNING",
+      "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW",
+      "rationale_source_refs": [
+        {
+          "id": "s04.demo0814",
+          "schema_version": "0.1.0",
+          "content_hash": "59C48C8606207BED2BB92591B1946C69B54077B373D3765D8776727E1B349040"
+        }
+      ]
+    },
+    {
+      "code": "S04_0808_PACKAGE_INTEGRITY_REFERENCES_MISSING_FROM_TRANSFER",
+      "finding_kind": "GAP",
+      "related_stage_ids": [
+        "S04_DATA_AND_VERIFICATION"
+      ],
+      "related_asset_roles": [
+        "AUTHORITATIVE_COMPLETE_SOURCE_PACKAGE"
+      ],
+      "required": true,
+      "expected_severity": "WARNING",
+      "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW",
+      "rationale_source_refs": [
+        {
+          "id": "s04.source0808",
+          "schema_version": "0.1.0",
+          "content_hash": "FECBF207411B2A6E4C0F9FF7B51C08FAC4895BA8BBB6B7F600F34BC33E934259"
+        }
+      ]
+    }
+  ],
+  "workflow_graph_ref": {
+    "id": "WF-SHRGT45-REPLAY-001",
+    "schema_version": "0.1.0",
+    "content_hash": "5561765903A73B652D0BD4A58CBA2C1DFEE7AF28253603B8AFE289D5EB9E2A25"
+  },
+  "stage_dependencies": {
+    "S04_DATA_AND_VERIFICATION": [
+      "S01_CANDIDATE",
+      "S02_MECHANISM",
+      "S03_HYPOTHESIS"
+    ],
+    "S05_COUNTEREXAMPLE": [
+      "S04_DATA_AND_VERIFICATION"
+    ],
+    "S06_MAGNETOGRAM_QA": [
+      "S04_DATA_AND_VERIFICATION"
+    ],
+    "S07_REPORT": [
+      "S05_COUNTEREXAMPLE",
+      "S06_MAGNETOGRAM_QA"
+    ]
+  },
+  "join_policy": "REQUIRE_S05_AND_S06_FOR_FINAL_REPLAY_REPORT",
+  "acceptance_profile": {
+    "acceptable_finding_codes": [
+      "MECHANISM_V23_VS_HYPOTHESIS_V22_DEPENDENCY",
+      "THEIL_SEN_VS_OLS_IMPLEMENTATION",
+      "LEAD_WINDOW_BOUNDARY_IMPLEMENTATION_MISMATCH",
+      "CONTROL_WINDOW_POLICY_MISMATCH",
+      "CONTROL_CATALOG_SPATIAL_ATTRIBUTION_UNFILTERED",
+      "HARP_NOAA_MAPPING_PARTIAL_OR_AMBIGUOUS",
+      "COUNTEREXAMPLE_INPUT_PACKAGE_IDENTITY_UNVERIFIED",
+      "EVENT_SEED_OFFICIAL_PROVENANCE_UNVERIFIED",
+      "HISTORICAL_ROWS_NOT_INDEPENDENT_SAMPLES",
+      "S04_0808_PACKAGE_INTEGRITY_REFERENCES_MISSING_FROM_TRANSFER"
+    ],
+    "fail_closed_finding_codes": [
+      "UNKNOWN_FIXTURE_PATH",
+      "MISSING_REQUIRED_MEMBER",
+      "SHA256_MISMATCH",
+      "MANIFEST_MISMATCH",
+      "UNKNOWN_SCHEMA_OR_VERSION",
+      "UNKNOWN_SOURCE_OR_PROVENANCE_IDENTITY",
+      "CONFIGURATION_HASH_MISMATCH",
+      "UNAUTHORIZED_FORMAL_EXECUTION",
+      "SECRET_OR_CREDENTIAL_ACCESS",
+      "FORBIDDEN_HISTORICAL_SCRIPT_EXECUTION",
+      "FORBIDDEN_NESTED_ZIP_EXTRACTION",
+      "REQUIRED_S05_OR_S06_BRANCH_FAILURE",
+      "REPORT_JOIN_FAILURE",
+      "UNBOUND_FINDING_OR_ARTIFACT"
+    ],
+    "join_condition": "REQUIRE_S05_AND_S06_FOR_FINAL_REPLAY_REPORT"
+  },
+  "content_hash": "3C8F5054FB1859E1947420775F52D89BE3FFBA1525A4E83574FBDB5035A824F0"
+}

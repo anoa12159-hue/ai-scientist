@@ -1,0 +1,2 @@
+﻿run_id,prior_candidate_T0_utc,audited_window_utc,NCEI_flare_id,NCEI_start_utc,NCEI_end_utc,NCEI_class,NCEI_active_region_raw,disposition
+SHRGT45_严格阴性对照前推检索_20260807,2012-03-05T07:23:26Z,"[2012-03-05T04:23:26Z, 2012-03-05T13:23:26Z)",201203050222,2012-03-05T02:22:00Z,2012-03-05T04:43:00Z,X1.6,1429,EXCLUDED: event begins before the window but its interval overlaps the window; start-time-only screening would be false clean.

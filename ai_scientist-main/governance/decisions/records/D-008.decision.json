@@ -1,0 +1,30 @@
+{
+  "decision_id": "D-008-A-20260819",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "21A901EC0FEDC9FA61FC2478C920C647AE45D07CE4A6C852504E5E1A74DF60D9",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/D-008.request.md",
+    "document_sha256": "950235A72949D59184F50306955E9F659A5394399C7D229A34C8046E5318D998"
+  },
+  "decision_request_ref": {
+    "request_id": "D-008",
+    "content_hash": "8CED9EBBC423D1A74CF7173860406806E5B94CFF9C3375A68B2AE3BA7D9E6F5E"
+  },
+  "response_context_ref": {
+    "document": "decisions/source/D-008.response-addendum.md",
+    "document_sha256": "6715B6482BD1B56CE98B137A7FD3882D7BC1A1B58330B3CDCBC1CC747F9135FB"
+  },
+  "gate_id": "GOV_REPLAY_FINDING_POLICY",
+  "action": "APPROVE",
+  "decision_mode": "HUMAN_SELECTED",
+  "selected_option_id": "A",
+  "actor_id": "project_owner_01",
+  "actor_role": "project_owner",
+  "reason": "项目所有者选择分层 Finding 处置政策：已登记且精确绑定的历史兼容性/来源限制可逐项接受用于 Replay；输入、哈希、Schema、来源、配置、授权、执行、分支和 Report Join 错误必须 Fail Closed。",
+  "scope": "MVP_BASELINE/D-008",
+  "bound_artifact_refs": [],
+  "bound_finding_refs": [],
+  "bound_stage_attempt_keys": [],
+  "created_at": "2026-08-19T23:55:00+08:00"
+}

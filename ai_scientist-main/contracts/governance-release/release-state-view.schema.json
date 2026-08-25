@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/governance-release/release-state-view.schema.json",
+  "title": "ReleaseStateView",
+  "description": "Query projection of release scope for an exact report. Not produced by FINAL_REPLAY_REVIEW; only an independent ReleaseDisposition/AuthorizationRecord derives it. Frozen semantics: CONTRACTS.md 6.4.",
+  "type": "object",
+  "properties": {
+    "report_artifact_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "release_scope": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/release_scope" }
+  },
+  "required": ["report_artifact_ref", "release_scope"],
+  "additionalProperties": false
+}

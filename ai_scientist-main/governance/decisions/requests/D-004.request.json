@@ -1,0 +1,47 @@
+{
+  "request_id": "D-004",
+  "schema_version": "0.1.0-draft",
+  "content_hash": "0912F3AF4AA5A4AFA1FBC6AC893AB46C7E112BB8DA1CC4AD36C30100DFC6BA1C",
+  "decision_context": "PROJECT_GOVERNANCE",
+  "governance_context_ref": {
+    "document": "decisions/source/D-004.request.md",
+    "document_sha256": "F1CF0AE3E490A5776AA3A8067C65DAB5F8FFF00B0F622471E553B94FA8782427"
+  },
+  "gate_id": "GOV_REPLAY_UNIT_POLICY",
+  "prompt": "首个 SHRGT45 Replay 应如何表达历史 Demo 的观测单位、空间测量范围、依赖分组和事件归属？",
+  "context_artifact_refs": [],
+  "context_finding_refs": [],
+  "context_stage_attempt_keys": [],
+  "options": [
+    {
+      "option_id": "A",
+      "label": "Replay 双层单位契约",
+      "description": "以 SHARP_HARP_TIMEPOINT 为观测行、SHARP_HARP_PATCH 为测量范围，以 HARP_EVENT_EPISODE 标识共享依赖，并单独保留 NOAA AR 与事件归属。",
+      "consequences": "忠实保留 55 行历史输出，但不得把这些行视为独立样本，也不得把项目 seed 归属升级为已验证事实。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "B",
+      "label": "NOAA AR Timepoint",
+      "description": "以 NOAA_AR_TIMEPOINT 为主单位。",
+      "consequences": "必须先建立权威、带时间版本的 HARP 与 NOAA AR 映射并重新生成数据，超出忠实 Replay。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    },
+    {
+      "option_id": "C",
+      "label": "Event-HARP Episode",
+      "description": "将每个事件和 HARP episode 聚合为一个统计单位。",
+      "consequences": "需要新聚合规则和估计量并会改变历史 55 行结果，适合后续正式研究。",
+      "required_capability": "PROJECT_OWNER_GOVERNANCE"
+    }
+  ],
+  "recommended_option_id": "A",
+  "recommendation_reason": "该方案同时保持 HARP patch 的真实测量身份、历史行级输出和依赖分组边界，不要求重写历史数据。",
+  "risk_summary": "把 NOAA AR、HARP patch、观测行和独立统计单位合并为一个字段，会掩盖 HARP 与 NOAA 非一对一以及窗口重叠问题。",
+  "impact_summary": "决定 DataPlan 的单位字段、相同单位判定、前端限制说明和后续统计独立性边界。",
+  "allowed_scope": "MVP_BASELINE/D-004",
+  "allowed_actor_roles": [
+    "project_owner"
+  ],
+  "requested_at": "2026-08-19T21:05:37+08:00"
+}

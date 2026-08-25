@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080" role="img" aria-labelledby="title desc">
+  <title id="title">王杰锋负责的 SHRGT45 全信息基准版 Demo 数据处理流程</title>
+  <desc id="desc">从事件输入、JSOC 关键词记录、时间和字段整理开始，经过 AR、QUALITY、历史窗和位置门控，计算 OLS 趋势并形成可追溯的下游结果文件。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748B"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      .title { font: 700 30px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 15px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #475569; }
+      .section { font: 700 16px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #334155; }
+      .box-title { font: 700 18px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #0F172A; }
+      .box-text { font: 14px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #334155; }
+      .small { font: 13px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #475569; }
+      .status { font: 700 18px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #991B1B; }
+      .arrow { stroke: #64748B; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .arrow-dash { stroke: #DC2626; stroke-width: 2.2; stroke-dasharray: 8 6; fill: none; marker-end: url(#arrow-red); }
+      .input { fill: #EFF6FF; stroke: #2563EB; }
+      .rule { fill: #ECFDF5; stroke: #059669; }
+      .audit { fill: #FFF7ED; stroke: #EA580C; }
+      .output { fill: #F5F3FF; stroke: #7C3AED; }
+      .blocked { fill: #FEF2F2; stroke: #DC2626; }
+      .box { stroke-width: 2; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1120" fill="#FFFFFF"/>
+  <text x="60" y="52" class="title">王杰锋负责的 SHRGT45 全信息基准版 Demo 数据处理流程</text>
+  <text x="60" y="82" class="subtitle">一次独立运行：上游输入 → 逐级门控 → M+ control 筛查 → OLS 趋势 → 下游结果文件</text>
+
+  <text x="60" y="122" class="section">一、上游输入与记录整理</text>
+  <rect x="60" y="145" width="350" height="142" class="box input"/>
+  <text x="85" y="178" class="box-title">1. 事件输入</text>
+  <text x="85" y="205" class="box-text">事件种子表：6 个事件</text>
+  <text x="85" y="227" class="box-text">NOAA AR / HARPNUM / T0</text>
+  <text x="85" y="249" class="box-text">事件等级和输入身份</text>
+  <text x="85" y="271" class="box-text">来源状态逐行保留</text>
+
+  <rect x="430" y="145" width="350" height="142" class="box input"/>
+  <text x="455" y="178" class="box-title">2. JSOC 查询输入</text>
+  <text x="455" y="205" class="box-text">查询清单（6 个事件）</text>
+  <text x="455" y="227" class="box-text">6 组缓存关键词 JSON</text>
+  <text x="455" y="249" class="box-text">理论 360 条，12 分钟 cadence</text>
+  <text x="455" y="271" class="box-text">每事件理论 60 条记录</text>
+
+  <rect x="800" y="145" width="350" height="142" class="box rule"/>
+  <text x="825" y="178" class="box-title">3. 记录展开</text>
+  <text x="825" y="205" class="box-text">实际返回 333 条</text>
+  <text x="825" y="227" class="box-text">缺帧 27 条，未插值</text>
+  <text x="825" y="249" class="box-text">保留 TAI / UTC 时间</text>
+  <text x="825" y="271" class="box-text">逐行进入主表</text>
+
+  <rect x="1170" y="145" width="370" height="142" class="box rule"/>
+  <text x="1195" y="178" class="box-title">4. 字段整理</text>
+  <text x="1195" y="205" class="box-text">T_REC / AR / SHRGT45</text>
+  <text x="1195" y="227" class="box-text">MEANALP / USFLUX / QUALITY</text>
+  <text x="1195" y="249" class="box-text">LON_FWT / LAT_FWT</text>
+  <text x="1195" y="271" class="box-text">字段完整：333 条</text>
+
+  <path d="M410 216 H430" class="arrow"/>
+  <path d="M780 216 H800" class="arrow"/>
+  <path d="M1150 216 H1170" class="arrow"/>
+
+  <text x="60" y="345" class="section">二、时间、归属和质量门</text>
+  <rect x="60" y="368" width="350" height="155" class="box rule"/>
+  <text x="85" y="401" class="box-title">5. T0 与状态划分</text>
+  <text x="85" y="428" class="box-text">lead_hr = T0 - T_REC_UTC</text>
+  <text x="85" y="450" class="box-text">3 &lt; lead_hr &lt;= 6：正候选</text>
+  <text x="85" y="472" class="box-text">lead_hr &lt;= 3：buffer / 边界</text>
+  <text x="85" y="494" class="box-text">lead_hr &gt; 6：临时 control 候选</text>
+
+  <rect x="430" y="368" width="350" height="155" class="box rule"/>
+  <text x="455" y="401" class="box-title">6. AR 归属</text>
+  <text x="455" y="428" class="box-text">NOAA_AR 精确匹配或列表包含</text>
+  <text x="455" y="450" class="box-text">通过：273 条</text>
+  <text x="455" y="472" class="box-text">阻断：60 条，保留证据</text>
+  <text x="455" y="494" class="box-text">不跨 AR 混合记录</text>
+
+  <rect x="800" y="368" width="350" height="155" class="box rule"/>
+  <text x="825" y="401" class="box-title">7. QUALITY 与缺帧</text>
+  <text x="825" y="428" class="box-text">QUALITY=0：257 条</text>
+  <text x="825" y="450" class="box-text">非致命非零保留：16 条</text>
+  <text x="825" y="472" class="box-text">fatal 排除：0 条</text>
+  <text x="825" y="494" class="box-text">不插值，不静默补齐</text>
+
+  <rect x="1170" y="368" width="370" height="155" class="box rule"/>
+  <text x="1195" y="401" class="box-title">8. 历史窗与位置</text>
+  <text x="1195" y="428" class="box-text">[T_REC - 3h, T_REC]，理论 16 帧</text>
+  <text x="1195" y="450" class="box-text">历史窗通过：178 条</text>
+  <text x="1195" y="472" class="box-text">位置门通过：132 条</text>
+  <text x="1195" y="494" class="box-text">abs(LON/LAT) &lt; 50 deg</text>
+
+  <path d="M965 287 V330 H235 V368" class="arrow"/>
+  <path d="M1355 287 V330 H605 V368" class="arrow"/>
+  <path d="M1355 287 V330 H975 V368" class="arrow"/>
+  <path d="M1355 287 V368" class="arrow"/>
+
+  <text x="60" y="590" class="section">三、最终样本、趋势计算与结果审计</text>
+  <rect x="60" y="613" width="350" height="155" class="box audit"/>
+  <text x="85" y="646" class="box-title">9. 最终样本与 control</text>
+  <text x="85" y="673" class="box-text">位置门后候选：132 条</text>
+  <text x="85" y="695" class="box-text">正候选：37 条 / 4 个 AR</text>
+  <text x="85" y="717" class="box-text">M+ 筛查后同 AR control：18 条</text>
+  <text x="85" y="739" class="box-text">最终分析样本：55 条</text>
+
+  <rect x="430" y="613" width="350" height="155" class="box rule"/>
+  <text x="455" y="646" class="box-title">10. OLS 趋势量化</text>
+  <text x="455" y="673" class="box-text">真实 T_REC 作时间轴</text>
+  <text x="455" y="695" class="box-text">输出 SHRGT45 points / hour</text>
+  <text x="455" y="717" class="box-text">正候选中位数：0.207560</text>
+  <text x="455" y="739" class="box-text">同 AR control 中位数：-0.154577</text>
+
+  <rect x="800" y="613" width="350" height="155" class="box audit"/>
+  <text x="825" y="646" class="box-title">11. 上下文和独立性</text>
+  <text x="825" y="673" class="box-text">USFLUX pooled r = -0.424273</text>
+  <text x="825" y="695" class="box-text">只作背景字段描述</text>
+  <text x="825" y="717" class="box-text">rows / windows / events / AR 分开</text>
+  <text x="825" y="739" class="box-text">不把重叠行当独立样本</text>
+
+  <rect x="1170" y="613" width="370" height="155" class="box audit"/>
+  <text x="1195" y="646" class="box-title">12. 规则和数据审计</text>
+  <text x="1195" y="673" class="box-text">门控计数、M+ 区间筛查</text>
+  <text x="1195" y="695" class="box-text">失败原因、QUALITY、cadence 和字段</text>
+  <text x="1195" y="717" class="box-text">每条记录保留状态依据</text>
+  <text x="1195" y="739" class="box-text">结果可逐行追溯</text>
+
+  <path d="M235 523 V570 H235 V613" class="arrow"/>
+  <path d="M605 523 V570 H605 V613" class="arrow"/>
+  <path d="M975 523 V570 H605 V613" class="arrow"/>
+  <path d="M1355 523 V613" class="arrow"/>
+
+  <text x="60" y="805" class="section">四、下游输出</text>
+  <rect x="60" y="830" width="700" height="105" class="box output"/>
+  <text x="85" y="858" class="box-title">结果文件</text>
+  <text x="85" y="882" class="box-text">逐行主表、状态队列与质量字段</text>
+  <text x="85" y="902" class="box-text">门控计数、趋势分布与上下文审计</text>
+  <text x="85" y="922" class="box-text">cadence、来源状态与规则自测</text>
+
+  <rect x="840" y="830" width="700" height="105" class="box output"/>
+  <text x="865" y="858" class="box-title">可读报告与复现</text>
+  <text x="865" y="882" class="box-text">主报告：假设、结果与结论</text>
+  <text x="865" y="902" class="box-text">数据处理流程图：从输入到结果</text>
+  <text x="865" y="922" class="box-text">复现日志、manifest 与 SHA256：追溯</text>
+
+  <path d="M235 768 V805 H410 V830" class="arrow"/>
+  <path d="M605 768 V805 H410 V830" class="arrow"/>
+  <path d="M975 768 V805 H1190 V830" class="arrow"/>
+  <path d="M1355 768 V805 H1190 V830" class="arrow"/>
+
+  <rect x="60" y="942" width="1480" height="48" class="box blocked"/>
+  <text x="85" y="973" class="status">Demo 结论：333 条实际返回记录经逐级规则处理后，形成 55 条最终分析记录（37 条正候选、18 条同 AR 时间 control）；结果包括门控计数、趋势分布和上下文相关。</text>
+  <path d="M800 935 V941" class="arrow-dash"/>
+
+  <rect x="60" y="1042" width="18" height="18" fill="#EFF6FF" stroke="#2563EB"/>
+  <text x="86" y="1057" class="small">上游输入</text>
+  <rect x="190" y="1042" width="18" height="18" fill="#ECFDF5" stroke="#059669"/>
+  <text x="216" y="1057" class="small">处理规则</text>
+  <rect x="320" y="1042" width="18" height="18" fill="#FFF7ED" stroke="#EA580C"/>
+  <text x="346" y="1057" class="small">审计结果</text>
+  <rect x="450" y="1042" width="18" height="18" fill="#F5F3FF" stroke="#7C3AED"/>
+  <text x="476" y="1057" class="small">下游输出</text>
+  <rect x="580" y="1042" width="18" height="18" fill="#FEF2F2" stroke="#DC2626"/>
+  <text x="606" y="1057" class="small">结果边界</text>
+</svg>

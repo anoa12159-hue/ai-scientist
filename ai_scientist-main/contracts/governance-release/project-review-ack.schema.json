@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/governance-release/project-review-ack.schema.json",
+  "title": "ProjectReviewAck",
+  "description": "Non-blocking project report-review acknowledgement (FINAL_REPLAY_REVIEW). It does not create a ReleaseDisposition and is not scientific, public or competition release authorization. Frozen semantics: CONTRACTS.md 6.3.",
+  "type": "object",
+  "properties": {
+    "ack_id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "report_artifact_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" },
+    "decision_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "status": { "const": "ACKNOWLEDGED_FOR_PROJECT_REVIEW" },
+    "actor_id": { "type": "string" },
+    "actor_role": { "type": "string" },
+    "created_at": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/timestamp" }
+  },
+  "required": [
+    "ack_id", "schema_version", "content_hash", "report_artifact_ref",
+    "decision_ref", "status", "actor_id", "actor_role", "created_at"
+  ],
+  "additionalProperties": false
+}

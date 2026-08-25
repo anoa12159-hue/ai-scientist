@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json",
+  "title": "VersionedRef",
+  "description": "Immutable reference to a versioned object: a stable id plus schema_version and content_hash. Field names vary by concrete object (finding_id, decision_id, report_id, ...); this schema is the canonical id+schema_version+content_hash shape.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" }
+  },
+  "required": ["id", "schema_version", "content_hash"],
+  "additionalProperties": false
+}

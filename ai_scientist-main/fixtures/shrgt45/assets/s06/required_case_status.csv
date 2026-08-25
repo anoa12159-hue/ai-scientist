@@ -1,0 +1,4 @@
+﻿required_case_type,status,case_id,blocking_reason
+POSITIVE,AVAILABLE,AR11158_event_pre_3_to_6h_20110214_2236_TAI,
+BUFFER_EDGE,AVAILABLE,AR11158_buffer_0_to_3h_20110214_2248_TAI,
+SAME_AR_TEMPORAL_CONTROL,AVAILABLE,AR11158_same_ar_temporal_control_20110213_1012_TAI,

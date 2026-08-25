@@ -1,0 +1,11 @@
+SHRGT45 full-information delivery reproduction
+mode=offline_cached_inputs
+source=02_数据与规则/raw_jsoc_keywords/*.json
+algorithm=05_复现脚本/其他脚本/build_shrgt45_fullinfo_revision.py
+seed_definition=05_复现脚本/其他脚本/build_shrgt45_multievent_portrait.py
+comparison=core_numeric_outputs_sha256
+gate.raw_records=333
+gate.history_3h_pass_provisional=178
+gate.all_sample_positive_rows_after_provisional_gates=37
+core_output_mismatches=none
+status=PASS

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/stage-context.schema.json",
+  "title": "StageContext",
+  "description": "Versioned minimal context passed to a Provider. Contains only references and routing fields, never long payloads. Frozen semantics: CONTRACTS.md 9.",
+  "type": "object",
+  "properties": {
+    "run_id": { "type": "string" },
+    "stage_id": { "type": "string" },
+    "attempt": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/positive_integer" },
+    "schema_version": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/schema_version" },
+    "content_hash": { "$ref": "https://ai-scientist-mvp.invalid/contracts/shared/definitions.schema.json#/$defs/content_hash" },
+    "stage_configuration_ref": { "$ref": "https://ai-scientist-mvp.invalid/contracts/foundation/versioned-ref.schema.json" },
+    "input_artifact_refs": {
+      "type": "array",
+      "items": { "$ref": "https://ai-scientist-mvp.invalid/contracts/artifact-runtime/artifact-ref.schema.json" }
+    }
+  },
+  "required": [
+    "run_id", "stage_id", "attempt", "schema_version", "content_hash",
+    "stage_configuration_ref", "input_artifact_refs"
+  ],
+  "additionalProperties": false
+}

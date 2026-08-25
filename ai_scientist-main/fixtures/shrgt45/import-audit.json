@@ -1,0 +1,105 @@
+{
+  "audit_id": "T003-IMPORT-AUDIT-SHRGT45-20260820",
+  "schema_version": "0.1.0",
+  "content_hash": "288B379B8EF96216DC105ED51E300630892EF346B4C85A2575D9B856CA862275",
+  "audit_type": "FIXTURE_IMPORT_AUDIT",
+  "source_library": {
+    "role": "READ_ONLY",
+    "origin_path": "D:\\桌面\\揭榜-移交版",
+    "note": "源资料库只读；未执行任何历史脚本、未解压嵌套 ZIP、未读取或复制 .env / 密钥 / .venv。"
+  },
+  "scope": {
+    "logical_file_count": 171,
+    "logical_total_bytes": 9725849,
+    "status": "VERIFIED",
+    "manifest_ref": "fixtures/shrgt45/manifest.json"
+  },
+  "identity_model": {
+    "source_asset_count": 171,
+    "source_asset_schema": "contracts/foundation/source-asset-ref.schema.json",
+    "source_package_schema": "contracts/foundation/source-package-ref.schema.json",
+    "content_hash_algorithm": "RFC8785-JCS+UTF-8+SHA256",
+    "raw_sha256_vs_content_hash": "asset_sha256 覆盖原始文件字节；content_hash 覆盖 SourceAssetRef 记录本身（JCS），二者不得混用。"
+  },
+  "packages": {
+    "0808": {
+      "package_id": "s04.source0808",
+      "package_role": "AUTHORITATIVE_COMPLETE_SOURCE_PACKAGE",
+      "member_count": 90,
+      "total_bytes": 3818486,
+      "tree_hash": "a45e77758ca59d98a7fb333326f5463177ad62944376a95c4880230595e6c032",
+      "runtime_usage_boundary": "PROVENANCE_AND_AUDIT_ONLY",
+      "authored_package_seal_status": "PARTIAL"
+    },
+    "0814": {
+      "package_id": "s04.demo0814",
+      "package_role": "DERIVED_RUNTIME_FIXTURE_PROJECTION",
+      "member_count": 43,
+      "total_bytes": 1284797,
+      "tree_hash": "e577951858466b40cc001627ef27185267d9ed63e249f6ef78b500723d9c47dc",
+      "runtime_usage_boundary": "DEFAULT_S04_REPLAY_INPUT",
+      "authored_package_seal_status": "VERIFIED",
+      "local_members": [
+        "00_阅读说明/README.md",
+        "00_阅读说明/数据使用清单.csv",
+        "00_阅读说明/数据文件关系图.svg",
+        "05_完整性/acceptance_check.csv",
+        "05_完整性/file_sha256_manifest.csv",
+        "05_完整性/manifest.json"
+      ]
+    }
+  },
+  "lineage": {
+    "relation": "0814 DERIVED_FROM 0808",
+    "inverse_relation": "0808 SOURCE_OF 0814",
+    "verified_mapped_members": 37,
+    "status": "VERIFIED",
+    "reference_style": "版本化引用（VersionedRef），非裸路径；无循环哈希依赖（0808 无 lineage_edges，0814 单向引用 0808，顶层 package_lineage 表达关系）。",
+    "note": "37 个字节相同成员在两个包中保留独立 SourceAssetRef、包成员身份和显式 lineage edge，未跨包合并去重。"
+  },
+  "time_evidence": {
+    "policy": "source_authored_at 均为有证据的代理值，日期部分为证据支持的上界，时间部分 T00:00:00+08:00 仅为 RFC3339 记法占位，不代表实际成文时刻，也未被描述为精确的午夜时刻。",
+    "ingested_at": {
+      "value": "2026-08-20T16:21:14+08:00",
+      "evidence": "T003 导入执行时系统时钟；持久可复核证据为本 import-audit.json 的 content_hash 与 git commit 时间戳绑定。",
+      "is_proxy": false
+    },
+    "tiers": [
+      { "scope": "S01", "evidence_type": "FILE_HEADER_COMPILATION_DATE", "upper_bound": "2026-08-16", "lower_bound": "UNKNOWN", "precision": "DAY", "is_proxy": true, "note": "文件头『整理日期：2026-08-16』，为整理日期而非原始成文日期。" },
+      { "scope": "S02", "evidence_type": "LATEST_PRODUCT_BATCH_DIRECTORY", "upper_bound": "2026-08-14", "lower_bound": "UNKNOWN", "precision": "DAY", "is_proxy": true, "note": "02_最新产物 批次；V2.2 归档件为更早历史版本。" },
+      { "scope": "S03", "evidence_type": "PACKAGE_DIRECTORY_NAME", "upper_bound": "2026-08-07", "lower_bound": "UNKNOWN", "precision": "DAY", "is_proxy": true, "note": "目录名 SHRGT45_假设与操作化_20260807。" },
+      { "scope": "S04-0808", "evidence_type": "PACKAGE_DIRECTORY_NAME", "upper_bound": "2026-08-08", "lower_bound": "UNKNOWN", "precision": "DAY", "is_proxy": true, "note": "目录名 20260808。" },
+      { "scope": "S04-0814", "evidence_type": "PACKAGE_DIRECTORY_NAME", "upper_bound": "2026-08-14", "lower_bound": "UNKNOWN", "precision": "DAY", "is_proxy": true, "note": "目录名 20260814。" },
+      { "scope": "S05", "evidence_type": "PACKAGE_DIRECTORY_NAME", "upper_bound": "2026-08-10", "lower_bound": "UNKNOWN", "precision": "DAY", "is_proxy": true, "note": "目录名 曾子晖_反例分析_20260810。" },
+      { "scope": "S06", "evidence_type": "PACKAGE_DIRECTORY_NAME", "upper_bound": "2026-08-09", "lower_bound": "UNKNOWN", "precision": "DAY", "is_proxy": true, "note": "目录名 20260809。" },
+      { "scope": "S07", "evidence_type": "LATEST_PRODUCT_BATCH_PROXY", "upper_bound": "2026-08-14", "lower_bound": "UNKNOWN", "precision": "DAY", "is_proxy": true, "note": "无独立目录日期，取 02_最新产物 批次上界作为代理。" }
+    ]
+  },
+  "declared_finding_specs": [
+    { "code": "MECHANISM_V23_VS_HYPOTHESIS_V22_DEPENDENCY", "finding_kind": "COMPATIBILITY", "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" },
+    { "code": "THEIL_SEN_VS_OLS_IMPLEMENTATION", "finding_kind": "COMPATIBILITY", "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" },
+    { "code": "COUNTEREXAMPLE_INPUT_PACKAGE_IDENTITY_UNVERIFIED", "finding_kind": "COMPATIBILITY", "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" },
+    { "code": "LEAD_WINDOW_BOUNDARY_IMPLEMENTATION_MISMATCH", "finding_kind": "COMPATIBILITY", "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" },
+    { "code": "CONTROL_WINDOW_POLICY_MISMATCH", "finding_kind": "COMPATIBILITY", "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" },
+    { "code": "CONTROL_CATALOG_SPATIAL_ATTRIBUTION_UNFILTERED", "finding_kind": "COMPATIBILITY", "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" },
+    { "code": "HARP_NOAA_MAPPING_PARTIAL_OR_AMBIGUOUS", "finding_kind": "COMPATIBILITY", "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" },
+    { "code": "EVENT_SEED_OFFICIAL_PROVENANCE_UNVERIFIED", "finding_kind": "GAP", "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" },
+    { "code": "HISTORICAL_ROWS_NOT_INDEPENDENT_SAMPLES", "finding_kind": "GAP", "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" },
+    { "code": "S04_0808_PACKAGE_INTEGRITY_REFERENCES_MISSING_FROM_TRANSFER", "finding_kind": "GAP", "replay_policy": "MAY_ACCEPT_WITH_EXACT_HASH_REVIEW" }
+  ],
+  "informational_gap_findings": [
+    { "code": "CANDIDATE_PRESELECTED_EXPERT_SEED_NOT_SYSTEM_RANKED", "finding_kind": "GAP" },
+    { "code": "LEGACY_HYPOTHESIS_PACKAGE_NOT_MACHINE_VALIDATABLE", "finding_kind": "GAP" }
+  ],
+  "gap_declaration": {
+    "code": "S04_0808_PACKAGE_INTEGRITY_REFERENCES_MISSING_FROM_TRANSFER",
+    "reason": "0808 的 06_审计与交付/交付说明.md 声称存在包级 file_sha256_manifest.csv，但移交目录中不存在；zip_sha256.csv 引用的外层 SHRGT45_全信息基准版_20260808.zip 也未随移交提供。",
+    "disposition": "OPEN；是否 ACCEPTED_FOR_REPLAY 留待 D-008 与实际 FIXTURE_IMPORT_REVIEW 决定。"
+  },
+  "scientific_boundaries": {
+    "scientific_verdict": "NOT_EVALUATED",
+    "result_maturity": "DEVELOPMENTAL",
+    "authorization_status": "NOT_AUTHORIZED",
+    "note": "结构校验通过不等于科学结论正确；导入审计不代表历史统计结果经过正式验证。"
+  }
+}

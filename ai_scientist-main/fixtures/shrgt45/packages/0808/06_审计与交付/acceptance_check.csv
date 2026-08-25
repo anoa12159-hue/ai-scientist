@@ -1,0 +1,10 @@
+﻿check,status,note
+final_analysis_rows,PASS,"observed=55, expected=55"
+final_positive_rows,PASS,"observed=37, expected=37"
+final_control_rows,PASS,"observed=18, expected=18"
+future6h_mplus_exclusion,PASS,"observed=36, expected=36"
+same_ar_replacements,PASS,"observed=3, expected=3"
+independent_control_count,PASS,"observed=0, no formal independent control claimed"
+main_report_present,PASS,0806-based report present
+strict_audit_preserved,PASS,strict audit retained as evidence attachment
+no_cache_or_bytecode,PASS,package has no cache or bytecode
