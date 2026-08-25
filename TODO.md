@@ -24,7 +24,7 @@
 
 - [x] P2-01 实现统一 `QwenChatModel`/OpenAI-compatible Adapter。（2026-08-25；无第三方 SDK 的适配器、离线请求注入测试；专项 5 passed，全量 222 passed；Ruff/mypy 通过）
 - [x] P2-02 将模型名、temperature、seed、超时、轮数和预算移入配置。（2026-08-25；新增 `config.example.toml`、不可变 `QwenRuntimeConfig`/`ModelBudget` 和 TOML 校验；专项 8 passed，全量 225 passed；Ruff/mypy 通过）
-- [ ] P2-03 实现结构化输出、Schema 校验和有限修复循环。
+- [x] P2-03 实现结构化输出、Schema 校验和有限修复循环。（2026-08-25；`StructuredQwenChatModel` 使用 Draft 2020-12 校验、最多配置轮数修复并聚合 token 用量；专项 3 passed，全量 228 passed；Ruff/mypy 通过）
 - [ ] P2-04 实现 API 重试、退避、限流、超时和错误 Artifact。
 - [ ] P2-05 增加脱敏调用日志、模型版本记录和 token 统计。
 - [!] P2-06 `deep_research_agent_v13.zip` 内含非占位 `S2_API_KEY`；已禁止交付并记录于 `SECURITY_NOTICE.md`，需密钥所有者吊销/轮换；主仓库补齐后再清除 DeepSeek 专用依赖。（2026-08-25）
@@ -87,3 +87,4 @@
 | 2026-08-25 | 完成 P1-05：T006 中断/恢复/重试/并行/幂等验证 | `tests/unit/test_replay_graph.py tests/integration/test_replay_workflow.py -q`：25 passed（63.63s） | T006 正式 closeout/CompletionRecord 仍待后续批准 | P2-01 |
 | 2026-08-25 | 完成 P2-01：Qwen/OpenAI-compatible 统一适配器 | `tests/unit/test_qwen_adapter.py`：5 passed；全量测试：222 passed；Ruff/mypy 通过；未访问网络、未使用 API Key | P2-02 尚未完成；真实百炼调用需后续配置和密钥 | P2-02 |
 | 2026-08-25 | 完成 P2-02：模型运行参数与预算配置化 | `tests/unit/test_llm_config.py tests/unit/test_qwen_adapter.py -q`：8 passed；全量测试：225 passed；Ruff/mypy 通过；配置解析不访问网络 | P2-03 结构化输出尚未实现 | P2-03 |
+| 2026-08-25 | 完成 P2-03：结构化输出与有限 Schema 修复 | `tests/unit/test_structured_output.py`：3 passed；全量测试：228 passed；Ruff/mypy 通过；无网络调用 | P2-04 API 重试/退避/限流/超时和错误 Artifact 尚未实现 | P2-04 |

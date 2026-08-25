@@ -32,3 +32,10 @@ print(response.message.content)
 
 测试通过构造函数注入 `requester`，不需要网络或 API Key。研究 Replay 不调用模型适配器，
 因此可以在无凭证环境中完整运行。
+
+## 结构化输出
+
+`StructuredQwenChatModel` 接收 Draft 2020-12 JSON Schema，要求模型返回
+`response_format.type = json_schema`，并在本地再次校验响应。解析或校验失败时，它只追加
+包含确定性错误位置的修复提示，最多执行配置的 `max_repair_rounds`；耗尽后抛出
+`StructuredOutputError`，不会把无效结果传给业务层。

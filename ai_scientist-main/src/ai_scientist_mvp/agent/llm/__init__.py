@@ -13,6 +13,11 @@ from ai_scientist_mvp.agent.llm.qwen import (
     QwenModelConfig,
     TokenUsage,
 )
+from ai_scientist_mvp.agent.llm.structured import (
+    StructuredOutput,
+    StructuredOutputError,
+    StructuredQwenChatModel,
+)
 
 __all__ = [
     "ChatMessage",
@@ -27,5 +32,8 @@ __all__ = [
     "QwenChatModel",
     "QwenModelConfig",
     "QwenRuntimeConfig",
+    "StructuredOutput",
+    "StructuredOutputError",
+    "StructuredQwenChatModel",
     "TokenUsage",
 ]
