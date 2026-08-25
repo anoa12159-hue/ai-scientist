@@ -26,6 +26,11 @@ from ai_scientist_mvp.skills.quote_verifier import (
     QuoteVerificationResult,
     QuoteVerifier,
 )
+from ai_scientist_mvp.skills.snapshot_search import (
+    FallbackPaperSearchProvider,
+    PaperSearchUnavailableError,
+    SnapshotPaperSearchProvider,
+)
 
 __all__ = [
     "InMemoryPaperSearchProvider",
@@ -48,4 +53,7 @@ __all__ = [
     "QuoteVerificationRequest",
     "QuoteVerificationResult",
     "QuoteVerifier",
+    "FallbackPaperSearchProvider",
+    "PaperSearchUnavailableError",
+    "SnapshotPaperSearchProvider",
 ]

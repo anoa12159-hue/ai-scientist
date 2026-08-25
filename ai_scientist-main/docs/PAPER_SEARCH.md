@@ -41,3 +41,14 @@ Graph State。
 一个位置与引用完全相同、位置绑定有效且数字 token（支持小数、科学计数法和百分号）一致时，
 结果才是 `VERIFIED`；缺失、重复、位置错误或数字不一致统一返回 `NOT_FOUND`，并只保留引用
 SHA-256、位置和失败原因。返回对象不包含原文，便于把结果安全投影到 `EvidenceTable`。
+
+## 固定语料与离线回退
+
+`literature/shrgt45.snapshot.json` 是首个固定语料身份清单，只引用已纳入 SHRGT45 Fixture 的
+四份 S02 Markdown 来源，不复制或改写来源字节。`SnapshotPaperSearchProvider` 启动时逐项校验
+相对路径、字节数、SHA-256 和 UTF-8，任何漂移都 Fail Closed；检索结果只返回来源 ID、标题、
+版本和相对路径，不把全文放入结果。
+
+`FallbackPaperSearchProvider` 仅在主 Provider 明确抛出 `PaperSearchUnavailableError` 时使用
+固定快照。程序错误、无效结果或其他异常不会被静默吞掉，从而区分“网络不可用降级”和实现
+缺陷。离线 Replay 可直接绑定快照 Provider，不读取 `.env` 或任何 API Key。

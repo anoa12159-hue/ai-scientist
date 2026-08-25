@@ -1,0 +1,42 @@
+{
+  "snapshot_id": "shrgt45-literature-fixture",
+  "snapshot_version": "2026-08-20",
+  "documents": [
+    {
+      "paper_id": "s02.mechanism-brief-v2_3",
+      "title": "MechanismBrief V2.3: SHRGT45",
+      "relative_path": "fixtures/shrgt45/assets/s02/MechanismBrief-V2.3-SHRGT45.md",
+      "sha256": "68ED21D00050A8F8F6B5DCF2B181417D4AEE217DA0A01C9C502ABC384BADEBA1",
+      "byte_size": 22586,
+      "year": 2026,
+      "fields_of_study": ["solar physics", "SHRGT45", "mechanism evidence"]
+    },
+    {
+      "paper_id": "s02.mechanism-brief-v2_2-historical",
+      "title": "MechanismBrief V2.2: SHRGT45 historical",
+      "relative_path": "fixtures/shrgt45/assets/s02/MechanismBrief-V2.2-SHRGT45.md",
+      "sha256": "EF4EDA2C011F6AF4CC5C707F138140CAE810BD311E099C0FC6883BC02559FF76",
+      "byte_size": 21568,
+      "year": 2026,
+      "fields_of_study": ["solar physics", "SHRGT45", "mechanism evidence"]
+    },
+    {
+      "paper_id": "s02.agent-run-phase2-20260814",
+      "title": "Phase 2 SHRGT45 research output 20260814",
+      "relative_path": "fixtures/shrgt45/assets/s02/phase2_SHRGT45_20260814_193727.md",
+      "sha256": "018572A27CAD658D0438DFFEEB2201A310AC4A97244E7A20586D70867697EECD",
+      "byte_size": 20279,
+      "year": 2026,
+      "fields_of_study": ["solar physics", "SHRGT45", "phase 2"]
+    },
+    {
+      "paper_id": "s02.mechanism-human-summary",
+      "title": "SHRGT45 mechanism summary",
+      "relative_path": "fixtures/shrgt45/assets/s02/SHRGT45机制小结.md",
+      "sha256": "6CCCE727CF27EC8387442E64A625AE36FBD78F10C078B1F12FB49884AD0F8D9F",
+      "byte_size": 5062,
+      "year": 2026,
+      "fields_of_study": ["solar physics", "SHRGT45", "mechanism evidence"]
+    }
+  ]
+}

@@ -135,6 +135,10 @@ def _t001_owned_files() -> list[Path]:
         and "__pycache__" not in p.parts
         and not any(part.endswith(".egg-info") for part in p.parts)
     )
+    owned.extend(
+        p for p in (PROJECT_ROOT / "literature").rglob("*")
+        if p.is_file()
+    )
     return owned
 
 
@@ -342,6 +346,7 @@ def test_task005_completion_record_valid() -> None:
 def test_root_contains_only_expected_files() -> None:
     allowed = {
         ".editorconfig",
+        ".env",
         ".env.example",
         ".gitattributes",
         ".gitignore",
@@ -390,6 +395,7 @@ def test_no_business_implementation_present() -> None:
         "skills/paper_fetch.py",
         "skills/paper_search.py",
         "skills/quote_verifier.py",
+        "skills/snapshot_search.py",
     }
     expected_py = (
         {"__init__.py"}
