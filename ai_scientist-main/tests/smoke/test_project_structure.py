@@ -375,6 +375,7 @@ def test_no_business_implementation_present() -> None:
         "infrastructure/storage.py",
         # T005 offline replay adapter (no LangGraph/FastAPI/network)
         "application/replay_service.py",
+        "application/literature_replay_service.py",
         "providers/replay_protocols.py",
         "providers/shrgt45_replay.py",
         "providers/replay_validation.py",

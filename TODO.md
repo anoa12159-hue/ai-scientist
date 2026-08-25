@@ -36,7 +36,7 @@
 - [x] P3-03 实现逐字引用、数字和位置校验。（2026-08-25；新增 `QuoteVerifier`，支持精确位置、唯一匹配、数字 token（小数/科学计数法/百分号）校验和 Fail Closed 的 `NOT_FOUND`；专项 32 passed；全量测试 251 passed；Ruff/mypy 通过；原文不进入结果）
 - [x] P3-04 将 Phase 1/Phase 2 输出映射到 `EvidenceTable`/`MechanismBrief`。（2026-08-25；经用户明确授权，从 v13 ZIP 仅选择性提取 `template.py`、`phase2_system.py` 和两份实际输出到 `/tmp`，未提取 `.env`；实现 `Phase1EvidencePlan`、V2.2 `EvidenceTable`/`MechanismBriefV22` 解析校验及现有 `MechanismSnapshot` 投影；V2.3 禁止静默冒充 V2.2；专项 21 passed；全量测试 261 passed；Ruff/mypy 通过）
 - [x] P3-05 提供固定语料快照和离线检索回退方案。（2026-08-25；新增 `literature/shrgt45.snapshot.json`，引用四份已哈希锁定的 S02 Fixture 来源；`SnapshotPaperSearchProvider` 校验路径、字节数、SHA-256 和 UTF-8；仅在 `PaperSearchUnavailableError` 时确定性回退；专项 27 passed；全量测试 256 passed；Ruff/mypy 通过）
-- [ ] P3-06 用 SHRGT45 Fixture 完成一条可审计的文献研究 Replay。
+- [x] P3-06 用 SHRGT45 Fixture 完成一条可审计的文献研究 Replay。（2026-08-25；`LiteratureReplayService` 串联固定快照检索、V2.2 来源哈希、15 条逐字证据校验、`MechanismSnapshot` 投影与 ArtifactStore 血缘；重复运行幂等，独立 `audit_hash` 可重算；专项 11 passed；全量测试 262 passed；Ruff/mypy 通过；无网络、未读取凭证，科学状态保持 `NOT_EVALUATED / DEVELOPMENTAL`）
 
 ## P4｜假设、数据与反例闭环
 
@@ -96,3 +96,4 @@
 | 2026-08-25 | 修正 P3-04 类型边界 | 已由材料知情人确认：V2.2 定义是 `template.py` 的 Python DTO 与 `phase2_system.py` 的 Markdown 模板，不是 JSON Schema；持久层继续使用现有 `MechanismSnapshot` 和来源引用 | 等待脱敏的两个源文件及两处验收样例；`S2_API_KEY` 必须吊销/轮换 | P3-04（等待脱敏材料） |
 | 2026-08-25 | 完成 P3-05：固定语料快照与离线回退 | 专项 27 passed；全量测试 256 passed；Ruff/mypy 通过；四份来源逐项校验哈希和大小，回退只处理显式不可用错误 | 当时 P3-04 尚待 v13 模板；现已在后续完成 | P3-04 |
 | 2026-08-25 | 完成 P3-04：v13 V2.2 Phase 1/2 DTO 与 Markdown 映射 | 专项 21 passed；全量测试 261 passed；Ruff/mypy 通过；实际 V2.2 Fixture 可解析，V2.3 冒充、重复证据和缺字段均 Fail Closed | P2-06 凭证轮换仍未确认；P3-06 尚未串联 Replay | P3-06 |
+| 2026-08-25 | 完成 P3-06：SHRGT45 可审计离线文献 Replay | 专项 11 passed；全量测试 262 passed；Ruff/mypy 通过；15 条证据逐字校验，Artifact 血缘、审计哈希和幂等已验证 | P2-06 旧凭证处置仍未确认；P4-01 涉及冻结契约变更 | P4-01（需先核对契约） |

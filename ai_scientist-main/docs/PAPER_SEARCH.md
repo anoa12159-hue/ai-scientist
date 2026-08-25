@@ -63,3 +63,12 @@ DOI/arXiv 元数据和 P1–P5 覆盖状态。`parse_mechanism_brief()` 按 v13 
 内部 DTO 不是新的 JSON Schema。持久化时由 `project_mechanism_snapshot()` 抽取参数、科学声称
 上限、禁止表述和来源引用，生成现有冻结 `MechanismSnapshot`。V2.3 输入不会静默冒充 V2.2；
 V2.3 仍作为独立版本化来源处理。
+
+## SHRGT45 文献 Replay
+
+`LiteratureReplayService` 使用固定快照检索并绑定 `s02.mechanism-brief-v2_2-historical`，读取前由
+Fixture Catalog 校验来源身份和字节哈希。服务解析 V2.2 DTO，对 15 条证据摘要执行逐字位置校验，
+再通过已有 `ReplayArtifactImporter` 持久化来源 `SourceDocument` 和派生
+`MechanismSnapshot`。结果包含查询、语料版本、来源引用、证据校验记录、ArtifactRef 和独立
+`audit_hash`；重复运行保持相同身份，并固定
+`NOT_EVALUATED / DEVELOPMENTAL / network_accessed=false / credential_accessed=false`。

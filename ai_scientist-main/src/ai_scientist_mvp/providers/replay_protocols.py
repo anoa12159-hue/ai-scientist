@@ -43,6 +43,8 @@ class ReplayAssetCatalog(Protocol):
 
     def stage_assets(self, stage_id: str) -> list[SourceAssetRef]: ...
 
+    def read_bytes(self, asset: SourceAssetRef) -> bytes: ...
+
 
 class ReplayArtifactImporter(Protocol):
     """Persist source, derived, and native objects through ArtifactStore."""
