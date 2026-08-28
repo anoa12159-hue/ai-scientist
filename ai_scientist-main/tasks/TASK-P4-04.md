@@ -16,7 +16,7 @@
 - 单独记录 `[T0,T0+3h)` 早发 M1.0+，不得据此改写主标签；
 - 保持 `NOT_EVALUATED / DEVELOPMENTAL / NOT_AUTHORIZED`。
 
-冻结实现口径以根目录 `TASK_DECLARATION.md` 与 0814 当前 Demo 为准。历史 Hypothesis
+冻结实现口径以 P4-04 实现契约与 0814 当前 Demo 为准。历史 Hypothesis
 中的 Theil–Sen 是未冻结提案，不得静默替换已冻结 OLS。当前材料也不足以从 Br/Bp/Bt
 安全重建势场和像素级 SHRGT45，本任务只处理已注册、已校验的 SHARP keyword。
 

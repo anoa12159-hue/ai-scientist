@@ -1,4 +1,23 @@
-"""API 边界（T007 起实现）。
+"""Dependency-free, read-only RunReadModel API."""
 
-T001 只保留包边界；路由与聚合 RunReadModel 查询由后续任务卡引入。
-"""
+from ai_scientist_mvp.api.read_model import (
+    ReadModelNotFound,
+    build_run_read_model,
+    get_artifact,
+    list_artifacts,
+    list_findings,
+    list_reviews,
+    list_stages,
+)
+from ai_scientist_mvp.api.workbench import JWSSDWorkbench
+
+__all__ = [
+    "ReadModelNotFound",
+    "build_run_read_model",
+    "get_artifact",
+    "list_artifacts",
+    "list_findings",
+    "list_reviews",
+    "list_stages",
+    "JWSSDWorkbench",
+]

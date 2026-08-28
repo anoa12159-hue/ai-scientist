@@ -53,3 +53,13 @@ print(response.message.content)
 模型版本、响应 ID、尝试次数、耗时、结果、错误码和 token 用量。`ResilientChatModel` 在
 成功和最终失败时通知 observer；提示词、完整响应、请求头、API Key 和其他未列入白名单的
 字段不会进入记录。需要自定义落盘或指标系统时，实现 `ModelCallObserver` 协议即可。
+
+## JW-SSD 视觉评测
+
+JW-SSD 不训练本地模型，使用 `config.qwen_jwssd.toml` 中的 `qwen-vl-max`。真实密钥只放在未跟踪的 `ai_scientist-main/.env`：
+
+```text
+DASHSCOPE_API_KEY=<你的百炼 API Key>
+```
+
+`src/infer_batch.py --mode qwen` 只读取无标签样本、PNG 视觉输入和 FITS 数值摘要；Mount Wilson 标签由 `src/evaluate_jwssd.py` 独立读取。不要把 `S2_API_KEY` 改名或复用于 Qwen。

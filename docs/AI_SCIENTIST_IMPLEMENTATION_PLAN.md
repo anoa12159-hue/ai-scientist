@@ -4,12 +4,12 @@
 
 ## 1. 目标与范围
 
-本项目面向阿里云赛事赛道一“科学问题”方向二“金乌·太阳物理建模迭代与假设生成”，当前采用 B1 × A1 口径：以耀斑触发前兆因果链发现为科学内核，以活动区磁场复杂度定量分析作为验证引擎。
+本项目保留阿里云赛事赛道一“科学问题”方向二的研究能力；当前评测任务冻结为官方 JW-SSD Mount Wilson 五分类四模态数据，后续数据、模型和评测实现以 `TASK_DECLARATION_JWSSD_MW5CLASS.md` 为准。
 
 项目系统同时提供两种入口：
 
 1. **Research Mode**：专家候选参数 → 文献证据 → 可检验假设 → 数据验证 → 反例审查 → 磁图 QA → 研究报告。
-2. **Benchmark Mode**：`data_root` → 固定配置批量推理 → 官方格式预测 CSV；不得读取 test 标签或依赖人工点击。
+2. **Evaluation Mode**：冻结 JW-SSD 评测集 → 固定配置批量推理 → 五分类预测 CSV 和独立指标报告；推理不得读取标签或依赖人工点击。
 
 当前策略不是从头重写 Agent，也不是原样上线 `deep_research_agent_v13`，而是：
 
@@ -82,7 +82,7 @@ Agent 节点之间只传 `ParameterProfile`、`EvidenceTable`、`MechanismBrief`
 - `quote_verifier`：逐字引用、数字和位置一致性校验；
 - `data_loader`：FITS、CSV、时间序列读取；
 - `feature_compute`：磁场复杂度和候选参数计算；
-- `stats`：时间切分、统计检验、TSS/HSS、置信区间和泄漏检查；
+- `stats`：分组切分、五分类统计检验、macro/micro-F1、balanced accuracy、置信区间和泄漏检查；
 - `counterexample_miner`：假阳性、假阴性和边界样本提取；
 - `magnetogram_qa`：缺失、饱和、投影、WCS、质量标记和 cadence 检查；
 - `report_renderer`：从 Artifact 生成 HTML/Markdown/PDF；
@@ -120,7 +120,7 @@ llm:
 
 允许网络检索、论文缓存和人工审核，用于研究探索、前端演示和老师评议。每次运行仍必须保存完整 Artifact、Ledger 和脱敏日志。
 
-### 6.2 Benchmark Mode
+### 6.2 Evaluation Mode
 
 提供唯一批量入口：
 
@@ -132,23 +132,23 @@ python src/infer_batch.py \
   --out /path/to/out/pred.csv
 ```
 
-Benchmark Mode 必须不读取标签、不需要人工操作、不依赖本机绝对路径，并输出官方规定的预测 CSV。外部检索应使用随包提供或可重建的语料快照；网络不可用时要有明确的离线策略。
+Evaluation Mode 必须不读取冻结评测集标签、不需要人工操作、不依赖本机绝对路径，并输出五分类预测 CSV；指标由独立评测进程计算。外部检索应使用随包提供或可重建的语料快照；网络不可用时要有明确的离线策略。
 
 ## 7. 必须先冻结的任务定义
 
-在实现真实预测入口前，完成 `TASK_DECLARATION.md`，至少固定：
+在实现当前任务入口前，完成 `TASK_DECLARATION_JWSSD_MW5CLASS.md`，至少固定：
 
 - 输入模态和单样本定义；
 - 参数、特征和预处理；
-- 主报告时间窗；
-- 正负类或多分类到业务二分类的映射；
+- 评测集版本、分组切分和标签边界；
+- 多分类类别列表及是否定义业务二分类折叠；
 - 输出类别、概率或等级分数；
-- 阈值策略；
-- train/validation/test 数据边界；
-- TSS/HSS 等指标定义；
+- 概率输出和模型选择规则；
+- 训练/验证数据与冻结评测集的隔离边界；
+- macro/micro-F1、balanced accuracy、每类召回率和置信区间定义；
 - 外部数据、检索语料和许可证。
 
-现有研究口径 `SHRGT45 + 未来 3-6h M+` 与 JW-FD 累计窗口标签不等价。当前采用 Research/Benchmark 双任务，禁止静默映射，详见 `TASK_DECLARATION.md` 和 `docs/decisions/ADR-0001-task-mapping.md`。
+旧 JW-FD Research/Benchmark 映射已由冻结的 JW-SSD 五分类四模态评测任务取代；历史原因见 `docs/decisions/ADR-0001-task-mapping.md`，当前任务边界见 `TASK_DECLARATION_JWSSD_MW5CLASS.md`。
 
 ## 8. 稳定复现策略
 
@@ -167,7 +167,7 @@ Benchmark Mode 必须不读取标签、不需要人工操作、不依赖本机�
 
 ### P0：赛事与科学任务冻结
 
-产出：`TASK_DECLARATION.md`、`docs/MODEL_COMPLIANCE.md`、`docs/DATA_GOVERNANCE.md`、赛事核验和决策记录。
+产出：`TASK_DECLARATION_JWSSD_MW5CLASS.md`、`docs/MODEL_COMPLIANCE.md`、`docs/DATA_GOVERNANCE.md`、数据核验和决策记录。
 
 验收：输入、标签、时间窗、输出和指标无歧义；研究入口与评测入口关系明确。
 
@@ -193,15 +193,15 @@ Benchmark Mode 必须不读取标签、不需要人工操作、不依赖本机�
 
 产出：Hypothesis/DataPlan 内部 DTO、现有冻结 Validation/Snapshot 投影、特征计算、统计验证、反例审查和磁图 QA Provider。若未来需要新增正式公共 JSON Schema，必须单独走 Contract Change Request，不由实现任务静默扩展。
 
-当前基础：P4-01 已完成内部 DTO 与公共投影；P4-02 已建立可扩展 SHARP 参数注册表，首个且当前唯一登记项是已核实的 `SHRGT45`；P4-03 已建立系统无关的严格 CSV/FITS 读取、Br/Bp/Bt 一致性和历史窗质量审计；P4-04 已实现同 HARP 三小时闭区间切片、真实 T_REC OLS 特征及同单位非重叠 3–6h M1.0+ onset 标签。`MEANSHR`、平均剪切角和 0–1 fraction 不得作为 `SHRGT45` 的别名或静默单位转换，Theil–Sen 未冻结提案不得替换当前 OLS，数据或标签结构通过也不得提升科学结论或执行授权。
+当前基础：P4-01 已完成内部 DTO 与公共投影；P4-02 已建立可扩展 SHARP 参数注册表，首个且当前唯一登记项是已核实的 `SHRGT45`；P4-03 已建立系统无关的严格 CSV/FITS 读取、Br/Bp/Bt 一致性和历史窗质量审计；P4-04 的历史 M1+ 时间窗实现保留为旧 Research Mode，不适用于当前评测；P4-05 已为冻结 JW-SSD 建立只读 ZIP manifest、四模态完整性门、HARPNUM 组级泄漏审计、五分类指标和 Wilson Recall 区间。当前评测标签只能由独立评测进程读取，推理入口不得接收标签。
 
 验收：每个假设都能映射到指标、数据、时间窗、检验和证伪条件；统计结果可独立重算；没有数据泄漏。
 
-### P5：Benchmark 入口
+### P5：JW-SSD 五分类评测入口
 
-产出：`src/infer_batch.py`、公开预测文件、公开指标、运行日志摘要。
+产出：`src/infer_batch.py`、公开预测文件、公开指标、运行日志摘要。当前入口只提供 label-blind smoke baseline；训练模型接入和正式预测需完成后续 P5-02/P5-03。
 
-验收：仅凭 `data_root` 和配置生成标准 CSV；无 test 标签、人工点击或私有 Prompt 依赖；公开数据可复现。
+验收：仅凭冻结评测集和配置生成五分类 CSV；推理不读取标签、不依赖人工点击或本机路径；独立评测进程可重算指标。
 
 ### P6：API、前端与演示包
 
@@ -218,10 +218,10 @@ Benchmark Mode 必须不读取标签、不需要人工操作、不依赖本机�
 - 统计结果重算一致性；
 - 反例识别覆盖率；
 - 磁图 QA 失败检测率；
-- 公开数据 TSS/HSS 等指标；
+- 冻结 JW-SSD 评测集的五分类指标和置信区间；
 - API 失败恢复率和平均调用预算；
 - 中断恢复成功率；
-- 公开数据和私有数据均不读取标签的审计结果。
+- 冻结评测集标签不进入推理进程的审计结果。
 
 ## 11. 当前 session 的下一步
 

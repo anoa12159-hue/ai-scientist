@@ -49,14 +49,23 @@ class ModelResponseError(ModelError):
 @dataclass(frozen=True)
 class ChatMessage:
     role: str
-    content: str
+    content: str | Sequence[Mapping[str, Any]]
 
-    def as_payload(self) -> dict[str, str]:
+    def as_payload(self) -> dict[str, Any]:
         if self.role not in {"system", "user", "assistant", "tool"}:
             raise ModelConfigurationError(f"unsupported chat message role: {self.role}")
-        if not isinstance(self.content, str):
-            raise ModelConfigurationError("chat message content must be a string")
-        return {"role": self.role, "content": self.content}
+        if isinstance(self.content, str):
+            return {"role": self.role, "content": self.content}
+        if not isinstance(self.content, Sequence) or isinstance(self.content, (bytes, bytearray)):
+            raise ModelConfigurationError("chat message content must be text or content parts")
+        parts: list[Mapping[str, Any]] = []
+        for part in self.content:
+            if not isinstance(part, Mapping):
+                raise ModelConfigurationError("chat message content parts must be objects")
+            parts.append(dict(part))
+        if not parts:
+            raise ModelConfigurationError("chat message content parts must not be empty")
+        return {"role": self.role, "content": parts}
 
 
 @dataclass(frozen=True)

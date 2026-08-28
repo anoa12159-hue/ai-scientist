@@ -5,6 +5,12 @@
 /AI_Scientist_MVP_学长移交报告.md
 /网站补充信息.md
 
+# Locally extracted datasets and read-only handoff libraries.
+/SHRGT45_官方五分类四模态扩展样本_20260825 2/
+/__MACOSX/
+/deep_research_agent_v13/
+/揭榜-移交版/
+
 # Python and local verification artifacts.
 **/__pycache__/
 **/*.py[cod]

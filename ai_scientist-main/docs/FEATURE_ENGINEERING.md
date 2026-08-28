@@ -10,7 +10,7 @@ on actual elapsed hours and SHARP `SHRGT45` percent values. Outputs include the 
 points per hour, observed valid-endpoint difference, three-hour OLS-equivalent change, valid-frame
 count, quality audit, and parameter-definition hash.
 
-This OLS rule comes from the frozen root `TASK_DECLARATION.md` and the current 0814 Demo. The
+This OLS rule comes from the current P4-04 implementation contract and the 0814 Demo. The
 historical Theil–Sen proposal is not silently substituted. Pixel-level SHRGT45 is also not rebuilt
 from Br/Bp/Bt because the transferred inputs do not freeze a potential-field solver and all
 measurement choices needed for a scientifically equivalent reconstruction.

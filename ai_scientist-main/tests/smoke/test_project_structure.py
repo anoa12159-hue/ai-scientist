@@ -54,6 +54,7 @@ _PACKAGE_SUBPACKAGES = (
     "api",
     "agent",
     "skills",
+    "quality",
 )
 
 _SECRET_PATTERNS: tuple[re.Pattern[str], ...] = (
@@ -351,6 +352,7 @@ def test_root_contains_only_expected_files() -> None:
         ".gitattributes",
         ".gitignore",
         "config.example.toml",
+        "config.qwen_jwssd.toml",
         "AGENTS.md",
         "README.md",
         "pyproject.toml",
@@ -383,8 +385,9 @@ def test_no_business_implementation_present() -> None:
         "application/replay_workflow_service.py",
         "workflow/state.py",
         "workflow/checkpoint.py",
-        "workflow/replay_graph.py",
-        "workflow/replay_cli.py",
+            "workflow/replay_graph.py",
+            "workflow/replay_cli.py",
+            "workflow/replay_web.py",
         # P2 unified Qwen/OpenAI-compatible model boundary.
         "agent/llm/__init__.py",
         "agent/llm/config.py",
@@ -403,6 +406,14 @@ def test_no_business_implementation_present() -> None:
         "skills/snapshot_search.py",
         # P4-01 internal DTOs projected to existing frozen public contracts.
         "skills/research_contracts.py",
+        # P4/P5 evaluation quality and audit projections.
+        "skills/jwssd_evaluation.py",
+        "quality/gates.py",
+        # P6 read-only query API.
+        "api/read_model.py",
+        "api/server.py",
+        # P6 astronomy workbench observation and single-sample analysis API.
+        "api/workbench.py",
     }
     expected_py = (
         {"__init__.py"}
@@ -428,13 +439,13 @@ def test_no_business_implementation_present() -> None:
                 )
         assert "eval(" not in text, f"{path.name} contains eval("
 
-    # web/ remains README-only until T008; fixtures/shrgt45/ is legitimately
-    # populated by T003 (D-005 fixture import), so only web/ is asserted here.
+    # web/ is a static P6 thin frontend; fixtures/shrgt45/ is legitimately
+    # populated by T003 (D-005 fixture import), so only the web allowlist is asserted here.
     for placeholder_dir, note in (
         (PROJECT_ROOT / "web", "frontend pages"),
     ):
         files = sorted(p.name for p in placeholder_dir.rglob("*") if p.is_file())
-        assert files == ["README.md"], (
+        assert files == ["README.md", "app.js", "index.html", "styles.css"], (
             f"unexpected files in {placeholder_dir} ({note} leaked into an earlier task?)"
         )
 

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>HelioScope · 太阳活动区智能研究工作台</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="rail">
+        <div class="brand-mark" aria-hidden="true"><span></span></div>
+        <nav aria-label="工作台导航">
+          <button class="rail-item active" title="观测工作区">◉<span>观测</span></button>
+          <button class="rail-item" title="AI 判读">✦<span>AI</span></button>
+          <button class="rail-item" title="证据记录">⌁<span>证据</span></button>
+          <button class="rail-item" title="研究报告">▤<span>报告</span></button>
+        </nav>
+        <div class="rail-spacer"></div>
+        <button id="settings-toggle" class="rail-item" title="连接设置">⚙<span>设置</span></button>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">SOLAR ACTIVE REGION INTELLIGENCE</p>
+            <h1>HelioScope <span>太阳活动区智能研究工作台</span></h1>
+          </div>
+          <div class="topbar-status">
+            <span id="connection-dot" class="status-dot"></span>
+            <span id="connection-text">正在连接观测服务</span>
+          </div>
+        </header>
+
+        <section id="settings" class="settings" hidden>
+          <label for="api-base">工作台 API</label>
+          <input id="api-base" autocomplete="off">
+          <button id="reconnect" type="button">重新连接</button>
+        </section>
+
+        <div class="workspace">
+          <section class="panel observation-browser" aria-label="观测目录">
+            <div class="panel-head">
+              <div><p class="section-kicker">OBSERVATIONS</p><h2>活动区观测</h2></div>
+              <span id="observation-count" class="count-chip">—</span>
+            </div>
+            <label class="search-box">
+              <span>⌕</span>
+              <input id="observation-search" placeholder="检索编号、HARP 或时间" autocomplete="off">
+            </label>
+            <div id="observation-list" class="observation-list" aria-live="polite"></div>
+            <div class="dataset-note">
+              <span class="verified-icon">✓</span>
+              <div><strong>官方数据已核验</strong><small>推理视图隐藏评测标签</small></div>
+            </div>
+          </section>
+
+          <section class="science-stage">
+            <article class="panel image-workspace">
+              <div class="panel-head observation-heading">
+                <div>
+                  <p class="section-kicker">SELECTED OBSERVATION</p>
+                  <h2 id="observation-title">选择一条观测</h2>
+                  <p id="observation-meta" class="observation-meta">等待加载观测目录</p>
+                </div>
+                <span class="instrument-chip">SDO / HMI</span>
+              </div>
+              <div class="image-grid">
+                <figure class="solar-frame">
+                  <figcaption><span class="channel-dot continuum"></span>连续谱强度图 <em>CONTINUUM</em></figcaption>
+                  <div class="image-well">
+                    <img id="continuum-image" alt="所选活动区的 HMI 连续谱图">
+                    <span class="image-axis x">SOLAR X</span><span class="image-axis y">SOLAR Y</span>
+                  </div>
+                </figure>
+                <figure class="solar-frame">
+                  <figcaption><span class="channel-dot magnetic"></span>视向磁图 <em>MAGNETOGRAM</em></figcaption>
+                  <div class="image-well magnetic-well">
+                    <img id="magnetogram-image" alt="所选活动区的 HMI 磁图">
+                    <div class="polarity-scale"><span>−</span><i></i><span>+</span></div>
+                  </div>
+                </figure>
+              </div>
+              <div class="fits-section">
+                <div class="subsection-title"><span>FITS</span> 数值质量摘要</div>
+                <div id="fits-cards" class="fits-cards"><p class="empty-state">选择观测后读取数值摘要</p></div>
+              </div>
+            </article>
+            <article class="panel provenance-strip">
+              <div><span>数据产品</span><strong>hmi.sharp_720s</strong></div>
+              <div><span>空间单元</span><strong>HARP Patch</strong></div>
+              <div><span>观测模态</span><strong>PNG × 2 · FITS × 2</strong></div>
+              <div><span>数据完整性</span><strong class="good">SHA256 VERIFIED</strong></div>
+            </article>
+          </section>
+
+          <aside class="panel analysis-panel">
+            <div class="panel-head">
+              <div><p class="section-kicker">AI INTERPRETATION</p><h2>智能判读</h2></div>
+              <span class="model-chip">QWEN-VL</span>
+            </div>
+            <div class="analysis-intro">
+              <div class="ai-orbit"><span>✦</span></div>
+              <h3>Mount Wilson 五分类</h3>
+              <p>综合连续谱形态、磁极性分布与 FITS 数值摘要，对当前活动区给出开发性判读。</p>
+            </div>
+            <button id="analyze-button" class="primary-action" type="button" disabled><span>启动单样本 AI 分析</span><b>→</b></button>
+            <p class="boundary-note">每次只分析当前观测，不会启动 195 条批量评测。</p>
+            <div id="analysis-progress" class="analysis-progress" hidden>
+              <div class="progress-head"><span id="progress-label">正在准备四模态输入</span><strong id="progress-value">5%</strong></div>
+              <div class="progress-track"><i id="progress-bar"></i></div>
+              <p id="progress-detail">任务已进入队列</p>
+            </div>
+            <div id="analysis-result" class="analysis-result" hidden>
+              <div class="result-hero"><span>模型判读</span><strong id="predicted-class">—</strong><small>DEVELOPMENTAL</small></div>
+              <div id="probability-bars" class="probability-bars"></div>
+              <section class="evidence-block"><h3>形态依据</h3><ul id="visual-evidence"></ul></section>
+              <section class="evidence-block"><h3>数值依据</h3><ul id="fits-evidence"></ul></section>
+              <div class="caveat"><strong>解释边界</strong><p id="analysis-caveat"></p></div>
+            </div>
+            <div id="analysis-placeholder" class="analysis-placeholder">
+              <div class="constellation" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <p>选择观测并启动分析后，这里将显示分类概率、视觉依据与数值证据。</p>
+            </div>
+            <details class="audit-details">
+              <summary>系统审计与内部流程</summary>
+              <p>模型调用、证据版本和历史 Replay 属于后台可审计能力，不作为科研人员的主操作流程。</p>
+              <pre id="audit-output">尚无本次分析记录</pre>
+            </details>
+          </aside>
+        </div>
+      </main>
+    </div>
+    <div id="toast" class="toast" role="status" hidden></div>
+    <script src="app.js" defer></script>
+  </body>
+</html>
